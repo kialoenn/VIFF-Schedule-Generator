@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Page Title</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="">
+<style>
+</style>
+<body>
+
+    <input type="file" id="fileInput"/>
+    <button id="upButton">Upload</button>
+    <table id="dataTable"></table>
+
+</body>
+
+<script>
+
+    const fileInput = document.getElementById("fileInput");
+    const uploadButton = document.getElementById("upButton");
+    const dataTable = document.getElementById("dataTable");
+    
+    uploadButton.addEventListener("click", function() {
+      const reader = new FileReader();
+      reader.onload = function() {
+        const csvData = reader.result;
+        const lines = csvData.split("\n");
+        let tableHTML = "<tr>";
+        const header = lines[0].split(",");
+        for (let headerVal of header) {
+          tableHTML += "<th>" + headerVal + "</th>";
+        }
+        tableHTML += "</tr>";
+        for (let i = 1; i < lines.length; i++) {
+          const row = lines[i].split(",");
+          tableHTML += "<tr>";
+          for (let rowVal of row) {
+            tableHTML += "<td>" + rowVal + "</td>";
+          }
+          tableHTML += "</tr>";
+        }
+        dataTable.innerHTML = tableHTML;
+      };
+      reader.readAsText(fileInput.files[0]);
+    });
+    
+</script>
+
+</html>
