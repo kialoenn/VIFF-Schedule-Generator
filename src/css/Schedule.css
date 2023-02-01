@@ -1,0 +1,12 @@
+.header {
+    margin: 0px auto;
+    width: 800px;
+    background-color: orange;
+}
+
+.timeline {
+    margin: 0px auto;
+    width: 800px;
+    background-color: black;
+    color: white;
+}
