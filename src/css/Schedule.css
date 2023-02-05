@@ -1,12 +1,8 @@
 .container {
     display: flex;
+    height: 100%;
+    margin-left: 15%;
     background-color: #fafafb;
-}
-
-.header {
-    margin: 0px auto;
-    width: 1200px;
-    background-color: orange;
 }
 
 .timelineRow {

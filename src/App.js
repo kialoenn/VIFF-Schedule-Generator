@@ -8,8 +8,8 @@ import Header from './Components/Header';
 const App = () => {
   return (
     <div className='container'>
-      <Sidebar />
       <Header />
+      <Sidebar />
       <Content />
     </div>
   );
