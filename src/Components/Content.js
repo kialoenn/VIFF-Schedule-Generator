@@ -1,4 +1,3 @@
-import Header from "./Header";
 import Timeline from "./Timeline";
 import Venue from "./Venue";
 
@@ -276,8 +275,7 @@ const Content = (props) => {
             {scheduleDetail.map((element, index) => {
                 return (
                     <div key={index}>
-                        <Header key={index} date={element.date}></Header>
-                        <Timeline></Timeline>
+                        <Timeline key={index} date={element.date}></Timeline>
                         {element.venue.map((venueEle, venueIndex) => {
                             return (<Venue key={index + "." + venueIndex} venueDetail={venueEle}></Venue>)
                         })}

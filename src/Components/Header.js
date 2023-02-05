@@ -1,9 +1,11 @@
 import React from 'react';
-import '../css/Schedule.css'
+import '../css/Header.css'
 
-const Header = (prop) => {
+const Header = () => {
     return (
-        <div className='header'>{prop.date}</div>
+        <div className='header'>
+            file upload here
+        </div>
     );
 };
 
