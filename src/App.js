@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div style={{ display: 'flex' }}>
       <Sidebar />
-      <Content date="Jan 31" />
+      <Content />
     </div>
   );
 };

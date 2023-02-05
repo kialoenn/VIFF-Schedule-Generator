@@ -87,7 +87,188 @@ const Content = (props) => {
                     ]
                 },
             ]
-        }
+        },
+        {
+            date: "Feb02, 2023",
+            venue: [
+                {
+                    venueName: "The Centre",
+                    screens: [
+                        {
+                            screenTitle: "Empire of Light",
+                            startTime: "6:00pm",
+                            duration: "119min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Decision to Leave",
+                            startTime: "9:15pm",
+                            duration: "138min",
+                            pageLocation: "p2",
+                        }
+                    ]
+                },
+                {
+                    venueName: "Cinematheque",
+                    screens: [
+                        {
+                            screenTitle: "The Eclipse",
+                            startTime: "4:00pm",
+                            duration: "109min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Love Will",
+                            startTime: "6:30pm",
+                            duration: "81min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "The Word",
+                            startTime: "8:45pm",
+                            duration: "100min",
+                            pageLocation: "p2",
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            date: "Feb02, 2023",
+            venue: [
+                {
+                    venueName: "The Centre",
+                    screens: [
+                        {
+                            screenTitle: "Empire of Light",
+                            startTime: "6:00pm",
+                            duration: "119min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Decision to Leave",
+                            startTime: "9:15pm",
+                            duration: "138min",
+                            pageLocation: "p2",
+                        }
+                    ]
+                },
+                {
+                    venueName: "Cinematheque",
+                    screens: [
+                        {
+                            screenTitle: "The Eclipse",
+                            startTime: "4:00pm",
+                            duration: "109min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Love Will",
+                            startTime: "6:30pm",
+                            duration: "81min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "The Word",
+                            startTime: "8:45pm",
+                            duration: "100min",
+                            pageLocation: "p2",
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            date: "Feb02, 2023",
+            venue: [
+                {
+                    venueName: "The Centre",
+                    screens: [
+                        {
+                            screenTitle: "Empire of Light",
+                            startTime: "6:00pm",
+                            duration: "119min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Decision to Leave",
+                            startTime: "9:15pm",
+                            duration: "138min",
+                            pageLocation: "p2",
+                        }
+                    ]
+                },
+                {
+                    venueName: "Cinematheque",
+                    screens: [
+                        {
+                            screenTitle: "The Eclipse",
+                            startTime: "4:00pm",
+                            duration: "109min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Love Will",
+                            startTime: "6:30pm",
+                            duration: "81min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "The Word",
+                            startTime: "8:45pm",
+                            duration: "100min",
+                            pageLocation: "p2",
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            date: "Feb02, 2023",
+            venue: [
+                {
+                    venueName: "The Centre",
+                    screens: [
+                        {
+                            screenTitle: "Empire of Light",
+                            startTime: "6:00pm",
+                            duration: "119min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Decision to Leave",
+                            startTime: "9:15pm",
+                            duration: "138min",
+                            pageLocation: "p2",
+                        }
+                    ]
+                },
+                {
+                    venueName: "Cinematheque",
+                    screens: [
+                        {
+                            screenTitle: "The Eclipse",
+                            startTime: "4:00pm",
+                            duration: "109min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "Love Will",
+                            startTime: "6:30pm",
+                            duration: "81min",
+                            pageLocation: "p2",
+                        },
+                        {
+                            screenTitle: "The Word",
+                            startTime: "8:45pm",
+                            duration: "100min",
+                            pageLocation: "p2",
+                        },
+                    ]
+                },
+            ]
+        },
+
     ]
     return (
         <div style={{ width: '80%', backgroundColor: 'lightblue' }}>
