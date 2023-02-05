@@ -3,12 +3,12 @@ import '../css/Schedule.css'
 
 const Venue = (prop) => {
     return (
-        <div className='venueRow' style={{ display: 'flex' }}>
-            <div className='venue' style={{ width: '10%', backgroundColor: 'grey' }}>{prop.venueDetail.venueName}</div>
-            <div className='screen' style={{ width: '90%', backgroundColor: 'red' }}>
+        <div className='venueRow'>
+            <div className='venue'>{prop.venueDetail.venueName}</div>
+            <div className='screen'>
                 {prop.venueDetail.screens.map((element, index) => {
                     return (
-                        <div style={{ display: 'inline' }}>
+                        <div className='screenBox'>
                             {element.screenTitle + " | "}
                         </div>
                     )

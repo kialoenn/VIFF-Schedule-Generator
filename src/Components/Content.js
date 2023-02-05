@@ -271,7 +271,7 @@ const Content = (props) => {
 
     ]
     return (
-        <div style={{ width: '80%', backgroundColor: 'lightblue' }}>
+        <div className="content">
             <h3>Dashboard</h3>
             {scheduleDetail.map((element, index) => {
                 return (
