@@ -1,12 +1,23 @@
 .header {
     margin: 0px auto;
-    width: 800px;
+    width: 1200px;
     background-color: orange;
 }
 
-.timeline {
+.timelineRow {
     margin: 0px auto;
-    width: 800px;
+    width: 1200px;
+    background-color: black;
+    color: white;
+}
+
+.timeline {
+    margin-left: 10%;
+}
+
+.venueRow {
+    margin: 0px auto;
+    width: 1200px;
     background-color: black;
     color: white;
 }

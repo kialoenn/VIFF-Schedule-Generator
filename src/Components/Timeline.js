@@ -3,7 +3,11 @@ import '../css/Schedule.css'
 
 const Timeline = () => {
     return (
-        <div className='timeline'>10:30am 10:30am 10:30am 10:30am 10:30am 10:30am 10:30am</div>
+        <div className='timelineRow'>
+            <div className='timeline'>
+                10:30am 10:30am 10:30am 10:30am 10:30am 10:30am 10:30am
+            </div>
+        </div>
     );
 };
 
