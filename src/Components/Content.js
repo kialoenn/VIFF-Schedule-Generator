@@ -282,6 +282,7 @@ const Content = (props) => {
                     </div>)
             })}
 
+            <img src="https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1600"></img>
         </div>
     );
 };
