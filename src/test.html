@@ -17,7 +17,8 @@
 
 <script>
 
-    function Node(venue, start_time, end_time, venue_info) {
+    class Node {
+      constructor (venue, start_time, end_time, venue_info) {
       this.venue = venue;
       this.start_time = start_time;
       this.end_time = end_time;
@@ -25,16 +26,28 @@
 
       this.next = null;
       this.prev = null;
+      }
     }
 
-    function DoubleLinkedList() {
-      this.head = null;
-      this.tail = null;
-      this.length = 0;
+    class DoubleLinkedList {
+      constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+      }
+      // get size() {
+      //   return this.length;
+      // }
     }
+
+    // function DoubleLinkedList() {
+    //   this.head = null;
+    //   this.tail = null;
+    //   this.length = 0;
+    // }
 
     DoubleLinkedList.size = function () {
-    return this.length;
+      return this.length;
     }
 
     DoubleLinkedList.printNode = function () {
@@ -55,7 +68,6 @@
         node.prev = this.tail;
         this.tail = node;
       }
-
       this.length++;
     }
 
@@ -80,20 +92,15 @@
         let venue_info;
 
         tableHTML += "</tr>";
-        for (let i = 1; i < lines.length; i++) {
+        for (let i = 1; i < lines.length - 1; i++) {
           const row = lines[i].split(",");
           tableHTML += "<tr>";
           for (let rowVal of row) {
             tableHTML += "<td>" + rowVal + "</td>";
-            if (rowVal == row[0]) {
-              venue = rowVal;
-            } else if (rowVal == row[1]) {
-              start_time = rowVal;
-            } else if (rowVal == row[2]) {
-              end_time = rowVal;
-            } else if (rowVal== row[3]) { 
-              venue_info = rowVal;
-            }
+              venue = row[0];
+              start_time = row[1];
+              end_time = row[2];
+              venue_info = row[3];
           }
           console.log(venue + start_time + end_time + venue_info);
           DoubleLinkedList.append(venue, start_time, end_time, venue_info);
@@ -101,6 +108,12 @@
         }
 
         console.log(DoubleLinkedList.printNode());
+        
+
+        console.log(DoubleLinkedList.size());
+
+        console.log(DoubleLinkedList);
+
 
         dataTable.innerHTML = tableHTML;
       };
