@@ -1,8 +1,12 @@
 .sidebar {
-    position:absolute;
-    top:0px;
-    left:0px;
     height: 100%;
-    width: 15%;
-    background-color: yellow;
+    width: 100%;
+    background-color:white;
+    position: sticky;
+    top:0;
+    align-self: start;
+    border-top:    none;
+    border-right:  1px solid #f0f0f0;
+    border-bottom: none;
+    border-left:   none;
 }

@@ -1,8 +1,32 @@
 .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 250px minmax(10px, 1fr);
     height: 100%;
-    margin-left: 15%;
     background-color: #fafafb;
+}
+
+.rightContainer {
+    width: 100%;
+    background-color: #fafafb;
+    grid-column: 2;
+    min-height: 100vh;
+}
+
+.topMenu {
+    background-color: white;
+    position: sticky;
+    top: 0px;
+    height: 60px;
+    border-top:    none;
+    border-right:  none;
+    border-bottom: 1px solid #f0f0f0;
+    border-left:   1px solid #f0f0f0;
+    padding-left: 10px;
+}
+
+.dashboard {
+    padding-left: 15px;
+
 }
 
 .timelineRow {
