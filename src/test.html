@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -6,39 +5,47 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="">
 <style>
+
 </style>
+
 <body>
 
-    <input type="file" id="fileInput"/>
+    <input type="file" id="fileInput" />
     <button id="upButton">Upload</button>
     <table id="dataTable"></table>
 
 </body>
 
 <script>
-
     class Node {
-      constructor (venue, start_time, end_time, venue_info) {
-      this.venue = venue;
-      this.start_time = start_time;
-      this.end_time = end_time;
-      this.venue_info = venue_info;
+        constructor(date, movie_name, code, screen_time_min, screen_time, movie_type, start_time, venue_info, page_number) {
+            this.date = date;
+            this.movie_name = movie_name;
+            this.code = code;
+            this.screen_time_min = screen_time_min;
+            this.screen_time = screen_time;
+            this.movie_type = movie_type;
+            this.start_time = start_time;
+            this.venue_info = venue_info;
+            this.page_number = page_number;
 
-      this.next = null;
-      this.prev = null;
-      }
+            // this.next = null;
+            // this.prev = null;
+        }
     }
 
-    class DoubleLinkedList {
-      constructor() {
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
-      }
-      // get size() {
-      //   return this.length;
-      // }
-    }
+    var movie_info = [];
+
+    // class DoubleLinkedList {
+    //     constructor() {
+    //         this.head = null;
+    //         this.tail = null;
+    //         this.length = 0;
+    //     }
+    //     get size() {
+    //         return this.length;
+    //     }
+    // }
 
     // function DoubleLinkedList() {
     //   this.head = null;
@@ -46,80 +53,92 @@
     //   this.length = 0;
     // }
 
-    DoubleLinkedList.size = function () {
-      return this.length;
-    }
+    // DoubleLinkedList.size = function() {
+    //     return this.length;
+    // }
 
-    DoubleLinkedList.printNode = function () {
-      console.log("head -> ");
-      for (let node = this.head; node != null; node = node.next) {
-        console.log(`${node.venue} -> `);
-      }
-    }
+    // DoubleLinkedList.printNode = function() {
+    //     console.log("head -> ");
+    //     for (let node = this.head; node != null; node = node.next) {
+    //         console.log(`${node.venue} -> `);
+    //     }
+    // }
 
-    DoubleLinkedList.append = function ( venue, start_time, end_time, venue_info) {
-      let node = new Node(venue, start_time, end_time, venue_info);
+    // DoubleLinkedList.append = function(venue, start_time, end_time, venue_info) {
+    //     let node = new Node(venue, start_time, end_time, venue_info);
 
-      if (this.head == null) {
-        this.head = node;
-        this.tail = node;
-      } else {
-        this.tail.next = node;
-        node.prev = this.tail;
-        this.tail = node;
-      }
-      this.length++;
-    }
+    //     if (this.head == null) {
+    //         this.head = node;
+    //         this.tail = node;
+    //     } else {
+    //         this.tail.next = node;
+    //         node.prev = this.tail;
+    //         this.tail = node;
+    //     }
+    //     this.length++;
+    // }
 
     const fileInput = document.getElementById("fileInput");
     const uploadButton = document.getElementById("upButton");
     const dataTable = document.getElementById("dataTable");
-    
+
     uploadButton.addEventListener("click", function() {
-      const reader = new FileReader();
-      reader.onload = function() {
-        const csvData = reader.result;
-        const lines = csvData.split("\n");
-        let tableHTML = "<tr>";
-        const header = lines[0].split(",");
-        for (let headerVal of header) {
-          tableHTML += "<th>" + headerVal + "</th>";
-        }
+        const reader = new FileReader();
+        reader.onload = function() {
+            const csvData = reader.result;
+            const lines = csvData.split("\r");
+            let tableHTML = "<tr>";
+            const header = lines[0].split(",");
+            for (let headerVal of header) {
+                tableHTML += "<th>" + headerVal + "</th>";
+            }
 
-        let venue;
-        let start_time;
-        let end_time;
-        let venue_info;
+            let venue;
+            let start_time;
+            let end_time;
+            let venue_info;
 
-        tableHTML += "</tr>";
-        for (let i = 1; i < lines.length - 1; i++) {
-          const row = lines[i].split(",");
-          tableHTML += "<tr>";
-          for (let rowVal of row) {
-            tableHTML += "<td>" + rowVal + "</td>";
-              venue = row[0];
-              start_time = row[1];
-              end_time = row[2];
-              venue_info = row[3];
-          }
-          console.log(venue + start_time + end_time + venue_info);
-          DoubleLinkedList.append(venue, start_time, end_time, venue_info);
-          tableHTML += "</tr>";
-        }
+            tableHTML += "</tr>";
+            for (let i = 1; i < lines.length - 1; i++) {
+                const row = lines[i].split("\t");
+                tableHTML += "<tr>";
+                for (let rowVal of row) {
+                    tableHTML += "<td>" + rowVal + "</td>";
+                    date = row[0];
+                    movie_name = row[1];
+                    code = row[2];
+                    screen_time_min = row[3];
+                    screen_time = row[4];
+                    movie_type = row[5];
+                    start_time = row[6];
+                    venue_info = row[7];
+                    page_number = row[8];
 
-        console.log(DoubleLinkedList.printNode());
-        
+                    var node = new Node(date, movie_name, code, screen_time_min, screen_time, movie_type, start_time, venue_info, page_number);
+                }
+                //console.log(venue + start_time + end_time + venue_info);
 
-        console.log(DoubleLinkedList.size());
+                //console.log(i);
+                movie_info[i - 1] = node;
+                // DoubleLinkedList.append(venue, start_time, end_time, venue_info);
+                tableHTML += "</tr>";
+            }
 
-        console.log(DoubleLinkedList);
+            // console.log(DoubleLinkedList.printNode());
 
 
-        dataTable.innerHTML = tableHTML;
-      };
-      reader.readAsText(fileInput.files[0]);
+            // console.log(DoubleLinkedList.size());
+
+            // console.log(DoubleLinkedList);
+
+            console.log(movie_info);
+
+            console.log(movie_info.length);
+
+            dataTable.innerHTML = tableHTML;
+        };
+        reader.readAsText(fileInput.files[0]);
     });
-    
 </script>
 
 </html>
