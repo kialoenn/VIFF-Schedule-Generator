@@ -8,9 +8,15 @@ import Header from './Components/Header';
 const App = () => {
   return (
     <div className='container'>
-      <Header />
       <Sidebar />
+      <div className='rightContainer'>
+      <div className='topMenu'>
+      <Header />
+      </div>
+      <div className='dashboard'>
       <Content />
+      </div>
+      </div>
     </div>
   );
 };
