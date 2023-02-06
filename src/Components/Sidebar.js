@@ -113,7 +113,7 @@ const Sidebar = () => {
 
                     {/* Checkbox to clear empty rows  */}
                     <FormGroup sx={{ pl: 0.2, pt: 0.5 }}>
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Clear Empty Rows"/>
+                        <FormControlLabel control={<Checkbox />} label="Clear Empty Rows"/>
                     </FormGroup>
             </div>
         </div>
