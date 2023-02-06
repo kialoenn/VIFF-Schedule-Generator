@@ -17,6 +17,48 @@
 
 <script>
 
+    function Node(venue, start_time, end_time, venue_info) {
+      this.venue = venue;
+      this.start_time = start_time;
+      this.end_time = end_time;
+      this.venue_info = venue_info;
+
+      this.next = null;
+      this.prev = null;
+    }
+
+    function DoubleLinkedList() {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    }
+
+    DoubleLinkedList.size = function () {
+    return this.length;
+    }
+
+    DoubleLinkedList.printNode = function () {
+      console.log("head -> ");
+      for (let node = this.head; node != null; node = node.next) {
+        console.log(`${node.venue} -> `);
+      }
+    }
+
+    DoubleLinkedList.append = function ( venue, start_time, end_time, venue_info) {
+      let node = new Node(venue, start_time, end_time, venue_info);
+
+      if (this.head == null) {
+        this.head = node;
+        this.tail = node;
+      } else {
+        this.tail.next = node;
+        node.prev = this.tail;
+        this.tail = node;
+      }
+
+      this.length++;
+    }
+
     const fileInput = document.getElementById("fileInput");
     const uploadButton = document.getElementById("upButton");
     const dataTable = document.getElementById("dataTable");
@@ -31,15 +73,35 @@
         for (let headerVal of header) {
           tableHTML += "<th>" + headerVal + "</th>";
         }
+
+        let venue;
+        let start_time;
+        let end_time;
+        let venue_info;
+
         tableHTML += "</tr>";
         for (let i = 1; i < lines.length; i++) {
           const row = lines[i].split(",");
           tableHTML += "<tr>";
           for (let rowVal of row) {
             tableHTML += "<td>" + rowVal + "</td>";
+            if (rowVal == row[0]) {
+              venue = rowVal;
+            } else if (rowVal == row[1]) {
+              start_time = rowVal;
+            } else if (rowVal == row[2]) {
+              end_time = rowVal;
+            } else if (rowVal== row[3]) { 
+              venue_info = rowVal;
+            }
           }
+          console.log(venue + start_time + end_time + venue_info);
+          DoubleLinkedList.append(venue, start_time, end_time, venue_info);
           tableHTML += "</tr>";
         }
+
+        console.log(DoubleLinkedList.printNode());
+
         dataTable.innerHTML = tableHTML;
       };
       reader.readAsText(fileInput.files[0]);
