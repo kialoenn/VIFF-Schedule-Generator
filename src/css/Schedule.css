@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .container {
     display: grid;
     grid-template-columns: 250px minmax(10px, 1fr);
@@ -26,41 +28,145 @@
 
 .dashboard {
     padding-left: 15px;
+    padding-right: 15px;
 
 }
 
 .timelineRow {
     margin: 0px auto;
-    width: 1200px;
+    width: 95%;
     background-color: black;
     color: white;
+    height: 2%;
+    display: grid;
+    grid-template-columns: 13.6% 86.4%;
 }
 
 .timelineDate {
-    float: left;
+    grid-column: 1;
+    margin: auto;
+    text-align: center;
     color: orange;
+    font-family: Roboto;
+    font-size: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
 }
 
 .timeline {
-    margin-left: 10%;
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 6.66% 6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66% ; 
+    font-family: Roboto; 
+    font-size: 0.9em;
+}
+
+.time1 {
+    grid-column: 1;
+    margin: auto;
+    text-align: center;
+}
+
+.time2 {
+    grid-column: 2;
+    margin: auto;
+    text-align: center;
+}
+
+.time3 {
+    grid-column: 3;
+    margin: auto;
+    text-align: center;
+}
+
+.time4 {
+    grid-column: 4;
+    margin: auto;
+    text-align: center;
+}
+
+.time5 {
+    grid-column: 5;
+    margin: auto;
+    text-align: center;
+}
+
+.time6 {
+    grid-column: 6;
+    margin: auto;
+    text-align: center;
+}
+
+.time7 {
+    grid-column: 7;
+    margin: auto;
+    text-align: center;
+}
+
+.time8 {
+    grid-column: 8;
+    margin: auto;
+    text-align: center;
+}
+
+.time9 {
+    grid-column: 9;
+    margin: auto;
+    text-align: center;
+}
+
+.time10 {
+    grid-column: 10;
+    margin: auto;
+    text-align: center;
+}
+
+.time11 {
+    grid-column: 11;
+    margin: auto;
+    text-align: center;
+}
+
+.time12 {
+    grid-column: 12;
+    margin: auto;
+    text-align: center;
+}
+
+.time13 {
+    grid-column: 13;
+    margin: auto;
+    text-align: center;
+}
+
+.time14 {
+    grid-column: 14;
+    margin: auto;
+    text-align: center;
+}
+
+.time15 {
+    grid-column: 15;
+    margin: auto;
+    text-align: center;
 }
 
 .venueRow {
     display: flex;
     margin: 0px auto;
-    width: 1200px;
+    width: 95%;
     background-color: black;
     color: white;
 }
 
 .venue {
-    width: 10%;
+    width: 15%;
     background-color: gray;
 }
 
 .screen {
     color: black;
-    width: 90%;
+    width: 95%;
     background-color: lightcyan;
 }
 

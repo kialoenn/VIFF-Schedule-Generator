@@ -4,7 +4,7 @@ import Venue from "./Venue";
 const Content = (props) => {
     const scheduleDetail = [
         {
-            date: "Jan31, 2023",
+            date: "Tuesday, January 31",
             venue: [
                 {
                     venueName: "The Centre",
@@ -43,7 +43,7 @@ const Content = (props) => {
             ]
         },
         {
-            date: "Feb02, 2023",
+            date: "Thursday, February 2",
             venue: [
                 {
                     venueName: "The Centre",
@@ -88,7 +88,7 @@ const Content = (props) => {
             ]
         },
         {
-            date: "Feb02, 2023",
+            date: "Thursday, February 2",
             venue: [
                 {
                     venueName: "The Centre",
@@ -133,7 +133,7 @@ const Content = (props) => {
             ]
         },
         {
-            date: "Feb02, 2023",
+            date: "Thursday, February 2",
             venue: [
                 {
                     venueName: "The Centre",
@@ -178,7 +178,7 @@ const Content = (props) => {
             ]
         },
         {
-            date: "Feb02, 2023",
+            date: "Thursday, February 2",
             venue: [
                 {
                     venueName: "The Centre",
@@ -223,7 +223,7 @@ const Content = (props) => {
             ]
         },
         {
-            date: "Feb02, 2023",
+            date: "Thursday, February 2",
             venue: [
                 {
                     venueName: "The Centre",
