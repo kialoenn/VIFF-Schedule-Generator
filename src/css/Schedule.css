@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 .container {
     display: grid;
@@ -48,6 +48,7 @@
     text-align: center;
     color: orange;
     font-family: Roboto;
+    font-weight: 500;
     font-size: 1em;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
@@ -58,7 +59,7 @@
     display: grid;
     grid-template-columns: 6.66% 6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66%  6.66% ; 
     font-family: Roboto; 
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .time1 {
@@ -161,7 +162,18 @@
 
 .venue {
     width: 15%;
+    font-family: Roboto;
+    color: black;
+    font-size: 0.8em;
+    font-weight: 700;
+    margin: auto;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    text-align: center;
     background-color: gray;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
 }
 
 .screen {
