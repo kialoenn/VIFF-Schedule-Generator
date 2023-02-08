@@ -10,9 +10,9 @@ const App = () => {
     <div className='container'>
       <Sidebar />
       <div className='rightContainer'>
-      <div className='topMenu'>
+      {/* <div className='topMenu'>
       <Header />
-      </div>
+      </div> */}
       <div className='dashboard'>
       <Content />
       </div>

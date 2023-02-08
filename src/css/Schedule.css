@@ -26,8 +26,8 @@
     padding-left: 10px;
 }
 
-.dashboard {
-    padding-left: 15px;
+#content h3 {
+    margin-left: 15px;
 }
 
 
@@ -109,11 +109,27 @@
     border-right: 2px dotted black;
 }
 
+
 .screenBox {
-    grid-column: span 8;
+    position: absolute;
+    z-index: 1;
     background-color: white;
+    margin-left: 21.77%;
+    width: 20em;
     font-family: Roboto;
     font-size: 0.6em;
     text-align: center;
-    /* border: 1px solid black; */
+    line-height: 0.58em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    border-top: 1px solid black;
+    border-left: 1px dotted black;
+    border-bottom: 1px solid black;
+    border-right: 3px solid  #da00b9;
+}
+
+.screenInfo {
+    color: grey;
+    font-size: 0.8em;
+    line-height: 0.9em;
 }
