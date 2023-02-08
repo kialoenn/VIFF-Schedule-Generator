@@ -8,8 +8,14 @@ import download from "downloadjs";
 
 //import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
+function loadData()  {
+    // normal stuff
+}
+
 
 const Content = (props) => {
+    const mydata = loadData();
+    const temp = props.data
     const scheduleDetail = [
         {
             date: "Tuesday, January 31",
@@ -393,47 +399,48 @@ const Content = (props) => {
 
 const converToPdf = async () => {
 
-    //1.html을 들고와서 canvas화
+    //1.make canvas from the html
     //const canvas = await html2canvas(document.getElementById('content'));
-    const canvas = await htmlToImage.toSvg(document.getElementById('content'));
+    //const canvas = await htmlToImage.toSvg(document.getElementById('content'));
 
-    htmlToImage.toSvg(document.getElementById('content'))
-        .then(function (dataUrl) {
-            download(dataUrl, 'my-node.svg');
-        });
-
-    //2.이미지화
-    // const imageFile = canvas.toDataURL('image/svg');
-    //3.pdf준비
+    const canvas = htmlToImage.toPng(document.getElementById('content'))
+    .then(function (dataUrl) {
+       download(dataUrl, 'my-node.png');
+    });
+    var svgAsText = new XMLSerializer().serializeToString(canvas);
+    //2.Imaging
+    //const imageFile = canvas.toDataURL('image/svg');
+    //3. Ready pdf
     const doc = new jsPDF('l', 'px', [3067, 2713]);
-    //pdf 가로 세로 사이즈
+    //the size of width, height
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
 
-    //이미지의 길이와 pdf의 가로길이가 다르므로 이미지 길이를 기준으로 비율을 구함
+    //Since the length of the image and the width of the pdf are different, the ratio is calculated based on the length of the image.
     const widthRatio = pageWidth / canvas.width;
-    //비율에 따른 이미지 높이
+    //Image height according to the ratio
     const customHeight = canvas.height * widthRatio;
-    //pdf에 1장에 대한 이미지 추가
-    doc.addImage(canvas, 'svg', 0, 0, pageWidth, customHeight);
+    //add 
+    doc.addImage(svgAsText, 0, 0, pageWidth, customHeight);
+    doc.addImage(canvas, 'SVG', 0, 0, pageWidth, customHeight);
     //doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
     //감소하면서 남은 길이 변수
     let heightLeft = customHeight;
     //증가하면서 이미지 자를 위치 변수
     let heightAdd = -pageHeight;
 
-    // 한 페이지 이상일 경우
+    // if the image is more than one page.
     while (heightLeft >= pageHeight) {
-        //pdf페이지 추가
+        //Add pdf page
         doc.addPage();
-        //남은 이미지를 추가
-        doc.addImage(canvas, 'svg', 0, heightAdd, pageWidth, customHeight);
-        //남은길이
+        //add remains image
+        doc.addImage(canvas, 'SVG', 0, heightAdd, pageWidth, customHeight);
+        //height left.
         heightLeft -= pageHeight;
-        //남은높이
+        //height left
         heightAdd -= pageHeight;
     }
-    //문서저장
+    //save the document
     doc.save('filename' + new Date().getTime() + '.pdf');
 };
 
