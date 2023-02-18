@@ -379,7 +379,7 @@ const Content = (props) => {
                     <div className='header4'><Button variant="contained" component="label" onClick={converToPdf} class="button">Generate PDF</Button></div>
                 </div>
             </div>
-            <div id="content">
+            <div id="content" style={{height: 1000}}>
 
 
                 <h3>Dashboard</h3>
@@ -405,7 +405,7 @@ const converToPdf = async () => {
 
     const canvas = htmlToImage.toPng(document.getElementById('content'))
     .then(function (dataUrl) {
-       download(dataUrl, 'my-node.png');
+        download(dataUrl, 'my-node.png');
     });
     var svgAsText = new XMLSerializer().serializeToString(canvas);
     //2.Imaging
