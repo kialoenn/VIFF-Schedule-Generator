@@ -10,11 +10,38 @@ import download from "downloadjs";
 
 function loadData()  {
     // normal stuff
+    // for a single file
+    const data = document.querySelector("input[type=file]").files[0];
+
+    // for multiple files
+    // const data = document.querySelector("input[type=file]").files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load",() => {
+        let text = reader.result;
+        const myArray = text.split("\t");
+        console.log(myArray);
+        // console.log("text = ", text);
+        console.log(reader.result);
+    }, false)
+
+    if (data) {
+        reader.readAsText(data);
+        
+        // const myArray = test.split(",");
+        // console.log(JSON.stringify(reader.result));
+        
+    }
+    
+    
 }
 
 
 const Content = (props) => {
-    const mydata = loadData();
+    // const mydata = loadData();
+
+    
+    
     const temp = props.data
     const scheduleDetail = [
         {
@@ -25,8 +52,8 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "Bones of Crows",
-                            startTime: "6:00pm",
-                            duration: "127min",
+                            startTime: "19:00",
+                            duration: "130min",
                             pageLocation: "p2",
                         }
                     ]
@@ -36,19 +63,19 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "See You Friday",
-                            startTime: "3:45pm",
+                            startTime: "15:45",
                             duration: "97min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "No Prior Appointment",
-                            startTime: "6:15pm",
+                            startTime: "18:15",
                             duration: "115min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Geographies of Solitude",
-                            startTime: "9:00pm",
+                            startTime: "21:00",
                             duration: "103min",
                             pageLocation: "p2",
                         },
@@ -64,13 +91,13 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "Empire of Light",
-                            startTime: "6:00pm",
+                            startTime: "18:30",
                             duration: "119min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Decision to Leave",
-                            startTime: "9:15pm",
+                            startTime: "21:15",
                             duration: "138min",
                             pageLocation: "p2",
                         }
@@ -81,19 +108,19 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "The Eclipse",
-                            startTime: "4:00pm",
+                            startTime: "16:00",
                             duration: "109min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Love Will",
-                            startTime: "6:30pm",
+                            startTime: "18:30",
                             duration: "81min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "The Word",
-                            startTime: "8:45pm",
+                            startTime: "20:45",
                             duration: "100min",
                             pageLocation: "p2",
                         },
@@ -104,19 +131,19 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "The Eclipse",
-                            startTime: "4:00pm",
+                            startTime: "16:00pm",
                             duration: "109min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Love Will",
-                            startTime: "6:30pm",
+                            startTime: "18:30",
                             duration: "81min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "The Word",
-                            startTime: "8:45pm",
+                            startTime: "20:45",
                             duration: "100min",
                             pageLocation: "p2",
                         },
@@ -132,13 +159,13 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "Empire of Light",
-                            startTime: "6:00pm",
+                            startTime: "18:00",
                             duration: "119min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Decision to Leave",
-                            startTime: "9:15pm",
+                            startTime: "21:15",
                             duration: "138min",
                             pageLocation: "p2",
                         }
@@ -149,19 +176,19 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "The Eclipse",
-                            startTime: "4:00pm",
+                            startTime: "16:00",
                             duration: "109min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Love Will",
-                            startTime: "6:30pm",
+                            startTime: "18:30",
                             duration: "81min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "The Word",
-                            startTime: "8:45pm",
+                            startTime: "20:45",
                             duration: "100min",
                             pageLocation: "p2",
                         },
@@ -177,13 +204,13 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "Empire of Light",
-                            startTime: "6:00pm",
+                            startTime: "18:00",
                             duration: "119min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Decision to Leave",
-                            startTime: "9:15pm",
+                            startTime: "21:15",
                             duration: "138min",
                             pageLocation: "p2",
                         }
@@ -194,19 +221,19 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "The Eclipse",
-                            startTime: "4:00pm",
+                            startTime: "16:00",
                             duration: "109min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Love Will",
-                            startTime: "6:30pm",
+                            startTime: "18:30",
                             duration: "81min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "The Word",
-                            startTime: "8:45pm",
+                            startTime: "20:45",
                             duration: "100min",
                             pageLocation: "p2",
                         },
@@ -217,13 +244,13 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "Empire of Light",
-                            startTime: "6:00pm",
+                            startTime: "18:00",
                             duration: "119min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Decision to Leave",
-                            startTime: "9:15pm",
+                            startTime: "21:15",
                             duration: "138min",
                             pageLocation: "p2",
                         }
@@ -239,13 +266,13 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "Empire of Light",
-                            startTime: "6:00pm",
+                            startTime: "18:00",
                             duration: "119min",
                             pageLocation: "p2",
                         },
                         {
                             screenTitle: "Decision to Leave",
-                            startTime: "9:15pm",
+                            startTime: "21:15",
                             duration: "138min",
                             pageLocation: "p2",
                         }
@@ -256,7 +283,7 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "The Eclipse",
-                            startTime: "4:00pm",
+                            startTime: "16:00",
                             duration: "109min",
                             pageLocation: "p2",
                         },
@@ -341,7 +368,7 @@ const Content = (props) => {
                     screens: [
                         {
                             screenTitle: "The Eclipse",
-                            startTime: "4:00pm",
+                            startTime: "16:30",
                             duration: "109min",
                             pageLocation: "p2",
                         },
@@ -371,7 +398,7 @@ const Content = (props) => {
                     <div className='header1'>
                         <Button variant="contained" component="label" class="button">
                             Upload File
-                            <input hidden accept=".tab, .csv" multiple type="file" />
+                            <input hidden accept=".tab, .csv" multiple type="file" onClick={loadData} />
                         </Button>
                     </div>
                     <div className='header2'></div>
