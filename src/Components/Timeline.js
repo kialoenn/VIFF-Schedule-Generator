@@ -1,29 +1,64 @@
 import React from 'react';
-import '../css/Schedule.css'
+import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { style } from '@mui/system';
 
-const Timeline = (prop) => {
+const styles = StyleSheet.create({
+    timelineRow: {
+        "width": "100vw",
+        "backgroundColor": "#231f20",
+        "height": "2vh",
+        "flexDirection": "row",
+    },
+
+    timelineDate: {
+        "flex": "1.5",
+        "textAlign": "center",
+        "margin": "auto",
+        "color": "#ffa500",
+        "fontWeight": "500",
+        "fontSize": "1.3vw",
+    },
+
+    timeline: {
+        "flex": "8.5",
+        "flexDirection": "row",
+        "fontSize": "1vw",
+        "color": "white",
+    },
+
+    time: {
+        "margin": "auto",
+        "width": "100vw",
+        "textAlign": "center"
+    },
+
+});
+
+const Timeline = (props) => {
     return (
-        <div className='timelineRow'>
-            <div className='timelineDate'>{prop.date}</div>
-            <div className='timeline'>
-                <div className='time'>9:00AM</div>
-                <div className='time'>10:00AM</div>
-                <div className='time'>11:00AM</div>
-                <div className='time'>12:00PM</div>
-                <div className='time'>1:00PM</div>
-                <div className='time'>2:00PM</div>
-                <div className='time'>3:00PM</div>
-                <div className='time'>4:00PM</div>
-                <div className='time'>5:00PM</div>
-                <div className='time'>6:00PM</div>
-                <div className='time'>7:00PM</div>
-                <div className='time'>8:00PM</div>
-                <div className='time'>9:00PM</div>
-                <div className='time'>10:00PM</div>
-                <div className='time'>11:00PM</div>
-                <div className='time'>12:00AM</div>
-            </div>
-        </div>
+        <View style={styles.timelineRow}>
+            <View style={styles.timelineDate}>
+                <Text>{props.date}</Text>
+            </View>
+            <View style={styles.timeline}>
+                <Text style={styles.time}>9:00AM</Text>
+                <Text style={styles.time}>10:00AM</Text>
+                <Text style={styles.time}>11:00AM</Text>
+                <Text style={styles.time}>12:00PM</Text>
+                <Text style={styles.time}>1:00PM</Text>
+                <Text style={styles.time}>2:00PM</Text>
+                <Text style={styles.time}>3:00PM</Text>
+                <Text style={styles.time}>4:00PM</Text>
+                <Text style={styles.time}>5:00PM</Text>
+                <Text style={styles.time}>6:00PM</Text>
+                <Text style={styles.time}>7:00PM</Text>
+                <Text style={styles.time}>8:00PM</Text>
+                <Text style={styles.time}>9:00PM</Text>
+                <Text style={styles.time}>10:00PM</Text>
+                <Text style={styles.time}>11:00PM</Text>
+                <Text style={styles.time}>12:00PM</Text>
+            </View>
+        </View>
     );
 };
 
