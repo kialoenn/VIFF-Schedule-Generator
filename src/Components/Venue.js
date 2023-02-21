@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import React from 'react';
+import reactCSS from 'reactcss'
 import '../css/Schedule.css'
 
 const styles = StyleSheet.create({
@@ -35,109 +36,68 @@ const styles = StyleSheet.create({
 })
 
 const Venue = (props) => {
+    // Get start time
+    let startTime = props.venueDetail.screens[0].startTime;
+    let duration = props.venueDetail.screens[0].duration;
+    // console.log(props.venueDetail.screens[0].screenTitle);
+    
+    // console.log('Venue Name: ', prop.venueDetail.venueName);
+    // console.log('Start time:', startTime, 'Duration:', duration);
+    
+    // Change the format of the time as js date, keep it just in case
+    let now = new Date();
+    now.setHours(startTime.substr(0, startTime.indexOf(":")));
+    now.setMinutes(startTime.substr(startTime.indexOf(":") + 1));
+    now.setSeconds(0);
+    //
+
+    const oneDiv = 1;
+    let hour = startTime.substr(0, startTime.indexOf(":"));
+    let min = startTime.substr(startTime.indexOf(":") + 1, startTime.indexOf(":") + 1);
+    let startTimeNum = parseInt(hour + min);
+    // console.log('strat time:', startTimeNum);
+    let durationNum = parseInt(duration);
+    durationNum /= 15;
+    // console.log('duration: ', durationNum);
+    let width = oneDiv * durationNum;
+    width = width + "%";
+
+    hour = parseFloat(hour);
+    min = parseFloat(min);
+    min /= 60;
+    startTimeNum = hour + min;
+    // console.log("start time num: ", startTimeNum);
+    let startPoint = (startTimeNum - 9) * 4;
+    // console.log('start Point: ', startPoint);
+    startPoint *= oneDiv;
+    if (startPoint < 0) {
+        startPoint = 0;
+    }
+    startPoint += "%";
+    // console.log("start point: ", startPoint);
+
+    const ScreenBoxstyles = reactCSS({
+        'default': {
+            screenBox: {
+                width: width,
+                marginLeft: startPoint,
+                backgroundColor: 'white',
+            },
+        },
+    });
+
     return (
         <View style={styles.venueRow}>
             <View style={styles.venue}>
                 <Text>{props.venueDetail.venueName}</Text>
             </View>
             <View style={styles.screen}>
-                <View>
-                    <Text>Bones of Crows</Text>
-                    <Text>2:00pm 127 min p2</Text>
+                <View style={ScreenBoxstyles.screenBox}>
+                    <Text>{props.venueDetail.screens[0].screenTitle}</Text>
+                    <Text>{startTime} {duration} min p2</Text>
                 </View>
             </View>
         </View>
-        // <div className='venueRow'>
-        //     <div className='venue'>{prop.venueDetail.venueName}</div>
-        //     <div className='screen'>
-        //         <div className='screenBox'><div className='screenTitle'>Bones of Crows</div><br /><div className='screenInfo'>2:00pm 127 min p2</div></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-
-        //     <div className='grid1'></div>
-        //     <div className='grid2'></div>
-        //     <div className='grid1'></div>
-        //     <div className='grid1'></div>
-        //         {/* {prop.venueDetail.screens.map((element, index) => {
-
-        //             return (
-        //                 <div></div>
-        //             )
-        //         })} */}
-        //     </div>
-        // </div>
     );
 };
 

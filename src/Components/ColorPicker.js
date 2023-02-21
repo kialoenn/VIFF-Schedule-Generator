@@ -44,8 +44,10 @@ class SketchExample extends React.Component {
           cursor: 'pointer',
         },
         popover: {
-          position: 'absolute',
+          position: 'fixed',
           zIndex: '2',
+          bottom: '40vh',
+          left: '180px'
         },
         cover: {
           position: 'fixed',
