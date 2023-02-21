@@ -113,8 +113,8 @@
     position: absolute;
     z-index: 1;
     background-color: white;
-    margin-left: 21.77%;
-    width: 20em;
+    margin-left: 0;
+    /* width: 15%; */
     font-family: Roboto;
     font-size: 0.6em;
     text-align: center;
