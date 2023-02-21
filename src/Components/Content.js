@@ -3,136 +3,23 @@ import MyDocument from "./PDF";
 import Button from '@mui/material/Button'
 import ReactDOM from 'react-dom';
 import { PDFViewer } from '@react-pdf/renderer';
-import {useState} from 'react';
+import { useState } from 'react';
 
 class Node {
     constructor(date, movie_name, code, screen_time_min, screen_time, movie_type, start_time, venue_info, page_number) {
-      this.date = date;
-      this.movie_name = movie_name;
-      this.code = code;
-      this.screen_time_min = screen_time_min;
-      this.screen_time = screen_time;
-      this.movie_type = movie_type;
-      this.start_time = start_time;
-      this.venue_info = venue_info;
-      this.page_number = page_number;
+        this.date = date;
+        this.movie_name = movie_name;
+        this.code = code;
+        this.screen_time_min = screen_time_min;
+        this.screen_time = screen_time;
+        this.movie_type = movie_type;
+        this.start_time = start_time;
+        this.venue_info = venue_info;
+        this.page_number = page_number;
     }
-  }
-
-
-
-//import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-
-const loadData = (e) => {
-    const fileReader = new FileReader();
-    fileReader.readAsText(e.target.files[0], 'UTF-8');
-    fileReader.onload = e => {
-        const data = e.target.result;
-        const lines = data.split("\r");
-        console.log("lines: ", lines.length);
-        let schedules = [];
-        let venue = [];
-        let screens = [];
-        let startTime;
-        let endTime;
-        let venueName;
-        let date;
-        let movieName;
-        let code;
-        let durationMin;
-        let durationHour;
-        let movieType;
-        let pageNum;
-        let num = 0;
-        for (let line of lines) {
-            num++;
-            console.log("line ", num, ": ", line);
-            const info = line.split("\t");
-            date = info[0];
-            movieName = info[1];
-            code = info[2];
-            durationMin = info[3];
-            durationHour = info[4];
-            movieType = info[5];
-            startTime = info[6];
-            venueName = info[7];
-            pageNum = info[8];
-
-            let screen = {
-                screenTitle: movieName,
-                startTime: startTime,
-                duration: durationMin,
-                pageLocation: pageNum,
-            };
-            console.log("data for ", info);
-
-            if (schedules.length == 0) {
-                let obj = {
-                    date: date,
-                    venue: [
-                        {
-                            venueName: venueName,
-                            screens: [
-                                {
-                                    screenTitle: movieName,
-                                    satrtTime: startTime,
-                                    duration: durationMin,
-                                    pageLocation: pageNum,
-                                }
-                            ]
-                        }
-                    ]
-                };
-                console.log("first obj: ", obj);
-                schedules.push(obj);
-                console.log("First schedule: ", schedules.length);
-            } else {
-                for (let schedule of schedules) {
-                    console.log("new schedule", schedule);
-                    if (schedule.date == date) {
-                        if (schedule.venue.venueName == venueName) {
-                            schedule.venue.screens.push(screen);
-                        } else {
-                            let newVenue = {
-                                venueName: venueName,
-                                screens: [screen],
-                            }
-                            schedule.venue.push(newVenue);
-                        }
-                    } else {
-                        let newSchedule = {
-                            date: date,
-                            venue: [
-                                {
-                                    venueName: venueName,
-                                    screens: [
-                                        screen
-                                    ]
-                                }
-                            ]
-                        };
-                        schedules.push(newSchedule);
-                    }
-                }
-
-
-                // console.log('info:', info);
-                // console.log('movieName: ', movieName);
-
-                // console.log('screen: ', screen);
-                // screens.push(screen);
-            }
-
-        }
-        // console.log('screens: ', screens[0]);
-        console.log("Total schedules: ", schedules.length);
-    }
-
 }
 
-
 const Content = (props) => {
-    // const mydata = loadData();
 
     const temp = props.data
     const pdfSettings = {
@@ -486,74 +373,62 @@ const Content = (props) => {
         },
     ]
 
-
-
-
-
-
-
     const [movieInfo, setMovieInfo] = useState([]);
-  
+
     const handleFileUpload = (event) => {
-      const file = event.target.files[0];
-      const reader = new FileReader();
-  
-      reader.onload = function () {
-        const csvData = reader.result;
-        const lines = csvData.split("\n");
-        const header = lines[0].split(",");
-  
-        for (let i = 1; i < lines.length - 1; i++) {
-          const row = lines[i].split("\t");
-          for (let rowVal of row) {
-            const date = row[0];
-            const movie_name = row[1];
-            const code = row[2];
-            const screen_time_min = row[3];
-            const screen_time = row[4];
-            const movie_type = row[5];
-            const start_time = row[6];
-            const venue_info = row[7];
-            const page_number = row[8];
-  
-            const node = new Node(date, movie_name, code, screen_time_min, screen_time, movie_type, start_time, venue_info, page_number);
-  
-            movieInfo[i - 1] = node;
-          }
-  
-        }
-  
-        console.log(movieInfo);
-        console.log(movieInfo.length);
-        setMovieInfo(movieInfo);
-      };
-  
-      reader.readAsText(file);
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function () {
+            const csvData = reader.result;
+            const lines = csvData.split("\n");
+            const header = lines[0].split(",");
+
+            for (let i = 0; i < lines.length - 1; i++) {
+                const row = lines[i].split("\t");
+                for (let rowVal of row) {
+                    const date = row[0];
+                    const movie_name = row[1];
+                    const code = row[2];
+                    const screen_time_min = row[3];
+                    const screen_time = row[4];
+                    const movie_type = row[5];
+                    const start_time = row[6];
+                    const venue_info = row[7];
+                    const page_number = row[8];
+
+                    const node = new Node(date, movie_name, code, screen_time_min, screen_time, movie_type, start_time, venue_info, page_number);
+
+                    movieInfo[i] = node;
+                }
+
+            }
+
+            console.log(movieInfo);
+            console.log(movieInfo.length);
+            setMovieInfo(movieInfo);
+        };
+
+        reader.readAsText(file);
     };
 
 
     return (
 
 
-        
-        <>
 
-      <div>
-        <input type="file" id="fileInput" onChange={handleFileUpload} />
-        <button id="upButton">Upload</button>
-        <table id="dataTable"></table>
-      </div>
+        <>
             <div className='topMenu'>
                 <div className='header'>
                     <div className='header1'>
                         <Button variant="contained" component="label" >
                             Upload Files
-                            <input hidden accept=".tab, .csv" multiple type="file" onInput={loadData} />
+                            <input hidden accept=".tab, .csv" multiple type="file" onInput={handleFileUpload} />
                         </Button>
                     </div>
                     <div className='header2'></div>
                     <div className='header3'></div>
-                    
+
                 </div>
             </div>
             <div id="content" style={{ height: 1000 }}>
