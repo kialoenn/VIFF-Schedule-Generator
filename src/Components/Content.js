@@ -2,7 +2,6 @@
 import Timeline from "./Timeline";
 import Venue from "./Venue";
 import MyDocument from "./PDF";
-import MyDocument from "./PDF";
 import jsPDF from "jspdf";
 import Button from '@mui/material/Button'
 import * as htmlToImage from 'html-to-image';
@@ -11,8 +10,6 @@ import download from "downloadjs";
 import ReactDOM from 'react-dom';
 import { PDFViewer } from '@react-pdf/renderer';
 
-import ReactDOM from 'react-dom';
-import { PDFViewer } from '@react-pdf/renderer';
 
 //import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
@@ -515,7 +512,6 @@ const Content = (props) => {
                             })}
                         </div>);
                 })} */}
-                })} */}
             </div></>
     );
 };
@@ -528,9 +524,6 @@ const converToPdf = async () => {
     //const canvas = await htmlToImage.toSvg(document.getElementById('content'));
 
     const canvas = htmlToImage.toPng(document.getElementById('content'))
-        .then(function (dataUrl) {
-            download(dataUrl, 'my-node.png');
-        });
         .then(function (dataUrl) {
             download(dataUrl, 'my-node.png');
         });
