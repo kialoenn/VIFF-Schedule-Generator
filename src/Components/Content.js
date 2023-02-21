@@ -482,7 +482,6 @@ const Content = (props) => {
                     </div>
                     <div className='header2'></div>
                     <div className='header3'></div>
-                    <div className='header4'><Button variant="contained" component="label" onClick={converToPdf}>Generate PDF</Button></div>
                 </div>
             </div>
             <div id="content" style={{ height: 1000 }}>
