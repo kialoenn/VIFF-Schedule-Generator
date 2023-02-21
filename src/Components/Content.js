@@ -16,7 +16,7 @@ const loadData = () => {
     // normal stuff
     // for a single file
     console.log("upload a file");
-    console.log(document.querySelector('input[type=file]'));
+    console.log(document.querySelector('input[type=file]').files);
     // const [data] = document.querySelector("input[type=file]").files;
 
     // for multiple files
