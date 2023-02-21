@@ -12,20 +12,24 @@ import { PDFViewer } from '@react-pdf/renderer';
 
 //import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
-const loadData = () => {
-    // normal stuff
-    // for a single file
-    console.log("upload a file");
-    console.log(document.querySelector('input[type=file]'));
+const loadData = (e) => {
+    const fileReader = new FileReader();
+    fileReader.readAsText(e.target.files[0], 'UTF-8');
+    fileReader.onload = e => {
+        console.log("result", e.target.result);
+    }
+    // // normal stuff
+    // // for a single file
+    // console.log("upload a file");
+    // console.log(document.querySelector('input[type=file]'));
     // const [data] = document.querySelector("input[type=file]").files;
 
-    // for multiple files
-    // const data = document.querySelector("input[type=file]").files[0];
+    // // for multiple files
+    // // const data = document.querySelector("input[type=file]").files[0];
     // const reader = new FileReader();
-    // console.log('data:', reader.result);
-    // reader.addEventListener("load",() => {
+    // reader.addEventListener("load", (event) => {
     //     let rawData = reader.result;
-    //     console.log(rawData);
+    //     console.log("raw input is: " + rawData);
     //     // const lines = rawData.split("\r");
     //     // console.log(lines);
     //     // console.log('hello world');
@@ -37,21 +41,18 @@ const loadData = () => {
     //     // console.log(reader.result);
     // }, false)
 
-    // if (data) {
-    //     reader.readAsText(data);
-        
-    //     // const myArray = test.split(",");
-    //     // console.log(JSON.stringify(reader.result));
-        
-    // }
-    
-    
+    // reader.readAsText(data);
+
+    // // const myArray = test.split(",");
+    // // console.log(JSON.stringify(reader.result));
+
+
 }
 
 
 const Content = (props) => {
     // const mydata = loadData();
-    
+
     const temp = props.data
     const pdfSettings = {
         schedulePerPage: 4,
@@ -413,17 +414,17 @@ const Content = (props) => {
             <div className='topMenu'>
                 <div className='header'>
                     <div className='header1'>
-                        <Button variant="contained" component="label" class="button">
+                        <Button variant="contained" component="label" >
                             Upload Files
-                            <input hidden accept=".tab, .csv" multiple type="file" onInput={loadData}/>
+                            <input hidden accept=".tab, .csv" multiple type="file" onInput={loadData} />
                         </Button>
                     </div>
                     <div className='header2'></div>
                     <div className='header3'></div>
-                    <div className='header4'><Button variant="contained" component="label" onClick={converToPdf} class="button">Generate PDF</Button></div>
+                    <div className='header4'><Button variant="contained" component="label" onClick={converToPdf}>Generate PDF</Button></div>
                 </div>
             </div>
-            <div id="content" style={{height: 1000}}>
+            <div id="content" style={{ height: 1000 }}>
 
 
                 <h3>Dashboard</h3>
