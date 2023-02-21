@@ -1,37 +1,49 @@
 //import html2canvas from "html2canvas";
 import Timeline from "./Timeline";
 import Venue from "./Venue";
+import MyDocument from "./PDF";
 import jsPDF from "jspdf";
 import Button from '@mui/material/Button'
 import * as htmlToImage from 'html-to-image';
 import download from "downloadjs";
 
+import ReactDOM from 'react-dom';
+import { PDFViewer } from '@react-pdf/renderer';
+
 //import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
-function loadData()  {
+const loadData = () => {
     // normal stuff
     // for a single file
-    const data = document.querySelector("input[type=file]").files[0];
+    console.log("upload a file");
+    console.log(document.querySelector('input[type=file]'));
+    // const [data] = document.querySelector("input[type=file]").files;
 
     // for multiple files
     // const data = document.querySelector("input[type=file]").files[0];
-    const reader = new FileReader();
+    // const reader = new FileReader();
+    // console.log('data:', reader.result);
+    // reader.addEventListener("load",() => {
+    //     let rawData = reader.result;
+    //     console.log(rawData);
+    //     // const lines = rawData.split("\r");
+    //     // console.log(lines);
+    //     // console.log('hello world');
 
-    reader.addEventListener("load",() => {
-        let text = reader.result;
-        const myArray = text.split("\t");
-        console.log(myArray);
-        // console.log("text = ", text);
-        console.log(reader.result);
-    }, false)
+    //     // const myArray = text.split("\t");
+    //     // console.log(myArray);
 
-    if (data) {
-        reader.readAsText(data);
+    //     // console.log("text = ", text);
+    //     // console.log(reader.result);
+    // }, false)
+
+    // if (data) {
+    //     reader.readAsText(data);
         
-        // const myArray = test.split(",");
-        // console.log(JSON.stringify(reader.result));
+    //     // const myArray = test.split(",");
+    //     // console.log(JSON.stringify(reader.result));
         
-    }
+    // }
     
     
 }
@@ -39,10 +51,11 @@ function loadData()  {
 
 const Content = (props) => {
     // const mydata = loadData();
-
-    
     
     const temp = props.data
+    const pdfSettings = {
+        schedulePerPage: 4,
+    }
     const scheduleDetail = [
         {
             date: "Tuesday, January 31",
@@ -388,8 +401,12 @@ const Content = (props) => {
                 },
             ]
         },
-
     ]
+
+    const dataWrapper = {
+        settings: pdfSettings,
+        detail: scheduleDetail,
+    }
     return (
 
         <>
@@ -397,8 +414,8 @@ const Content = (props) => {
                 <div className='header'>
                     <div className='header1'>
                         <Button variant="contained" component="label" class="button">
-                            Upload File
-                            <input hidden accept=".tab, .csv" multiple type="file" onClick={loadData} />
+                            Upload Files
+                            <input hidden accept=".tab, .csv" multiple type="file" onInput={loadData}/>
                         </Button>
                     </div>
                     <div className='header2'></div>
@@ -410,7 +427,10 @@ const Content = (props) => {
 
 
                 <h3>Dashboard</h3>
-                {scheduleDetail.map((element, index) => {
+                <PDFViewer width={1024} height={768}>
+                    <MyDocument data={{ pdfSettings, scheduleDetail }} />
+                </PDFViewer>
+                {/* {scheduleDetail.map((element, index) => {
                     return (
                         <div key={index}>
                             <Timeline key={index} date={element.date}></Timeline>
@@ -418,7 +438,7 @@ const Content = (props) => {
                                 return (<Venue key={index + "." + venueIndex} venueDetail={venueEle}></Venue>);
                             })}
                         </div>);
-                })}
+                })} */}
             </div></>
     );
 };
@@ -431,9 +451,9 @@ const converToPdf = async () => {
     //const canvas = await htmlToImage.toSvg(document.getElementById('content'));
 
     const canvas = htmlToImage.toPng(document.getElementById('content'))
-    .then(function (dataUrl) {
-        download(dataUrl, 'my-node.png');
-    });
+        .then(function (dataUrl) {
+            download(dataUrl, 'my-node.png');
+        });
     var svgAsText = new XMLSerializer().serializeToString(canvas);
     //2.Imaging
     //const imageFile = canvas.toDataURL('image/svg');
