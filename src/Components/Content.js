@@ -12,50 +12,61 @@ import { PDFViewer } from '@react-pdf/renderer';
 
 //import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
-const loadData = () => {
-    // normal stuff
-    // for a single file
-    console.log("upload a file");
-    console.log(document.querySelector('input[type=file]').files);
-    // const [data] = document.querySelector("input[type=file]").files;
+const loadData = (e) => {
+    const fileReader = new FileReader();
+    fileReader.readAsText(e.target.files[0], 'UTF-8');
+    fileReader.onload = e => {
+        const data = e.target.result;
+        const lines = data.split("\r");
+        let schedules = [];
+        let venue = [];
+        let screens = [];
+        let startTime;
+        let endTime;
+        let venueInfo;
+        let date;
+        let movieName;
+        let code;
+        let durationMin;
+        let durationHour;
+        let movieType;
+        let pageNum;
+        for(let line of lines) {
+            const info = line.split("\t");
+            date = info[0];
+            movieName = info[1];
+            code = info[2];
+            durationMin = info[3];
+            durationHour = info[4];
+            movieType = info[5];
+            startTime = info[6];
+            venueInfo = info[7];
+            pageNum = info[8];
+            console.log('info:', info);
+            console.log('movieName: ', movieName);
+            let screen = {
+                    screenTitle: movieName,
+                    startTime: startTime,
+                    duration: durationMin,
+                    pageLocation: pageNum,
+                };
+            console.log('screen: ', screen);
+            screens.push(screen);
+        }
+        console.log('screens: ', screens[0]);
+    }
 
-    // for multiple files
-    // const data = document.querySelector("input[type=file]").files[0];
-    // const reader = new FileReader();
-    // console.log('data:', reader.result);
-    // reader.addEventListener("load",() => {
-    //     let rawData = reader.result;
-    //     console.log(rawData);
-    //     // const lines = rawData.split("\r");
-    //     // console.log(lines);
-    //     // console.log('hello world');
-
-    //     // const myArray = text.split("\t");
-    //     // console.log(myArray);
-
-    //     // console.log("text = ", text);
-    //     // console.log(reader.result);
-    // }, false)
-
-    // if (data) {
-    //     reader.readAsText(data);
-        
-    //     // const myArray = test.split(",");
-    //     // console.log(JSON.stringify(reader.result));
-        
-    // }
-    
-    
 }
 
 
 const Content = (props) => {
     // const mydata = loadData();
-    
+
     const temp = props.data
     const pdfSettings = {
         schedulePerPage: 4,
     }
+    
     const scheduleDetail = [
         {
             date: "Tuesday, January 31",
@@ -402,7 +413,11 @@ const Content = (props) => {
             ]
         },
     ]
-
+    let test = [];
+    let test1 = {a: 'a', b: 'b'};
+    test.push(test1);
+    console.log('test.a:', test[0]);
+    console.log('length of scheduleDetail[0].date: ', scheduleDetail[0].date);
     const dataWrapper = {
         settings: pdfSettings,
         detail: scheduleDetail,
@@ -413,17 +428,17 @@ const Content = (props) => {
             <div className='topMenu'>
                 <div className='header'>
                     <div className='header1'>
-                        <Button variant="contained" component="label" class="button">
+                        <Button variant="contained" component="label" >
                             Upload Files
-                            <input hidden accept=".tab, .csv" multiple type="file" onInput={loadData}/>
+                            <input hidden accept=".tab, .csv" multiple type="file" onInput={loadData} />
                         </Button>
                     </div>
                     <div className='header2'></div>
                     <div className='header3'></div>
-                    <div className='header4'><Button variant="contained" component="label" onClick={converToPdf} class="button">Generate PDF</Button></div>
+                    <div className='header4'><Button variant="contained" component="label" onClick={converToPdf}>Generate PDF</Button></div>
                 </div>
             </div>
-            <div id="content" style={{height: 1000}}>
+            <div id="content" style={{ height: 1000 }}>
 
 
                 <h3>Dashboard</h3>
