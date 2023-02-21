@@ -18,12 +18,13 @@ const loadData = (e) => {
     fileReader.onload = e => {
         const data = e.target.result;
         const lines = data.split("\r");
+        console.log("lines: ", lines.length);
         let schedules = [];
         let venue = [];
         let screens = [];
         let startTime;
         let endTime;
-        let venueInfo;
+        let venueName;
         let date;
         let movieName;
         let code;
@@ -31,7 +32,10 @@ const loadData = (e) => {
         let durationHour;
         let movieType;
         let pageNum;
+        let num = 0;
         for(let line of lines) {
+            num++;
+            console.log("line ", num, ": ", line);
             const info = line.split("\t");
             date = info[0];
             movieName = info[1];
@@ -40,20 +44,77 @@ const loadData = (e) => {
             durationHour = info[4];
             movieType = info[5];
             startTime = info[6];
-            venueInfo = info[7];
+            venueName = info[7];
             pageNum = info[8];
-            console.log('info:', info);
-            console.log('movieName: ', movieName);
+
             let screen = {
-                    screenTitle: movieName,
-                    startTime: startTime,
-                    duration: durationMin,
-                    pageLocation: pageNum,
+                screenTitle: movieName,
+                startTime: startTime,
+                duration: durationMin,
+                pageLocation: pageNum,
+            };
+            console.log("data for ", info);
+
+            if (schedules.length == 0) {
+                let obj = {
+                    date: date,
+                    venue: [
+                        {
+                            venueName: venueName,
+                            screens: [
+                                {
+                                    screenTitle: movieName,
+                                    satrtTime: startTime,
+                                    duration: durationMin,
+                                    pageLocation: pageNum,
+                                }
+                            ]
+                        }
+                    ]
                 };
-            console.log('screen: ', screen);
-            screens.push(screen);
+                console.log("first obj: ", obj);
+                schedules.push(obj);
+                console.log("First schedule: ",schedules.length);
+            } else {
+                for (let schedule of schedules) {
+                    console.log("new schedule", schedule);
+                    if (schedule.date == date) {
+                        if (schedule.venue.venueName == venueName) {
+                            schedule.venue.screens.push(screen);
+                        } else {
+                            let newVenue = {
+                                venueName: venueName,
+                                screens: [screen],
+                            }
+                            schedule.venue.push(newVenue);
+                        }
+                    } else {
+                        let newSchedule = {
+                            date: date,
+                            venue: [
+                                {
+                                    venueName: venueName,
+                                    screens:[
+                                        screen
+                                    ]
+                                }
+                            ]
+                        };
+                        schedules.push(newSchedule);
+                    }
+                }
+
+
+                // console.log('info:', info);
+                // console.log('movieName: ', movieName);
+                
+                // console.log('screen: ', screen);
+                // screens.push(screen);
+            }
+            
         }
-        console.log('screens: ', screens[0]);
+        // console.log('screens: ', screens[0]);
+        console.log("Total schedules: ", schedules.length);
     }
 
 }
