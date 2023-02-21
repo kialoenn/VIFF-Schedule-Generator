@@ -1,8 +1,10 @@
-import React from 'react';
 import Timeline from './Timeline';
+import Venue from './Venue';
+
+import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import { style } from '@mui/system';
-import Venue from './Venue';
+
 
 const Schedule = (props) => {
     return (

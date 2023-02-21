@@ -1,16 +1,8 @@
-//import html2canvas from "html2canvas";
-import Timeline from "./Timeline";
-import Venue from "./Venue";
 import MyDocument from "./PDF";
-import jsPDF from "jspdf";
-import Button from '@mui/material/Button'
-import * as htmlToImage from 'html-to-image';
-import download from "downloadjs";
 
+import Button from '@mui/material/Button'
 import ReactDOM from 'react-dom';
 import { PDFViewer } from '@react-pdf/renderer';
-
-//import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 
 function loadData() {
     // normal stuff
@@ -370,92 +362,28 @@ const Content = (props) => {
         },
     ]
 
-    const dataWrapper = {
-        settings: pdfSettings,
-        detail: scheduleDetail,
-    }
     return (
-
         <>
             <div className='topMenu'>
                 <div className='header'>
                     <div className='header1'>
-                        <Button variant="contained" component="label" class="button">
+                        <Button variant="contained" component="label">
                             Upload File
                             <input hidden accept=".tab, .csv" multiple type="file" />
                         </Button>
                     </div>
                     <div className='header2'></div>
                     <div className='header3'></div>
-                    <div className='header4'><Button variant="contained" component="label" onClick={converToPdf} class="button">Generate PDF</Button></div>
                 </div>
             </div>
             <div id="content">
-
-
-                <h3>Dashboard</h3>
                 <PDFViewer width={1024} height={768}>
                     <MyDocument data={{ pdfSettings, scheduleDetail }} />
                 </PDFViewer>
-                {/* {scheduleDetail.map((element, index) => {
-                    return (
-                        <div key={index}>
-                            <Timeline key={index} date={element.date}></Timeline>
-                            {element.venue.map((venueEle, venueIndex) => {
-                                return (<Venue key={index + "." + venueIndex} venueDetail={venueEle}></Venue>);
-                            })}
-                        </div>);
-                })} */}
-            </div></>
+            </div>
+        </>
     );
 };
 
-
-const converToPdf = async () => {
-
-    //1.make canvas from the html
-    //const canvas = await html2canvas(document.getElementById('content'));
-    //const canvas = await htmlToImage.toSvg(document.getElementById('content'));
-
-    const canvas = htmlToImage.toPng(document.getElementById('content'))
-        .then(function (dataUrl) {
-            download(dataUrl, 'my-node.png');
-        });
-    var svgAsText = new XMLSerializer().serializeToString(canvas);
-    //2.Imaging
-    //const imageFile = canvas.toDataURL('image/svg');
-    //3. Ready pdf
-    const doc = new jsPDF('l', 'px', [3067, 2713]);
-    //the size of width, height
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-
-    //Since the length of the image and the width of the pdf are different, the ratio is calculated based on the length of the image.
-    const widthRatio = pageWidth / canvas.width;
-    //Image height according to the ratio
-    const customHeight = canvas.height * widthRatio;
-    //add 
-    doc.addImage(svgAsText, 0, 0, pageWidth, customHeight);
-    doc.addImage(canvas, 'SVG', 0, 0, pageWidth, customHeight);
-    //doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
-    //감소하면서 남은 길이 변수
-    let heightLeft = customHeight;
-    //증가하면서 이미지 자를 위치 변수
-    let heightAdd = -pageHeight;
-
-    // if the image is more than one page.
-    while (heightLeft >= pageHeight) {
-        //Add pdf page
-        doc.addPage();
-        //add remains image
-        doc.addImage(canvas, 'SVG', 0, heightAdd, pageWidth, customHeight);
-        //height left.
-        heightLeft -= pageHeight;
-        //height left
-        heightAdd -= pageHeight;
-    }
-    //save the document
-    doc.save('filename' + new Date().getTime() + '.pdf');
-};
 
 export default Content

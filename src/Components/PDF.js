@@ -1,8 +1,10 @@
-import React from 'react';
-import Timeline from './Timeline';
-import { Page, Text, View, Document, StyleSheet, Font } from '@react-pdf/renderer';
 import Schedule from './Schedule';
+import Timeline from './Timeline';
 import RobotoFont from '../resources/fonts/Roboto-Regular.ttf'
+
+import React from 'react';
+import { Page, Text, View, Document, StyleSheet, Font } from '@react-pdf/renderer';
+
 
 // Create styles
 const styles = StyleSheet.create({

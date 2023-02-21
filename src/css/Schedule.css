@@ -19,10 +19,10 @@
     position: sticky;
     top: 0px;
     height: 60px;
-    border-top:    none;
-    border-right:  none;
+    border-top: none;
+    border-right: none;
     border-bottom: 1px solid #f0f0f0;
-    border-left:   1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
     padding-left: 10px;
 }
 
@@ -58,8 +58,8 @@
 .timeline {
     grid-column: 2;
     display: grid;
-    grid-template-columns: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% ; 
-    font-family: Roboto; 
+    grid-template-columns: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25%;
+    font-family: Roboto;
     font-size: 0.8em;
 }
 
@@ -87,7 +87,7 @@
     padding-top: 0.3em;
     padding-bottom: 0.3em;
     text-align: center;
-    background-color:  #a7a9ac;
+    background-color: #a7a9ac;
     border-right: 2px solid black;
     border-bottom: 2px solid black;
     border-left: 2px solid black;
@@ -98,7 +98,7 @@
     width: 85%;
     background-color: #808080;
     display: grid;
-    grid-template-columns: 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625%; 
+    grid-template-columns: 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625%;
 }
 
 .grid1 {
@@ -108,7 +108,6 @@
 .grid2 {
     border-right: 2px dotted black;
 }
-
 
 .screenBox {
     position: absolute;
@@ -125,7 +124,7 @@
     border-top: 1px solid black;
     border-left: 1px dotted black;
     border-bottom: 1px solid black;
-    border-right: 3px solid  #da00b9;
+    border-right: 3px solid #da00b9;
 }
 
 .screenInfo {
