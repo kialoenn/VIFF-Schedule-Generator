@@ -61,7 +61,7 @@ class Node {
     };
   
     return (
-      <div>
+      <div className='header1'>
         <input type="file" id="fileInput" onChange={handleFileUpload} />
         <button id="upButton">Upload</button>
         <table id="dataTable"></table>
