@@ -378,6 +378,7 @@ const Content = (props) => {
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
+        reader.readAsText(file);
 
         reader.onload = function () {
             const csvData = reader.result;
@@ -395,7 +396,7 @@ const Content = (props) => {
                     const movie_type = row[5];
                     const start_time = row[6];
                     const venue_info = row[7];
-                    const page_number = row[8];
+                    const page_number = row[8].replace("\r", "");
 
                     const node = new Node(date, movie_name, code, screen_time_min, screen_time, movie_type, start_time, venue_info, page_number);
 
@@ -408,15 +409,17 @@ const Content = (props) => {
             console.log(movieInfo.length);
             setMovieInfo(movieInfo);
         };
-
-        reader.readAsText(file);
     };
 
+    // function createMap(movieInfo) {
+    //     const scheduleDetailMap = new Map();
+    //     for (items of scheduleDetailMap) {
+
+    //     }
+
+    // }
 
     return (
-
-
-
         <>
             <div className='topMenu'>
                 <div className='header'>
