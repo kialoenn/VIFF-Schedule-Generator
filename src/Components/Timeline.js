@@ -56,7 +56,7 @@ const Timeline = (props) => {
                 <Text style={styles.time}>9:00PM</Text>
                 <Text style={styles.time}>10:00PM</Text>
                 <Text style={styles.time}>11:00PM</Text>
-                <Text style={styles.time}>12:00PM</Text>
+                <Text style={styles.time}>12:00AM</Text>
             </View>
         </View>
     );

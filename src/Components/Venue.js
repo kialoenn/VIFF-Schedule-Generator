@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import React from 'react';
 import reactCSS from 'reactcss'
-import '../css/Schedule.css'
+import '../css/Dashboard.css'
 
 const styles = StyleSheet.create({
     venueRow: {

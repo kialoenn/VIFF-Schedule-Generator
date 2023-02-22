@@ -1,6 +1,7 @@
 .header {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
+  background-color: white;
 }
 
 .header1 {

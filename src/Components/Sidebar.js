@@ -1,5 +1,6 @@
 import React from 'react';
-import '../css/Sidebar.css'
+import '../css/Sidebar.css';
+import './ColorPicker';
 
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
@@ -37,7 +38,8 @@ const Sidebar = () => {
                 <div id='colorPicker'><ColorPicker/> </div>
                 <p id="colorLabels">Even Row</p>
                 <div id='colorPicker'><ColorPicker/> </div>
-                <p id="fontLabel">Font</p>
+                <p></p>
+                <p id="fontLabel">Font Options</p>
                     {/* Font Select */}
                     <FormControl sx={{ width: "65%", pr: 1 }} size="small">
                         <InputLabel id="demo-simple-select-helper-label">Font</InputLabel>
