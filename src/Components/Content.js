@@ -407,13 +407,12 @@ const Content = (props) => {
             for (let i = 0; i < lines.length -1; i++) {
                 const row = lines[i].split(" ");
                 const name = row[0];
-
-                // Change the % string to number
                 let c = row[2];
                 let m = row[3];
                 let y = row[4];
                 let k = row[5];
 
+                 // Change the % string to number
                 c = parseInt(c.substring(0, c.indexOf("%")));
                 m = parseInt(m.substring(0, m.indexOf("%")));
                 y = parseInt(y.substring(0, y.indexOf("%")));
