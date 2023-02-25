@@ -437,6 +437,9 @@ const Content = (props) => {
                 const g = Math.round(range * (1 - m) * (1 - k));
                 const b = Math.round(range * (1 - y) * (1 - k));
                 const rgbColour = new Rgb(name,r, g, b);
+
+                // if we need to use cmyk values at this point, change the below 
+                // codes to colourInfo[i] = cmykColour;
                 colourInfo[i] = rgbColour;
 
             }
