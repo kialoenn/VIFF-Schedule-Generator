@@ -38,6 +38,7 @@ class Rgb {
     }
 }
 
+let testData = [];
 const Content = (props) => {
 
     const temp = props.data
@@ -393,6 +394,7 @@ const Content = (props) => {
     ]
 
     const [movieInfo, setMovieInfo] = useState([]);
+    const [parsedSchedule, setParsedSchedule] = useState([]);
 
     const [colourInfo, setColourInfo] = useState([]);
 
@@ -453,7 +455,7 @@ const Content = (props) => {
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
-        reader.readAsText(file);
+        reader.readAsText(file, 'ANSI');
 
         reader.onload = function () {
             const csvData = reader.result;
@@ -463,7 +465,8 @@ const Content = (props) => {
             for (let i = 0; i < lines.length - 1; i++) {
                 const row = lines[i].split("\t");
                 for (let rowVal of row) {
-                    const date = row[0];
+                    let date = new Date(row[0]);
+                    date = date.toLocaleDateString('en-CA', { weekday: 'long' }) + ", " + date.toLocaleDateString('en-CA', { month: 'long', day: 'numeric' });
                     const movie_name = row[1];
                     const code = row[2];
                     const screen_time_min = row[3];
@@ -483,17 +486,67 @@ const Content = (props) => {
             console.log(movieInfo);
             console.log(movieInfo.length);
             setMovieInfo(movieInfo);
+            createMap(movieInfo);
         };
     };
 
-    // function createMap(movieInfo) {
-    //     const scheduleDetailMap = new Map();
-    //     for (items of scheduleDetailMap) {
+    function createMap(movieInfo) {
+        const scheduleDetailMap = new Map();
+        for (let item of movieInfo) {
+            if (!scheduleDetailMap.has(item.date)) {
+                const venuesMap = new Map();
+                const screenMap = new Map();
+                screenMap.set(item.code, item);
+                venuesMap.set(item.venue_info, screenMap);
+                scheduleDetailMap.set(item.date, venuesMap);
+            } else {
+                if (!scheduleDetailMap.get(item.date).has(item.venue_info)) {
+                    const screenMap = new Map();
+                    screenMap.set(item.code, item);
+                    scheduleDetailMap.get(item.date).set(item.venue_info, screenMap);
+                } else {
+                    if (!scheduleDetailMap.get(item.date).get(item.venue_info).has(item.code)) {
+                        scheduleDetailMap.get(item.date).get(item.venue_info).set(item.code, item);
+                    }
+                }
+            }
+        }
 
-    //     }
+        console.log("map", scheduleDetailMap);
+        testData = Array.from(scheduleDetailMap, ([date, venue]) => (
+            { date: date, venue: Array.from(venue, ([name, screens]) => ({ venueName: name, screens: Array.from(screens, ([screenName, screenInfo]) => ({ screenTitle: screenName, startTime: screenInfo.start_time, duration: screenInfo.screen_time, pageLocation: screenInfo.page_number })) })) }));
 
-    // }
+        let parsedScheduleIndex = 0;
+        for (let item of testData) {
+            parsedSchedule[parsedScheduleIndex] = item;
+            parsedScheduleIndex++;
+        }
+        console.log("array: ", testData);
+        setParsedSchedule(parsedSchedule);
+        console.log("array: ", parsedSchedule);
+        console.log("original: ", scheduleDetail);
+        console.log(parsedSchedule.length);
 
+    }
+
+    function result() {
+        return (
+            <PDFViewer width={1024} height={768}>
+                <MyDocument data={{ pdfSettings, parsedSchedule }} />
+            </PDFViewer>
+        )
+    }
+
+    const [showData, setShowData] = useState(false);
+    function CheckData() {
+        console.log(parsedSchedule.length > 0);
+        if (parsedSchedule.length > 0) {
+            setShowData(!showData);
+        }
+
+        setParsedSchedule(parsedSchedule);
+        return (parsedSchedule.length > 0);
+    }
     return (
         <>
             <div className='topMenu'>
@@ -517,9 +570,16 @@ const Content = (props) => {
 
 
                 <h3>Dashboard</h3>
-                <PDFViewer width={1024} height={768}>
-                    <MyDocument data={{ pdfSettings, scheduleDetail }} />
-                </PDFViewer>
+                <button onClick={CheckData}>
+                    Generate PDF
+                </button>
+
+                {
+                    showData ? <PDFViewer width={1024} height={768}>
+                        <MyDocument data={{ pdfSettings, parsedSchedule }} />
+                    </PDFViewer> : <div>Please upload files first </div>
+                }
+
             </div>
         </>
     );

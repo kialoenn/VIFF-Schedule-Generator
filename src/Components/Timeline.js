@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     timelineRow: {
         "width": "100vw",
         "backgroundColor": "#231f20",
-        "height": "2vh",
+        "height": "3vw",
         "flexDirection": "row",
     },
 
