@@ -22,14 +22,14 @@ Font.register({
 const MyDocument = (props) => (
     <Document>
 
-        <Page size="2A0" >
-            {props.data.scheduleDetail.map((day, index) => {
+        <Page size={3370.39}>
+            {props.data.parsedSchedule.map((day, index) => {
                 return (
                     <Schedule key={index} data={day}></Schedule>
                 )
             })}
         </Page>
-    </Document>
+    </Document >
 );
 
 export default MyDocument;
