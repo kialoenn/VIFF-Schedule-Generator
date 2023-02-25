@@ -19,13 +19,22 @@ class Node {
     }
 }
 
-class Colour {
+class Cmyk {
     constructor(name, c, m, y, k) {
         this.name = name;
         this.c = c;
         this.m = m;
         this.y = y;
         this.k = k;
+    }
+}
+
+class Rgb {
+    constructor(name, r, g, b){
+        this.name = name;
+        this.r = r;
+        this.g = g;
+        this.b = b;
     }
 }
 
@@ -398,18 +407,46 @@ const Content = (props) => {
             for (let i = 0; i < lines.length -1; i++) {
                 const row = lines[i].split(" ");
                 const name = row[0];
-                const c = row[2];
-                const m = row[3];
-                const y = row[4];
-                const k = row[5];
-                const colour = new Colour(name, c, m, y, k);
-                colourInfo[i] = colour;
-            }
 
+                // Change the % string to number
+                let c = row[2];
+                let m = row[3];
+                let y = row[4];
+                let k = row[5];
+
+                c = parseInt(c.substring(0, c.indexOf("%")));
+                m = parseInt(m.substring(0, m.indexOf("%")));
+                y = parseInt(y.substring(0, y.indexOf("%")));
+                k = parseInt(k.substring(0, k.indexOf("%")));
+                // Colour with cmyk
+                const cmykColour = new Cmyk(name, c, m, y, k);
+
+
+                // Converting cmyk to rgb
+                // referecne: https://www.rapidtables.com/convert/color/cmyk-to-rgb.html
+                // R = 255 * (1-C) * (1-K); round values for all
+                // G = 255 * (1-M) * (1-K)
+                // B = 255 * (1-Y) * (1-K)
+                const hundred = 100;
+                c = c / hundred;
+                m = m / hundred;
+                y = y / hundred;
+                k = k / hundred;
+                const range = 255;
+                const r = Math.round(range * (1 - c) * (1 - k));
+                const g = Math.round(range * (1 - m) * (1 - k));
+                const b = Math.round(range * (1 - y) * (1 - k));
+                const rgbColour = new Rgb(name,r, g, b);
+                colourInfo[i] = rgbColour;
+
+            }
             console.log(colourInfo);
             console.log(colourInfo.length);
+            setColourInfo(colourInfo);
+
         };
     };
+
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
