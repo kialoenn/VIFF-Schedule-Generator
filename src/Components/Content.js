@@ -20,8 +20,8 @@ class Node {
 }
 
 class Cmyk {
-    constructor(name, c, m, y, k) {
-        this.name = name;
+    constructor(code, c, m, y, k) {
+        this.code = code;
         this.c = c;
         this.m = m;
         this.y = y;
@@ -30,8 +30,8 @@ class Cmyk {
 }
 
 class Rgb {
-    constructor(name, r, g, b){
-        this.name = name;
+    constructor(code, r, g, b){
+        this.code = code;
         this.r = r;
         this.g = g;
         this.b = b;
@@ -408,7 +408,7 @@ const Content = (props) => {
             const lines = colourData.split("\n");
             for (let i = 0; i < lines.length -1; i++) {
                 const row = lines[i].split(" ");
-                const name = row[0];
+                const code = row[0];
                 let c = row[2];
                 let m = row[3];
                 let y = row[4];
@@ -420,7 +420,7 @@ const Content = (props) => {
                 y = parseInt(y.substring(0, y.indexOf("%")));
                 k = parseInt(k.substring(0, k.indexOf("%")));
                 // Colour with cmyk
-                const cmykColour = new Cmyk(name, c, m, y, k);
+                const cmykColour = new Cmyk(code, c, m, y, k);
 
 
                 // Converting cmyk to rgb
@@ -437,7 +437,7 @@ const Content = (props) => {
                 const r = Math.round(range * (1 - c) * (1 - k));
                 const g = Math.round(range * (1 - m) * (1 - k));
                 const b = Math.round(range * (1 - y) * (1 - k));
-                const rgbColour = new Rgb(name,r, g, b);
+                const rgbColour = new Rgb(code, r, g, b);
 
                 // if we need to use cmyk values at this point, change the below 
                 // codes to colourInfo[i] = cmykColour;
