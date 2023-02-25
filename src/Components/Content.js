@@ -19,6 +19,16 @@ class Node {
     }
 }
 
+class Colour {
+    constructor(name, c, m, y, k) {
+        this.name = name;
+        this.c = c;
+        this.m = m;
+        this.y = y;
+        this.k = k;
+    }
+}
+
 const Content = (props) => {
 
     const temp = props.data
@@ -375,6 +385,32 @@ const Content = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
 
+    const [colourInfo, setColourInfo] = useState([]);
+
+    const handleColourFile = (event) => {
+        const dataFile = event.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.readAsText(dataFile);
+        
+        fileReader.onload = function () {
+            const colourData = fileReader.result;
+            const lines = colourData.split("\n");
+            for (let i = 0; i < lines.length -1; i++) {
+                const row = lines[i].split(" ");
+                const name = row[0];
+                const c = row[2];
+                const m = row[3];
+                const y = row[4];
+                const k = row[5];
+                const colour = new Colour(name, c, m, y, k);
+                colourInfo[i] = colour;
+            }
+
+            console.log(colourInfo);
+            console.log(colourInfo.length);
+        };
+    };
+
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
         const reader = new FileReader();
@@ -427,6 +463,10 @@ const Content = (props) => {
                         <Button variant="contained" component="label" >
                             Upload Files
                             <input hidden accept=".tab, .csv" multiple type="file" onInput={handleFileUpload} />
+                        </Button>
+                        <Button variant="contained" component="label">
+                            Upload Colour Files
+                            <input hidden accept=".tab, .csv" multiple type="file" onInput={handleColourFile} />
                         </Button>
                     </div>
                     <div className='header2'></div>
