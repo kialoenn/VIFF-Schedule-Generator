@@ -57,14 +57,16 @@ const Venue = (props) => {
     let startTimeNum = parseInt(hour + min);
     // console.log('strat time:', startTimeNum);
     let durationNum = parseInt(duration);
-    durationNum /= 15;
+    let singleDivTime = 15;
+    durationNum /= singleDivTime;
     // console.log('duration: ', durationNum);
     let width = oneDiv * durationNum;
     width = width + "%";
 
     hour = parseFloat(hour);
     min = parseFloat(min);
-    min /= 60;
+    let hourInMin = 60;
+    min /= hourInMin;
     startTimeNum = hour + min;
     // console.log("start time num: ", startTimeNum);
     let startPoint = (startTimeNum - 9) * 4;
@@ -82,6 +84,10 @@ const Venue = (props) => {
                 width: width,
                 marginLeft: startPoint,
                 backgroundColor: 'white',
+                borderRight: '3px solid #da00b9',
+                borderTop: '1px solid black',
+                borderLeft: '1px dotted black',
+                borderBottom: '1px solid black',
             },
         },
     });
