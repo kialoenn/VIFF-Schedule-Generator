@@ -1,48 +1,51 @@
+// CSS style import
+import '../../css/Dashboard.css';
+
+// External import
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import React from 'react';
-import reactCSS from 'reactcss'
-import '../css/Dashboard.css'
+// import reactCSS from 'reactcss'
 
 const styles = StyleSheet.create({
     venueRow: {
-        "flexDirection": "row",
-        "margin": "0px auto",
-        "width": "100vw",
-        "height": "4vw",
-        "backgroundColor": "black",
-        "color": "white"
+        'flexDirection': 'row',
+        'margin': '0px auto',
+        'width': '100vw',
+        'height': '4vw',
+        'backgroundColor': 'black',
+        'color': 'white',
     },
     venue: {
-        "width": "15%",
-        "height": "4vw",
-        "fontFamily": "Roboto",
-        "color": "black",
-        "fontSize": "1.4vw",
-        "fontWeight": "700",
-        "margin": "auto",
-        "paddingTop": "0.3vw",
-        "paddingBottom": "0.3vw",
-        "textAlign": "center",
-        "backgroundColor": "#a7a9ac",
-        "borderRight": "2px solid black",
-        "borderBottom": "2px solid black",
-        "borderLeft": "2px solid black"
+        'width': '15%',
+        'height': '4vw',
+        'fontFamily': 'Roboto',
+        'color': 'black',
+        'fontSize': '1.4vw',
+        'fontWeight': '700',
+        'margin': 'auto',
+        'paddingTop': '0.3vw',
+        'paddingBottom': '0.3vw',
+        'textAlign': 'center',
+        'backgroundColor': '#a7a9ac',
+        'borderRight': '2px solid black',
+        'borderBottom': '2px solid black',
+        'borderLeft': '2px solid black',
     },
 
     screen: {
-        "color": "black",
-        "width": "85%",
-        "backgroundColor": "#808080",
-        "flexDirection": "row",
-        "fontSize": "0.7vw",
+        'color': 'black',
+        'width': '85%',
+        'backgroundColor': '#808080',
+        'flexDirection': 'row',
+        'fontSize': '0.7vw',
 
-    }
-})
+    },
+});
 
 const Venue = (props) => {
     // Get start time
-    let startTime = props.venueDetail.screens[0].startTime;
-    let duration = props.venueDetail.screens[0].duration;
+    const startTime = props.venueDetail.screens[0].startTime;
+    const duration = props.venueDetail.screens[0].duration;
     // console.log(props.venueDetail.screens[0].screenTitle);
 
     // // console.log('Venue Name: ', prop.venueDetail.venueName);
@@ -105,4 +108,4 @@ const Venue = (props) => {
     );
 };
 
-export default Venue
+export default Venue;

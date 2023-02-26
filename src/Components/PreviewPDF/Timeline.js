@@ -1,35 +1,34 @@
 import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { style } from '@mui/system';
 
 const styles = StyleSheet.create({
     timelineRow: {
-        "width": "100vw",
-        "backgroundColor": "#231f20",
-        "height": "3vw",
-        "flexDirection": "row",
+        'width': '100vw',
+        'backgroundColor': '#231f20',
+        'height': '3vw',
+        'flexDirection': 'row',
     },
 
     timelineDate: {
-        "flex": "1.5",
-        "textAlign": "center",
-        "margin": "auto",
-        "color": "#ffa500",
-        "fontWeight": "500",
-        "fontSize": "1.3vw",
+        'flex': '1.5',
+        'textAlign': 'center',
+        'margin': 'auto',
+        'color': '#ffa500',
+        'fontWeight': '500',
+        'fontSize': '1.3vw',
     },
 
     timeline: {
-        "flex": "8.5",
-        "flexDirection": "row",
-        "fontSize": "1vw",
-        "color": "white",
+        'flex': '8.5',
+        'flexDirection': 'row',
+        'fontSize': '1vw',
+        'color': 'white',
     },
 
     time: {
-        "margin": "auto",
-        "width": "100vw",
-        "textAlign": "center"
+        'margin': 'auto',
+        'width': '100vw',
+        'textAlign': 'center',
     },
 
 });
@@ -62,4 +61,4 @@ const Timeline = (props) => {
     );
 };
 
-export default Timeline
+export default Timeline;

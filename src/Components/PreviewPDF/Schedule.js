@@ -1,10 +1,10 @@
+// Customized components import
 import Timeline from './Timeline';
 import Venue from './Venue';
 
+// External import
 import React from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { style } from '@mui/system';
-
+import { View } from '@react-pdf/renderer';
 
 const Schedule = (props) => {
     return (
@@ -13,10 +13,10 @@ const Schedule = (props) => {
             {props.data.venue.map((venues, index) => {
                 return (
                     <Venue key={index} venueDetail={venues}></Venue>
-                )
+                );
             })}
         </View>
     );
 };
 
-export default Schedule
+export default Schedule;
