@@ -4,13 +4,13 @@
 class RGB {
     /**
          *
-         * @param {string} name RGB color code
+         * @param {string} code RGB color code
          * @param {*} r Red
          * @param {*} g Green
          * @param {*} b Blue
          */
-    constructor(name, r, g, b) {
-        this.name = name;
+    constructor(code, r, g, b) {
+        this.code = code;
         this.r = r;
         this.g = g;
         this.b = b;

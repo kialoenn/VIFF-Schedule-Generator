@@ -1,4 +1,4 @@
-// CSS style import
+// CSS import
 import '../../css/Dashboard.css';
 
 // External import

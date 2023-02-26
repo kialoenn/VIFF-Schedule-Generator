@@ -1,9 +1,9 @@
 // Customized components import
 import MyDocument from '../PreviewPDF/PDF';
 import Node from '../ClassLib/Node';
-import RGB from '../ClassLib/RBG';
+import RGB from '../ClassLib/RGB';
 
-// CSS style import
+// CSS import
 import '../../css/Header.css';
 
 // External import
@@ -18,6 +18,7 @@ const Content = (props) => {
 
     const [parsedSchedule, setParsedSchedule] = useState([]);
     const [colourInfo, setColourInfo] = useState([]);
+    const [showData, setShowData] = useState(false);
 
     const handleColourFile = (event) => {
         const dataFile = event.target.files[0];
@@ -29,7 +30,7 @@ const Content = (props) => {
             const lines = colourData.split('\n');
             for (let i = 0; i < lines.length - 1; i++) {
                 const row = lines[i].split(' ');
-                const name = row[0];
+                const code = row[0];
                 let c = row[2];
                 let m = row[3];
                 let y = row[4];
@@ -41,7 +42,7 @@ const Content = (props) => {
                 y = parseInt(y.substring(0, y.indexOf('%')));
                 k = parseInt(k.substring(0, k.indexOf('%')));
                 // Colour with cmyk
-                // cmykColour = new CMYK(name, c, m, y, k);
+                // cmykColour = new CMYK(code, c, m, y, k);
 
 
                 // Converting cmyk to rgb
@@ -58,7 +59,7 @@ const Content = (props) => {
                 const r = Math.round(range * (1 - c) * (1 - k));
                 const g = Math.round(range * (1 - m) * (1 - k));
                 const b = Math.round(range * (1 - y) * (1 - k));
-                const rgbColour = new RGB(name, r, g, b);
+                const rgbColour = new RGB(code, r, g, b);
 
                 // if we need to use cmyk values at this point, change the below
                 // codes to colourInfo[i] = cmykColour;
@@ -158,7 +159,6 @@ const Content = (props) => {
         console.log(parsedSchedule.length);
     };
 
-    const [showData, setShowData] = useState(false);
     const CheckData = () => {
         console.log(parsedSchedule.length > 0);
         if (parsedSchedule.length > 0) {

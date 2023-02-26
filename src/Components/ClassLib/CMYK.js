@@ -4,14 +4,14 @@
 class CMYK {
     /**
          *
-         * @param {string} name CMYK color code
+         * @param {string} code CMYK color code
          * @param {number} c Cyan
          * @param {number} m Magenta
          * @param {number} y Yellow
          * @param {number} k Black
          */
-    constructor(name, c, m, y, k) {
-        this.name = name;
+    constructor(code, c, m, y, k) {
+        this.code = code;
         this.c = c;
         this.m = m;
         this.y = y;
