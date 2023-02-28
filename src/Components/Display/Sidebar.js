@@ -1,5 +1,6 @@
 // Customized components import
 import ColorPicker from './ColorPicker';
+import CustomPicker from './CustomPicker';
 
 // CSS import
 import '../../css/Sidebar.css';
