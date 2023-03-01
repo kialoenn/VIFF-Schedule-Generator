@@ -65,7 +65,6 @@ class CustomPicker extends React.Component {
         return (
 
             <div>
-                       
                 <div style={styles.swatch} onClick={this.handleClick}>
                     <div style={styles.color} />
                 </div>
