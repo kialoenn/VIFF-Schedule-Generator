@@ -35,4 +35,24 @@
     font-family: Roboto;
 }
 
+#upload1 {
+    margin: auto;
+}
 
+#upload2 {
+    padding-top: 20px;
+    margin: auto;
+}
+
+#generatePDF {
+    padding-top: 10px;
+    font-size: 0.8em;
+}
+
+#generateMsg {
+    padding-top: 5px;
+}
+
+.generateBtn {
+    background-color: blue;
+}

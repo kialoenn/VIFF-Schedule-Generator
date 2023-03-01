@@ -23,7 +23,7 @@ const Sidebar = () => {
                 <p>Color Options</p>
                 <p id="colorLabels">Date Bar</p>
                 <div id='colorPicker'>
-                    <ColorPicker />
+                    <CustomPicker />
                 </div>
                 <p id="colorLabels">Time Bar</p>
                 <div id='colorPicker'>

@@ -2,6 +2,7 @@
 import MyDocument from '../PreviewPDF/PDF';
 import Node from '../ClassLib/Node';
 import RGB from '../ClassLib/RGB';
+import DragDrop from './Dropzone';
 
 // CSS import
 import '../../css/Header.css';
@@ -171,37 +172,41 @@ const Content = (props) => {
 
     return (
         <>
-            <div className='topMenu'>
-                <div className='header'>
-                    <div className='header1'>
-                        <Button variant="contained" component="label" >
+          
+               
+                    
+                        {/* <Button variant="contained" component="label" >
                             Upload GridScreenTimes
                             <input hidden accept=".tab, .csv" multiple type="file" onInput={handleFileUpload} />
                         </Button>
                         <Button variant="contained" component="label">
                             Upload Colours File
                             <input hidden accept=".tab, .csv" multiple type="file" onInput={handleColourFile} />
-                        </Button>
-                    </div>
-                    <div className='header2'></div>
-                    <div className='header3'></div>
+                        </Button> */}
 
-                </div>
-            </div>
+
+             
+      
             <div id="content" style={{ height: 1000 }}>
 
 
                 <h3>Dashboard</h3>
-                <button onClick={CheckData}>
+
+                <div id="upload1">Upload Grid Screentimes: <DragDrop /></div>
+
+                <div id="upload2">Upload Colours File: <DragDrop /></div>
+
+                <div id="generatePDF">
+                <Button variant="contained" onClick={CheckData}>
                     Generate PDF
-                </button>
+                </Button>
 
                 {
                     showData ? <PDFViewer width={1024} height={768}>
                         <MyDocument data={{ pdfSettings, parsedSchedule }} />
-                    </PDFViewer> : <div>Please upload files first </div>
+                    </PDFViewer> : <div id="generateMsg">Please upload files first </div>
                 }
-
+                </div>
             </div>
         </>
     );
