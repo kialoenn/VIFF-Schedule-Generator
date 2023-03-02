@@ -23,25 +23,28 @@ const ScheduleBox = (prop) => {
     const hourBegin = 9;
     const boxNumInHour = 4;
     const boxMin = 15;
+
+    // getting a start point
     let hour = startTime.substr(0, startTime.indexOf(":"));
     let min = startTime.substr(startTime.indexOf(":") + 1, startTime.indexOf(":") + 1);
-    
     hour = parseInt(hour);
     hour -= hourBegin;
     hour *= boxNumInHour;
-    console.log("start hour: ", hour);
     min = parseInt(min);
     min /= boxMin;
-    console.log("start min: ", min);
     startPoint = (hour + min) * oneDiv;
     startPoint += "px";
 
+    // getting a width
     // console.log('strat time:', startTimeNum);
     console.log("duration:", duration);
-    let durationNum = parseFloat(duration);
-    console.log('duration num before multiply: ', durationNum);
-    durationNum *= parseFloat(boxNumInHour);
-    console.log('duration num after multiply: ', durationNum);
+    hour = duration.substr(0, duration.indexOf(":"));
+    min = duration.substr(duration.indexOf(":") + 1, duration.indexOf(":"));
+    console.log("duration hour: ", hour);
+    console.log("duration min: ", min);
+    hour = parseFloat(hour) * boxNumInHour;
+    min = parseFloat(min) / boxMin;
+    let durationNum = hour + min;
     width = oneDiv * durationNum;
 
     width = width + "px";
