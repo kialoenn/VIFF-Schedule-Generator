@@ -20,7 +20,6 @@ const ScheduleBox = (prop) => {
     now.setSeconds(0);
 
     const oneDiv = 45;
-    const hundred = 100;
     const hourBegin = 9;
     const boxNumInHour = 4;
     const boxMin = 15;
@@ -46,27 +45,12 @@ const ScheduleBox = (prop) => {
     width = oneDiv * durationNum;
 
     width = width + "px";
-    // console.log("width: ", width);
-    // hour = parseFloat(hour);
-    // min = parseFloat(min);
-    // let hourInMin = 60;
-    // min /= hourInMin;
-    // startTimeNum = hour + min;
-    // console.log("start time num: ", startTimeNum);
-    
-    
-    // startPoint = (startTimeNum - 4) * boxNumInHour;
     console.log('start Point: ', startPoint);
-    // startPoint *= oneDiv;
-    // if (startPoint < 0) {
-    //     startPoint = 0;
-    // }
-    // startPoint += "%";
+
     
     const ScreenBoxstyles = reactCSS({
         'default': {
             screenBox: {
-                // border: '3px solid',
                 height: '100%',
                 position: 'absolute',
                 width: width,
