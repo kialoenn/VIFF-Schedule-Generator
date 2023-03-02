@@ -7,6 +7,7 @@ import React from 'react';
 import { View } from '@react-pdf/renderer';
 
 const Schedule = (props) => {
+    
     return (
         <View>
             <Timeline date={props.data.date}></Timeline>

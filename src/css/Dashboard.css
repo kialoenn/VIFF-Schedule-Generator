@@ -56,3 +56,13 @@
 .generateBtn {
     background-color: blue;
 }
+
+.screen {
+    color: black;
+    width: 85%;
+    background-color: #808080;
+    flex-direction: row;
+    font-size: 0.7vw;
+    display: grid;
+    grid-template-columns: repeat(64,1fr);
+}
