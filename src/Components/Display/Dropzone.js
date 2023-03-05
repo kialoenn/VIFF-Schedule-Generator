@@ -3,6 +3,7 @@ import Node from '../ClassLib/Node';
 import React, { useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
 
+
 const fileTypes = ['CSV', 'TAB'];
 
 const DragDrop = ({ setParsedSchedule }) => {
@@ -18,12 +19,15 @@ const DragDrop = ({ setParsedSchedule }) => {
             const fileColumn = lines[0].split('\t');
             if (fileColumn.length == 9) {
                 parseGridScreens(lines);
+                alert("Time schedule file uploaded");
             } else if (fileColumn.length == 1) {
-                console.log('colour file uploaded');
+                alert('Colour file uploaded');
             } else if (fileColumn.length == 2) {
-                console.log('sections file uploaded');
+                alert('Sections file uploaded');
             } else if (fileColumn.length == 3) {
-                console.log('GridVenue file uploaded');
+                alert('GridVenue file uploaded');
+            } else {
+                alert('Wrong file format uploaded, please check the data file.')
             }
         };
         console.log(file);
@@ -112,7 +116,8 @@ const DragDrop = ({ setParsedSchedule }) => {
 
     const boxArea = <div className='dropArea'>Add file </div>;
     return (
-        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+            <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+        
     );
 };
 

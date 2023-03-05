@@ -20,6 +20,11 @@ const Content = (props) => {
     const [colourInfo, setColourInfo] = useState([]);
     const [showData, setShowData] = useState(false);
 
+
+    const convertColour = () => {
+
+    }
+
     const handleColourFile = (event) => {
         const dataFile = event.target.files[0];
         const fileReader = new FileReader();
@@ -78,6 +83,7 @@ const Content = (props) => {
         }
 
         setParsedSchedule(parsedSchedule);
+        document.getElementById("upload1").style.display = 'none';
         return (parsedSchedule.length > 0);
     };
 
