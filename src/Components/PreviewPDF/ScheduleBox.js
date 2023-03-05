@@ -8,6 +8,7 @@ const ScheduleBox = (prop) => {
     
     let width;
     let startPoint;
+    let color = "5px solid #da00b9";
     const screen = prop.screen;
     const startTime = screen.startTime;
     const duration = screen.duration;
@@ -51,6 +52,10 @@ const ScheduleBox = (prop) => {
                 width: width,
                 marginLeft: startPoint,
                 backgroundColor: 'white',
+                borderTop: '3px solid black',
+                borderLeft: '3px dotted black',
+                borderBottom: '3px solid black',
+                borderRight: color,
             },
         },
     });

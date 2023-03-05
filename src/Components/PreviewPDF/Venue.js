@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         'borderBottom': '2px solid black',
         'borderLeft': '2px solid black',
     },
-
+    // #808080
     screen: {
         'color': 'black',
         'width': '85%',
@@ -43,7 +43,35 @@ const styles = StyleSheet.create({
         'fontSize': '0.7vw',
 
     },
+
+    box1: {
+        'backgroundColor': '#808080',
+        'width': '45px',
+        'height': '100%',
+        'borderRight': '3px dotted black',
+    },
+
+    box2: {
+        'backgroundColor': 'yellow',
+        'width': '45px',
+        'height': '100%',
+        'borderRight': '5px dotted black',
+    }
 });
+const createdScheduleBox = ()=> {
+    const scheduleBoxNum = 64;
+    const scheduleBoxes = [];
+    console.log("created schedule boxes!");
+    for (let i =0; i < scheduleBoxNum; i++) {
+        if (i % 2 == 0) {
+            scheduleBoxes.push(<View style={styles.box1} key={i}></View>);
+        } else {
+            scheduleBoxes.push(<View style={styles.box2} key={i}></View>)
+        }
+        
+    }
+    return scheduleBoxes;
+}
 
 const Venue = (props) => {
     return (
@@ -52,6 +80,7 @@ const Venue = (props) => {
                 <Text>{props.venueDetail.venueName}</Text>
             </View>
             <View style={styles.screen}>
+                {createdScheduleBox()}
                 {props.venueDetail.screens.map((screen, index) => {
                     return (
                     <ScheduleBox key={index} screen={screen}></ScheduleBox>
