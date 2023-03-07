@@ -18,9 +18,10 @@ import Checkbox from '@mui/material/Checkbox';
 const Sidebar = () => {
     return (
         <div className='sidebar'>
-            <h3>Menu</h3>
+            <h3>Customization Menu</h3>
             <div className='sidebarItems'>
-                <p>Color Options</p>
+                <p><span class='sidebarHeader'>Color Options</span></p>
+                <div className='sidebarBlock'>
                 <p id="colorLabels">Date Bar</p>
                 <div id='colorPicker'>
                     <CustomPicker />
@@ -41,8 +42,9 @@ const Sidebar = () => {
                 <div id='colorPicker'><ColorPicker /> </div>
                 <p id="colorLabels">Even Row</p>
                 <div id='colorPicker'><ColorPicker /> </div>
-                <p></p>
-                <p id="fontLabel">Font Options</p>
+                </div><div class="lineBreak"></div>
+                <div className='sidebarBlock2'>
+                <p id="fontLabel"><span class='sidebarHeader'>Font Options</span></p>
                 {/* Font Select */}
                 <FormControl sx={{ width: '65%', pr: 1 }} size="small">
                     <InputLabel id="demo-simple-select-helper-label">Font</InputLabel>
@@ -112,8 +114,9 @@ const Sidebar = () => {
                         <MenuItem value={33}>33</MenuItem>
                     </Select>
                 </FormControl>
-
-                <p>Line</p>
+                </div>
+                <div class="lineBreak2"></div>
+                <p id="gridLabel"><span class='sidebarHeader'>Grid Line Options</span></p>
                 {/* Line Type Select */}
                 <FormControl sx={{ width: '65%', pr: 1 }} size="small">
                     <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
@@ -154,6 +157,8 @@ const Sidebar = () => {
                 {/* <FormGroup sx={{ pl: 0.2, pt: 0.5 }}>
                     <FormControlLabel control={<Checkbox />} label="Clear Empty Rows" />
                 </FormGroup> */}
+                <div class="lineBreak2"></div>
+                <p id="pageLabel"><span class='sidebarHeader'>Page Settings</span></p>
             </div>
         </div>
     );

@@ -17,6 +17,34 @@
 
 .sidebarItems {
     font-size: 0.9em;
+    line-height: 1em;
+}
+
+.sidebarHeader {
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.sidebarBlock {
+    margin-left: 1em;
+}
+
+.sideBarBlock2 {
+    margin-left: 0em;
+}
+
+.lineBreak {
+    margin-bottom: 2.5em;    
+    margin-top: 0.5em;
+    margin-left: -15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.lineBreak2 {
+    margin-bottom: 1.7em;    
+    margin-top: 2em;
+    margin-left: -15px;
+    border-bottom: 1px solid lightgrey;
 }
 
 #colorPicker {
@@ -25,8 +53,8 @@
     display:table;
     margin: 0;
     position: relative;
-    left: 160px;
-    bottom: 20px;
+    left: 150px;
+    bottom: 18px;
 }
 
 #colorLabels {
