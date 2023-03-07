@@ -110,7 +110,7 @@ const Content = (props) => {
               variant="contained"
               onClick={CheckData}
               sx={{
-                borderRadius: 50, width: 200
+                borderRadius: 50, width: 200, height: 40
               }}
 
             >
