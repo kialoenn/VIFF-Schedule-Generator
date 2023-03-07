@@ -9,7 +9,8 @@ class Basic extends Component {
     super();
     this.onDrop = (files) => {
       this.setState({ files });
-      console.log("Alert occured");
+      document.getElementById("uploaded-files-header").innerHTML = "Uploaded Files";
+      console.log("Success snackbar alert to go here");
       files.forEach(fileRead);
       function fileRead(file) {
         const reader = new FileReader();
@@ -28,6 +29,7 @@ class Basic extends Component {
           } else if (fileColumn.length == 3) {
             // alert('GridVenue file uploaded');
           } else {
+            console.log("Success snackbar alert to go here");
             alert(
               "Wrong file format uploaded, please check the file and try again."
             );
@@ -145,7 +147,7 @@ class Basic extends Component {
                     </div>
                     <br />
                     <div className="file-list">
-                        <h4>Uploaded Files</h4>
+                        <h4><span id="uploaded-files-header"></span></h4>
                         <ul className="uploaded-files">{files}</ul>
                     </div>
                 </>

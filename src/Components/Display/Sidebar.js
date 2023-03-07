@@ -18,8 +18,8 @@ import Checkbox from '@mui/material/Checkbox';
 const Sidebar = () => {
     return (
         <div className='sidebar'>
+            <h3>Menu</h3>
             <div className='sidebarItems'>
-                <h3>Menu</h3>
                 <p>Color Options</p>
                 <p id="colorLabels">Date Bar</p>
                 <div id='colorPicker'>
@@ -151,9 +151,9 @@ const Sidebar = () => {
                 </FormControl>
 
                 {/* Checkbox to clear empty rows  */}
-                <FormGroup sx={{ pl: 0.2, pt: 0.5 }}>
+                {/* <FormGroup sx={{ pl: 0.2, pt: 0.5 }}>
                     <FormControlLabel control={<Checkbox />} label="Clear Empty Rows" />
-                </FormGroup>
+                </FormGroup> */}
             </div>
         </div>
     );

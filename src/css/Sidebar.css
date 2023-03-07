@@ -12,10 +12,11 @@
     border-bottom: none;
     border-left:   none;
     font-family: Roboto;
+    padding-left: 15px;
 }
 
 .sidebarItems {
-    padding-left: 15px;
+    font-size: 0.9em;
 }
 
 #colorPicker {
@@ -24,7 +25,7 @@
     display:table;
     margin: 0;
     position: relative;
-    left: 100px;
+    left: 160px;
     bottom: 20px;
 }
 
