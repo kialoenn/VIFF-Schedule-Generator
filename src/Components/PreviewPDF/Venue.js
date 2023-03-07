@@ -46,14 +46,14 @@ const styles = StyleSheet.create({
 
     box1: {
         'backgroundColor': '#808080',
-        'width': '45px',
+        'width': '1.5625vw',
         'height': '100%',
         'borderRight': '3px dotted black',
     },
 
     box2: {
-        'backgroundColor': 'yellow',
-        'width': '45px',
+        'backgroundColor': '#2e291d',
+        'width': '1.5625vw',
         'height': '100%',
         'borderRight': '5px dotted black',
     }
