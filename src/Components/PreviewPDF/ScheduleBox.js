@@ -18,7 +18,7 @@ const ScheduleBox = (prop) => {
     now.setMinutes(startTime.substr(startTime.indexOf(":") + 1));
     now.setSeconds(0);
 
-    const oneDiv = 45;
+    const oneDiv = 1/64;
     const hourBegin = 9;
     const boxNumInHour = 4;
     const boxMin = 15;
@@ -31,8 +31,8 @@ const ScheduleBox = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    startPoint = (hour + min) * oneDiv;
-    startPoint += "px";
+    startPoint = (hour + min) / 64 * 100 * 0.85;
+    startPoint += "vw";
 
     // getting a width
 
@@ -41,8 +41,8 @@ const ScheduleBox = (prop) => {
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     let durationNum = hour + min;
-    width = oneDiv * durationNum;
-    width = width + "px";
+    width = oneDiv * durationNum * 100 * 0.85;
+    width = width + "vw";
     
     const ScreenBoxstyles = reactCSS({
         'default': {
@@ -62,7 +62,7 @@ const ScheduleBox = (prop) => {
     return (
         <View style={ScreenBoxstyles.screenBox}>
             <Text>{screen.screenTitle}</Text>
-            <Text>{screen.startTime} {screen.duration} Cesária Évora</Text>
+            <Text>{screen.startTime} {screen.duration} </Text>
         </View>
         
     );
