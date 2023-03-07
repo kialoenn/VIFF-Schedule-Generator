@@ -19,7 +19,7 @@ const DragDrop = ({ setParsedSchedule }) => {
             const fileColumn = lines[0].split('\t');
             if (fileColumn.length == 9) {
                 parseGridScreens(lines);
-                alert("Time schedule file uploaded");
+                alert('Time schedule file uploaded');
             } else if (fileColumn.length == 1) {
                 alert('Colour file uploaded');
             } else if (fileColumn.length == 2) {
@@ -27,7 +27,7 @@ const DragDrop = ({ setParsedSchedule }) => {
             } else if (fileColumn.length == 3) {
                 alert('GridVenue file uploaded');
             } else {
-                alert('Wrong file format uploaded, please check the data file.')
+                alert('Wrong file format uploaded, please check the data file.');
             }
         };
         console.log(file);
@@ -116,8 +116,8 @@ const DragDrop = ({ setParsedSchedule }) => {
 
     const boxArea = <div className='dropArea'>Add file </div>;
     return (
-            <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
-        
+        <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
+
     );
 };
 
