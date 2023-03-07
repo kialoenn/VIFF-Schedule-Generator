@@ -27,3 +27,9 @@
   color: red;
   margin-top: 0.4em;
 }
+
+.btn-icon {
+  position: relative;
+  top: 3px;
+  left: 3px;
+}

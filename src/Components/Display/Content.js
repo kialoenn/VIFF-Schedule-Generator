@@ -10,6 +10,7 @@ import "../../css/Header.css";
 // External import
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
 import { useState } from "react";
 
@@ -111,9 +112,9 @@ const Content = (props) => {
               sx={{
                 borderRadius: 50, width: 200
               }}
-              endIcon={<ArrowForwardIcon />}
+
             >
-              Generate PDF
+              Generate PDF <span class="btn-icon"><KeyboardDoubleArrowRightIcon /></span>
             </Button>
           </div>
 
