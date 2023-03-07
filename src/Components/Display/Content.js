@@ -2,6 +2,7 @@
 import MyDocument from '../PreviewPDF/PDF';
 import RGB from '../ClassLib/RGB';
 import DragDrop from './Dropzone';
+import Basic from './FileUpload';
 
 // CSS import
 import '../../css/Header.css';
@@ -94,7 +95,10 @@ const Content = (props) => {
 
                 <h3>Dashboard</h3>
 
-                <div id="upload1">Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /></div>
+                <div id="upload1">Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} />
+                <p>
+                    
+                    <Basic /></p></div>
 
                 <div id="generatePDF">
                     <Button variant="contained" onClick={CheckData}>
