@@ -14,6 +14,7 @@ const FileUploader = ({ setParsedSchedule }) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
             } else {
+                document.getElementById('file-list-header').innerHTML = 'Files Uploaded';
                 setTrigger({
                     message: file.path + ' is updated',
                     type: 'info',
@@ -174,17 +175,20 @@ const FileUploader = ({ setParsedSchedule }) => {
     ));
 
     return (
-        <section className="container">
-            <div {...getRootProps({ className: 'dropzone' })}>
-                <input {...getInputProps()} />
-                <p>Drag and drop some files here, or click to select files</p>
+        <div>
+            <div className="file-container">
+                <div {...getRootProps({ className: 'dropzone' })}>
+                    <input {...getInputProps()} />
+                    <img src={require('../../assets/icons/cloud-computing.png')} />
+                    <p>Drag and drop some files here, or click to select files</p>
+                </div>
             </div>
-            <aside>
-                <h4>Files Uploaded</h4>
+            <div className="file-list">
+                <h4><span id="file-list-header">Uploaded Files</span></h4>
                 <ul>{files}</ul>
-            </aside>
+            </div>
             <Toast trigger={trigger}></Toast>
-        </section>
+        </div>
     );
 };
 

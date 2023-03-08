@@ -96,7 +96,7 @@ const Content = (props) => {
                 <h3>Dashboard</h3>
 
                 <div id="upload1">
-                    Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} />
+                    {/* Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /> */}
 
                     <div id="file-upload">
                         <FileUploader setParsedSchedule={setParsedSchedule} />
