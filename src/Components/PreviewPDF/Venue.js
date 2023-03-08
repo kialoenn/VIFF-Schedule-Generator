@@ -14,18 +14,18 @@ const styles = StyleSheet.create({
         'flexDirection': 'row',
         'margin': '0px auto',
         'width': '100vw',
-        'height': '4vw',
+        'height': '3vh',
         'backgroundColor': 'black',
         'color': 'white',
     },
     venue: {
-        'width': '15%',
-        'height': '4vw',
+        'width': '14%',
+        'height': '100%',
         'fontFamily': 'Roboto',
         'color': 'black',
-        'fontSize': '1.4vw',
+        'fontSize': '1vw',
         'fontWeight': '700',
-        'margin': 'auto',
+        // 'margin': 'auto',
         'paddingTop': '0.3vw',
         'paddingBottom': '0.3vw',
         'textAlign': 'center',
@@ -70,7 +70,11 @@ const styles = StyleSheet.create({
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '5px solid white',
-    }
+    },
+
+    text: {
+        'margin': 'auto 0',
+    },
 });
 const createdScheduleBox = (id)=> {
     const scheduleBoxNum = 64;
@@ -97,7 +101,7 @@ const Venue = (props) => {
     return (
         <View style={styles.venueRow}>
             <View style={styles.venue}>
-                <Text>{props.venueDetail.venueName}</Text>
+                <Text style={styles.text}>{props.venueDetail.venueName}</Text>
             </View>
             <View style={styles.screen}>
                 {createdScheduleBox(props.venueDetail.id)}
