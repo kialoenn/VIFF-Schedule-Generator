@@ -21,6 +21,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MaterialIcon, {colorPalette} from 'material-icons-react';
 
 
 
@@ -37,7 +38,7 @@ const Sidebar = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <span className='sidebarHeader'>Color Settings</span>
+          <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="format_color_fill" invert color='#5e72e4' size={18}/></span>Color Settings</span>
         </AccordionSummary>
         <AccordionDetails>
             <div className="accordionItems">
@@ -77,7 +78,7 @@ const Sidebar = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <span className='sidebarHeader'>Font Settings</span>
+          <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="text_fields" color='#11cdef' size={18}/></span>Font Settings</span>
         </AccordionSummary>
         <AccordionDetails>
 
@@ -162,7 +163,7 @@ const Sidebar = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <span className='sidebarHeader'>Grid Line Settings</span>
+          <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="view_kanban" color='#fb7253' size={18}/></span>Grid Line Settings</span>
         </AccordionSummary>
         <AccordionDetails>
 
@@ -213,7 +214,7 @@ const Sidebar = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <span className='sidebarHeader'>Film Block Settings</span>
+          <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="movie" color='#f5365c' size={18}/></span>Film Block Settings</span>
         </AccordionSummary>
         <AccordionDetails>
 
@@ -228,7 +229,7 @@ const Sidebar = () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <span className='sidebarHeader'>Page Settings</span>
+          <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="description" color='#4cd59b' size={18}/></span>Page Settings</span>
         </AccordionSummary>
         <AccordionDetails>
 
