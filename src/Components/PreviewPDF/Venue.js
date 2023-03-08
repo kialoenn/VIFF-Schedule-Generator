@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     // #808080
     screen: {
         'color': 'black',
-        'width': '85%',
+        'width': '86%',
         'backgroundColor': '#808080',
         'flexDirection': 'row',
         'fontSize': '0.7vw',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
 });
 const createdScheduleBox = (id)=> {
-    const scheduleBoxNum = 64;
+    const scheduleBoxNum = 65;
     const scheduleBoxes = [];
     // console.log("created schedule boxes!");
     for (let i =0; i < scheduleBoxNum; i++) {
