@@ -5,6 +5,7 @@ import Toast from './SnackBar';
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../../css/FileUpload.css';
+import MaterialIcon, {colorPalette} from 'material-icons-react';
 
 const uploadedFiles = new Map();
 
@@ -170,7 +171,8 @@ const FileUploader = ({ setParsedSchedule }) => {
     // }
     const files = [...uploadedFiles.values()].map((file) => (
         <li key={file.path}>
-            {file.path} - {file.size} bytes
+            {file.path} - {file.size} bytes 
+            <span class="checkmark"><MaterialIcon icon="check" color='#2dce89' size={16}/></span>
         </li>
     ));
 
@@ -179,6 +181,7 @@ const FileUploader = ({ setParsedSchedule }) => {
             <div className="file-container">
                 <div {...getRootProps({ className: 'dropzone' })}>
                     <input {...getInputProps()} />
+                    {/* <MaterialIcon icon="upload_file" color='#17c9e9' size={64}/> */}
                     <img src={require('../../assets/icons/cloud-computing.png')} />
                     <p>Drag and drop files here, or <u>click here</u> to select files</p>
                 </div>

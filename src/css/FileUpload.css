@@ -30,3 +30,9 @@ ul {
     margin-top: -0.6em;
 }
 
+.checkmark {
+    position: relative;
+    top: 3px;
+    margin-left: 0.4em;
+}
+
