@@ -1,7 +1,6 @@
 // Customized components import
 import MyDocument from '../PreviewPDF/PDF';
 import RGB from '../ClassLib/RGB';
-import DragDrop from './Dropzone';
 import FileUploader from './FileUpload';
 
 // CSS import
@@ -20,6 +19,7 @@ const Content = (props) => {
     };
 
     const [parsedSchedule, setParsedSchedule] = useState([]);
+    const [parsedGridVenues, setParsedGridVenues] = useState({});
     const [colourInfo, setColourInfo] = useState([]);
     const [showData, setShowData] = useState(false);
 
@@ -76,10 +76,11 @@ const Content = (props) => {
     };
 
     const CheckData = () => {
-        // console.log(parsedSchedule.length > 0);
         if (parsedSchedule.length > 0) {
+            if (parsedGridVenues.size > 0) {
+                mapVenueName();
+            }
             setShowData(!showData);
-            setParsedSchedule(parsedSchedule);
             document.getElementById('upload1').style.display = 'none';
             document.getElementById('file-upload').style.display = 'none';
             document.getElementById('generatePDF-btn').style.display = 'none';
@@ -88,6 +89,18 @@ const Content = (props) => {
                 'Please upload all files first';
         }
         return parsedSchedule.length > 0;
+    };
+
+    const mapVenueName = () => {
+        const nextParsedSchedule = parsedSchedule.map((entry) => {
+            entry.venue.map((venueEntry) => {
+                venueEntry.venueName = parsedGridVenues.get(venueEntry.venueName);
+                return venueEntry;
+            });
+            return entry;
+        });
+        console.log(nextParsedSchedule);
+        setParsedSchedule(nextParsedSchedule);
     };
 
     return (
@@ -99,7 +112,7 @@ const Content = (props) => {
                     {/* Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /> */}
 
                     <div id="file-upload">
-                        <FileUploader setParsedSchedule={setParsedSchedule} />
+                        <FileUploader setParsedSchedule={setParsedSchedule} setParsedGridVenues={setParsedGridVenues} />
                     </div>
 
                 </div>

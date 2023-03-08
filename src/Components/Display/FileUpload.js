@@ -5,11 +5,11 @@ import Toast from './SnackBar';
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../../css/FileUpload.css';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
+import MaterialIcon, { colorPalette } from 'material-icons-react';
 
 const uploadedFiles = new Map();
 
-const FileUploader = ({ setParsedSchedule }) => {
+const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
     const onDrop = useCallback((acceptedFiles) => {
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
@@ -51,6 +51,7 @@ const FileUploader = ({ setParsedSchedule }) => {
                         active: true,
                     });
                 } else if (fileColumn.length == 3) {
+                    parseGridVenues(lines);
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -126,6 +127,13 @@ const FileUploader = ({ setParsedSchedule }) => {
 
         let parsedScheduleIndex = 0;
         const parsedSchedule = [];
+        testData.sort((a, b) => {
+            if (Date.parse(a.date) < Date.parse(b.date)) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
         for (const item of testData) {
             parsedSchedule[parsedScheduleIndex] = item;
             parsedScheduleIndex++;
@@ -165,14 +173,26 @@ const FileUploader = ({ setParsedSchedule }) => {
         createMap(movieInfo);
     };
 
+    const parseGridVenues = (lines) => {
+        console.log('inside');
+        const gridVenues = new Map();
+        lines.forEach((line) => {
+            const mapping = line.split('\t');
+            gridVenues.set(mapping[2].trim(), mapping[1]);
+            console.log(mapping);
+        });
+        setParsedGridVenues(gridVenues);
+        console.log(gridVenues);
+    };
+
 
     // if (uploadedFiles.length == 0) {
     //     console.log('empty');
     // }
     const files = [...uploadedFiles.values()].map((file) => (
         <li key={file.path}>
-            {file.path} - {file.size} bytes 
-            <span class="checkmark"><MaterialIcon icon="check" color='#2dce89' size={16}/></span>
+            {file.path} - {file.size} bytes
+            <span className="checkmark"><MaterialIcon icon="check" color='#2dce89' size={16} /></span>
         </li>
     ));
 
