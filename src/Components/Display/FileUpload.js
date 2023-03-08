@@ -1,7 +1,8 @@
 /* eslint-disable require-jsdoc */
 import Node from '../ClassLib/Node';
+import Toast from './SnackBar';
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../../css/FileUpload.css';
 
@@ -13,7 +14,11 @@ const FileUploader = ({ setParsedSchedule }) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
             } else {
-                alert(file.path + ' is updated');
+                setTrigger({
+                    message: file.path + ' is updated',
+                    type: 'info',
+                    active: true,
+                });
                 uploadedFiles.set(file.path, file);
             }
 
@@ -26,15 +31,35 @@ const FileUploader = ({ setParsedSchedule }) => {
                 const fileColumn = lines[0].split('\t');
                 if (fileColumn.length == 9) {
                     parseGridScreens(lines);
-                    alert('Time schedule file uploaded');
+                    setTrigger({
+                        message: file.path + ' is uploaded',
+                        type: 'info',
+                        active: true,
+                    });
                 } else if (fileColumn.length == 1) {
-                    alert('Colour file uploaded');
+                    setTrigger({
+                        message: file.path + ' is uploaded',
+                        type: 'info',
+                        active: true,
+                    });
                 } else if (fileColumn.length == 2) {
-                    alert('Sections file uploaded');
+                    setTrigger({
+                        message: file.path + ' is uploaded',
+                        type: 'info',
+                        active: true,
+                    });
                 } else if (fileColumn.length == 3) {
-                    alert('GridVenue file uploaded');
+                    setTrigger({
+                        message: file.path + ' is uploaded',
+                        type: 'info',
+                        active: true,
+                    });
                 } else {
-                    alert('Wrong file format uploaded, please check the data file.');
+                    setTrigger({
+                        message: file.path + ' is uploaded',
+                        type: 'info',
+                        active: true,
+                    });
                 }
             };
         });
@@ -50,6 +75,12 @@ const FileUploader = ({ setParsedSchedule }) => {
             },
         },
     );
+
+    const [trigger, setTrigger] = useState({
+        message: 'Default message',
+        type: 'info',
+        active: false,
+    });
 
     const createMap = (movieInfo) => {
         const scheduleDetailMap = new Map();
@@ -152,6 +183,7 @@ const FileUploader = ({ setParsedSchedule }) => {
                 <h4>Files Uploaded</h4>
                 <ul>{files}</ul>
             </aside>
+            <Toast trigger={trigger}></Toast>
         </section>
     );
 };
