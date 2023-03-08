@@ -72,33 +72,35 @@ const styles = StyleSheet.create({
         'borderRight': '5px solid white',
     }
 });
-const createdScheduleBox = ()=> {
+const createdScheduleBox = (id)=> {
     const scheduleBoxNum = 64;
     const scheduleBoxes = [];
-    console.log("created schedule boxes!");
+    // console.log("created schedule boxes!");
     for (let i =0; i < scheduleBoxNum; i++) {
-        if (i % 4 == 0) {
+        if (id % 2 == 0) {
             scheduleBoxes.push(<View style={styles.box1} key={i}></View>);
-        } else if (i % 4 == 1) {
-            scheduleBoxes.push(<View style={styles.box2} key={i}></View>)
-        } else if (i % 4 == 2) {
-            scheduleBoxes.push(<View style={styles.box3} key={i}></View>);
-        } else {
-            scheduleBoxes.push(<View style={styles.box4} key={i}></View>);
+        } else if (id % 2 == 1) {
+            scheduleBoxes.push(<View style={styles.box2} key={i}></View>);
         }
+        // } else if (i % 4 == 2) {
+        //     scheduleBoxes.push(<View style={styles.box3} key={i}></View>);
+        // } else {
+        //     scheduleBoxes.push(<View style={styles.box4} key={i}></View>);
+        // }
         
     }
     return scheduleBoxes;
 }
 
 const Venue = (props) => {
+    // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
         <View style={styles.venueRow}>
             <View style={styles.venue}>
                 <Text>{props.venueDetail.venueName}</Text>
             </View>
             <View style={styles.screen}>
-                {createdScheduleBox()}
+                {createdScheduleBox(props.venueDetail.id)}
                 {props.venueDetail.screens.map((screen, index) => {
                     return (
                     <ScheduleBox key={index} screen={screen}></ScheduleBox>

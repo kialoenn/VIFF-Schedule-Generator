@@ -7,11 +7,15 @@ import React from 'react';
 import { View } from '@react-pdf/renderer';
 
 const Schedule = (props) => {
-    
+    let v = props.data.venue;
+    for (let i = 0; i < v.length; i++) {
+        v[i].id = i;
+    }
+
     return (
         <View>
             <Timeline date={props.data.date}></Timeline>
-            {props.data.venue.map((venues, index) => {
+            {v.map((venues, index) => {
                 return (
                     <Venue key={index} venueDetail={venues}></Venue>
                 );
