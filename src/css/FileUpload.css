@@ -14,6 +14,7 @@
     text-align: center;
     color: #7f7f7f;
     font-size: 0.9em;
+    cursor: pointer;
 }
 
 .file-list {
@@ -24,3 +25,8 @@
 .uploaded-files {
     font-size: 0.85em;
 }
+
+ul {
+    margin-top: -0.6em;
+}
+

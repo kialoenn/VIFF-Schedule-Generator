@@ -31,6 +31,22 @@ const Sidebar = () => {
         <div className='sidebar'>
             <h3>Customization Menu</h3>
             <div className='sidebarItems'>
+
+      <div className='sidebarBlock'>
+            <Accordion disableGutters elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon color="primary"/>}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="autorenew" color='#214480' size={18}/></span>CMYK Converter</span>
+        </AccordionSummary>
+        <AccordionDetails>
+
+        </AccordionDetails>
+      </Accordion>
+      </div>
+      <div className="lineBreak"></div>
                 <div className='sidebarBlock'>
             <Accordion disableGutters elevation={0} defaultExpanded={'true'}>
         <AccordionSummary
