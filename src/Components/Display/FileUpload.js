@@ -179,7 +179,6 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
         lines.forEach((line) => {
             const mapping = line.split('\t');
             gridVenues.set(mapping[2].trim(), mapping[1]);
-            console.log(mapping);
         });
         setParsedGridVenues(gridVenues);
         console.log(gridVenues);

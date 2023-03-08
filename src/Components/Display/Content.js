@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { PDFViewer } from '@react-pdf/renderer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Content = (props) => {
     const pdfSettings = {
@@ -94,7 +94,10 @@ const Content = (props) => {
     const mapVenueName = () => {
         const nextParsedSchedule = parsedSchedule.map((entry) => {
             entry.venue.map((venueEntry) => {
-                venueEntry.venueName = parsedGridVenues.get(venueEntry.venueName);
+                venueEntry.venueName =
+                    parsedGridVenues.has(venueEntry.venueName) ?
+                        parsedGridVenues.get(venueEntry.venueName) :
+                        venueEntry.venueName;
                 return venueEntry;
             });
             return entry;
