@@ -180,12 +180,12 @@ const FileUploader = ({ setParsedSchedule }) => {
                 <div {...getRootProps({ className: 'dropzone' })}>
                     <input {...getInputProps()} />
                     <img src={require('../../assets/icons/cloud-computing.png')} />
-                    <p>Drag and drop some files here, or click to select files</p>
+                    <p>Drag and drop files here, or <u>click here</u> to select files</p>
                 </div>
             </div>
             <div className="file-list">
                 <h4><span id="file-list-header">Uploaded Files</span></h4>
-                <ul>{files}</ul>
+                <ul className="uploaded-files">{files}</ul>
             </div>
             <Toast trigger={trigger}></Toast>
         </div>

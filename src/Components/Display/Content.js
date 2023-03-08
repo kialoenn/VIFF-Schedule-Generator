@@ -85,7 +85,7 @@ const Content = (props) => {
             document.getElementById('generatePDF-btn').style.display = 'none';
         } else {
             document.getElementById('generateMsg').innerHTML =
-                'Please upload files first';
+                'Please upload all files first';
         }
         return parsedSchedule.length > 0;
     };

@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 .container {
     display: grid;
     grid-template-columns: 250px minmax(10px, 1fr);
     height: 100%;
-    background-color: #fafafb;
+    background-color: #efefef;
 }
 
 .rightContainer {
     width: 100%;
-    background-color: #fafafb;
+    background-color: #efefef;
     grid-column: 2;
     min-height: 100vh;
 }
@@ -54,7 +54,11 @@
 }
 
 .generateBtn {
-    background-color: blue;
+  background-color: #38475e;
+  width: 200px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .screen {

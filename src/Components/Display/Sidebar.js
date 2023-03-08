@@ -1,6 +1,8 @@
 // Customized components import
 import ColorPicker from './ColorPicker';
-import CustomPicker from './CustomPicker';
+import DateTextPicker from './CustomPickers/DateTextPicker';
+import DateBarPicker from './CustomPickers/DateBarPicker';
+
 
 // CSS import
 import '../../css/Sidebar.css';
@@ -14,37 +16,71 @@ import MenuItem from '@mui/material/MenuItem';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+
+
 
 const Sidebar = () => {
     return (
         <div className='sidebar'>
             <h3>Customization Menu</h3>
             <div className='sidebarItems'>
-                <p><span className='sidebarHeader'>Color Options</span></p>
                 <div className='sidebarBlock'>
+            <Accordion disableGutters elevation={0} defaultExpanded={true}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon color="primary"/>}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <span className='sidebarHeader'>Color Settings</span>
+        </AccordionSummary>
+        <AccordionDetails>
+            <div className="accordionItems">
+        <p id="colorLabels">Date Text</p>
+        <div id='colorPicker'><DateTextPicker /> </div>
                     <p id="colorLabels">Date Bar</p>
                     <div id='colorPicker'>
-                        <CustomPicker />
+                        <DateBarPicker />
                     </div>
-                    <p id="colorLabels">Time Bar</p>
-                    <div id='colorPicker'>
-                        <ColorPicker />
-                    </div>
+                    <p id="colorLabels">Time Text</p>
+                    <div id='colorPicker'><DateTextPicker /></div>
+                    <p id="colorLabels">Venue Text</p>
+                    <div id='colorPicker'><ColorPicker /></div>
                     <p id="colorLabels">Venue Bar</p>
                     <div id='colorPicker'><ColorPicker /></div>
-                    <p id="colorLabels">Movie Block</p>
+                    <p id="colorLabels">Film Title Text</p>
+                    <div id='colorPicker'><ColorPicker /> </div>
+                    <p id="colorLabels">Film Details Text</p>
+                    <div id='colorPicker'><ColorPicker /> </div>
+                    <p id="colorLabels">Film Block</p>
                     <div id='colorPicker'><ColorPicker /></div>
-                    <p id="colorLabels">Date Text</p>
-                    <div id='colorPicker'><ColorPicker /> </div>
-                    <p id="colorLabels">Movie Text</p>
-                    <div id='colorPicker'><ColorPicker /> </div>
                     <p id="colorLabels">Odd Row</p>
                     <div id='colorPicker'><ColorPicker /> </div>
                     <p id="colorLabels">Even Row</p>
                     <div id='colorPicker'><ColorPicker /> </div>
-                </div><div className="lineBreak"></div>
-                <div className='sidebarBlock2'>
-                    <p id="fontLabel"><span className='sidebarHeader'>Font Options</span></p>
+                    <p id="colorLabels">Background</p>
+                    <div id='colorPicker'><ColorPicker /> </div>
+                    </div>
+        </AccordionDetails>
+      </Accordion>
+      </div>
+      <div className="lineBreak"></div>
+      <div className='sidebarBlock'>
+            <Accordion disableGutters elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon color="primary"/>}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <span className='sidebarHeader'>Font Settings</span>
+        </AccordionSummary>
+        <AccordionDetails>
+
                     {/* Font Select */}
                     <FormControl sx={{ width: '65%', pr: 1 }} size="small">
                         <InputLabel id="demo-simple-select-helper-label">Font</InputLabel>
@@ -114,9 +150,22 @@ const Sidebar = () => {
                             <MenuItem value={33}>33</MenuItem>
                         </Select>
                     </FormControl>
-                </div>
-                <div className="lineBreak2"></div>
-                <p id="gridLabel"><span className='sidebarHeader'>Grid Line Options</span></p>
+
+        </AccordionDetails>
+      </Accordion>
+      </div>
+      <div className="lineBreak"></div>
+      <div className='sidebarBlock'>
+            <Accordion disableGutters elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon color="primary"/>}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <span className='sidebarHeader'>Grid Line Settings</span>
+        </AccordionSummary>
+        <AccordionDetails>
+
                 {/* Line Type Select */}
                 <FormControl sx={{ width: '65%', pr: 1 }} size="small">
                     <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
@@ -153,12 +202,45 @@ const Sidebar = () => {
                     </Select>
                 </FormControl>
 
+        </AccordionDetails>
+      </Accordion>
+      </div>
+      <div className="lineBreak"></div>
+      <div className='sidebarBlock'>
+            <Accordion disableGutters elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon color="primary"/>}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <span className='sidebarHeader'>Film Block Settings</span>
+        </AccordionSummary>
+        <AccordionDetails>
+
+        </AccordionDetails>
+      </Accordion>
+      </div>
+      <div className="lineBreak"></div>
+      <div className='sidebarBlock'>
+            <Accordion disableGutters elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon color="primary"/>}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <span className='sidebarHeader'>Page Settings</span>
+        </AccordionSummary>
+        <AccordionDetails>
+
+        </AccordionDetails>
+      </Accordion>
+      </div>
+
                 {/* Checkbox to clear empty rows  */}
                 {/* <FormGroup sx={{ pl: 0.2, pt: 0.5 }}>
                     <FormControlLabel control={<Checkbox />} label="Clear Empty Rows" />
                 </FormGroup> */}
-                <div className="lineBreak2"></div>
-                <p id="pageLabel"><span className='sidebarHeader'>Page Settings</span></p>
+
             </div>
         </div>
     );
