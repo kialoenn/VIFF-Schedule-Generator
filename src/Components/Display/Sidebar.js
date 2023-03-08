@@ -31,7 +31,7 @@ const Sidebar = () => {
             <h3>Customization Menu</h3>
             <div className='sidebarItems'>
                 <div className='sidebarBlock'>
-            <Accordion disableGutters elevation={0} defaultExpanded={true}>
+            <Accordion disableGutters elevation={0} defaultExpanded={'true'}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon color="primary"/>}
           aria-controls="panel1a-content"
