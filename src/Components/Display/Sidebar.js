@@ -48,7 +48,7 @@ const Sidebar = () => {
       </div>
       <div className="lineBreak"></div>
                 <div className='sidebarBlock'>
-            <Accordion disableGutters elevation={0} defaultExpanded={'true'}>
+            <Accordion disableGutters elevation={0}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon color="primary"/>}
           aria-controls="panel1a-content"
