@@ -1,14 +1,16 @@
 // Customized components import
 import MyDocument from '../PreviewPDF/PDF';
 import RGB from '../ClassLib/RGB';
-import DragDrop from './Dropzone';
+import FileUploader from './FileUpload';
 
 // CSS import
 import '../../css/Header.css';
 
 // External import
 import Button from '@mui/material/Button';
-import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { PDFViewer } from '@react-pdf/renderer';
 import { useState } from 'react';
 
 const Content = (props) => {
@@ -17,13 +19,11 @@ const Content = (props) => {
     };
 
     const [parsedSchedule, setParsedSchedule] = useState([]);
+    const [parsedGridVenues, setParsedGridVenues] = useState({});
     const [colourInfo, setColourInfo] = useState([]);
     const [showData, setShowData] = useState(false);
 
-
-    const convertColour = () => {
-
-    }
+    const convertColour = () => { };
 
     const handleColourFile = (event) => {
         const dataFile = event.target.files[0];
@@ -48,7 +48,6 @@ const Content = (props) => {
                 k = parseInt(k.substring(0, k.indexOf('%')));
                 // Colour with cmyk
                 // cmykColour = new CMYK(code, c, m, y, k);
-
 
                 // Converting cmyk to rgb
                 // referecne: https://www.rapidtables.com/convert/color/cmyk-to-rgb.html
@@ -77,40 +76,72 @@ const Content = (props) => {
     };
 
     const CheckData = () => {
-        console.log(parsedSchedule.length > 0);
         if (parsedSchedule.length > 0) {
+            if (parsedGridVenues.size > 0) {
+                mapVenueName();
+            }
             setShowData(!showData);
+            document.getElementById('upload1').style.display = 'none';
+            document.getElementById('file-upload').style.display = 'none';
+            document.getElementById('generatePDF-btn').style.display = 'none';
+        } else {
+            document.getElementById('generateMsg').innerHTML =
+                'Please upload all files first';
         }
+        return parsedSchedule.length > 0;
+    };
 
-        setParsedSchedule(parsedSchedule);
-        document.getElementById("upload1").style.display = 'none';
-        return (parsedSchedule.length > 0);
+    const mapVenueName = () => {
+        const nextParsedSchedule = parsedSchedule.map((entry) => {
+            entry.venue.map((venueEntry) => {
+                venueEntry.venueName = parsedGridVenues.get(venueEntry.venueName);
+                return venueEntry;
+            });
+            return entry;
+        });
+        console.log(nextParsedSchedule);
+        setParsedSchedule(nextParsedSchedule);
     };
 
     return (
         <>
             <div id="content" style={{ height: 1000 }}>
-
-
                 <h3>Dashboard</h3>
 
-                <div id="upload1">Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /></div>
+                <div id="upload1">
+                    {/* Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /> */}
+
+                    <div id="file-upload">
+                        <FileUploader setParsedSchedule={setParsedSchedule} setParsedGridVenues={setParsedGridVenues} />
+                    </div>
+
+                </div>
 
                 <div id="generatePDF">
-                    <Button variant="contained" onClick={CheckData}>
-                        Generate PDF
-                    </Button>
+                    <div id="generatePDF-btn">
+                        <Button
+                            variant="contained"
+                            onClick={CheckData}
+                            sx={{
+                                borderRadius: 50, width: 200, height: 40,
+                            }}
 
-                    {
-                        showData ? <PDFViewer width={1024} height={768}>
+                        >
+                            Generate PDF <span className="btn-icon"><KeyboardDoubleArrowRightIcon /></span>
+                        </Button>
+                    </div>
+
+                    {showData ? (
+                        <PDFViewer width={1024} height={768}>
                             <MyDocument data={{ pdfSettings, parsedSchedule }} />
-                        </PDFViewer> : <div id="generateMsg">Please upload files first </div>
-                    }
+                        </PDFViewer>
+                    ) : (
+                        <div id="generateMsg"></div>
+                    )}
                 </div>
             </div>
         </>
     );
 };
-
 
 export default Content;

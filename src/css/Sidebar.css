@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300;400;500;700;900&family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
 
 .sidebar {
     height: 100%;
@@ -8,14 +9,45 @@
     top: 0;
     align-self: start;
     border-top:    none;
-    border-right:  1px solid #f0f0f0;
+    border-right:  1px solid lightgrey;
     border-bottom: none;
     border-left:   none;
-    font-family: Roboto;
+    font-family: 'Roboto';
+    padding-left: 15px;
+    box-shadow: 2px 3px 4px rgba(0,0,0,0.1); 
 }
 
 .sidebarItems {
-    padding-left: 15px;
+    font-size: 0.9em;
+    line-height: 1em;
+}
+
+.sidebarHeader {
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+.sidebarBlock {
+    margin-left: -15px;
+}
+
+.accordionItems {
+    margin-left: 15px;
+    margin-bottom: -15px;
+}
+
+.lineBreak {
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;        
+    margin-left: -15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.lineBreak2 {
+    margin-bottom: 1.7em;    
+    margin-top: 2em;
+    margin-left: -15px;
+    border-bottom: 1px solid lightgrey;
 }
 
 #colorPicker {
@@ -24,8 +56,8 @@
     display:table;
     margin: 0;
     position: relative;
-    left: 100px;
-    bottom: 20px;
+    left: 150px;
+    bottom: 18px;
 }
 
 #colorLabels {
@@ -36,6 +68,12 @@
     margin: 0;
     position: relative;
     bottom: 15px;
+}
+
+.menu-icon {
+    margin-right: 0.7em;
+    position: relative;
+    top: 3px;
 }
 
 
