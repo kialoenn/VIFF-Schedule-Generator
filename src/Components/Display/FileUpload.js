@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc */
 import Node from '../ClassLib/Node';
+import RGB from '../ClassLib/RGB';
 import Toast from './SnackBar';
 
 import React, { useCallback, useState } from 'react';
@@ -11,6 +12,7 @@ const uploadedFiles = new Map();
 
 const FileUploader = ({ setParsedSchedule }) => {
     const onDrop = useCallback((acceptedFiles) => {
+        console.log("accepted files:", acceptedFiles);
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
@@ -39,18 +41,24 @@ const FileUploader = ({ setParsedSchedule }) => {
                         active: true,
                     });
                 } else if (fileColumn.length == 1) {
+                    // colour file
+                    console.log("colour file uploaded");
+                    console.log("lines:\n", lines);
+                    
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
                         active: true,
                     });
                 } else if (fileColumn.length == 2) {
+                    // section file
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
                         active: true,
                     });
                 } else if (fileColumn.length == 3) {
+                    // gridvenue file
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -163,6 +171,14 @@ const FileUploader = ({ setParsedSchedule }) => {
         console.log(movieInfo);
         console.log(movieInfo.length);
         createMap(movieInfo);
+    };
+
+    // parsed Colour file
+    const parsedColour = (lines) => {
+        const colourInfo = [];
+        for (let i = 0; i < lines.length -1; i++) {
+            const row = lines[i].split(' ');
+        }
     };
 
 
