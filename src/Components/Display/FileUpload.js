@@ -6,11 +6,11 @@ import Toast from './SnackBar';
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import '../../css/FileUpload.css';
-import MaterialIcon, {colorPalette} from 'material-icons-react';
+import MaterialIcon, { colorPalette } from 'material-icons-react';
 
 const uploadedFiles = new Map();
 
-const FileUploader = ({ setParsedSchedule }) => {
+const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
     const onDrop = useCallback((acceptedFiles) => {
         console.log("accepted files:", acceptedFiles);
         acceptedFiles.forEach((file) => {
@@ -58,7 +58,15 @@ const FileUploader = ({ setParsedSchedule }) => {
                         active: true,
                     });
                 } else if (fileColumn.length == 3) {
+<<<<<<< HEAD
                     // gridvenue file
+=======
+<<<<<<< HEAD
+                    parseGridVenues(lines);
+=======
+                    // gridvenue file
+>>>>>>> 4d5e73e (Added some console log to chekc out the parameters. Commited to pull.)
+>>>>>>> 39b14b4a8c2db89b201b581b355ea4dd71d66a4b
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -134,6 +142,13 @@ const FileUploader = ({ setParsedSchedule }) => {
 
         let parsedScheduleIndex = 0;
         const parsedSchedule = [];
+        testData.sort((a, b) => {
+            if (Date.parse(a.date) < Date.parse(b.date)) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
         for (const item of testData) {
             parsedSchedule[parsedScheduleIndex] = item;
             parsedScheduleIndex++;
@@ -173,12 +188,30 @@ const FileUploader = ({ setParsedSchedule }) => {
         createMap(movieInfo);
     };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    const parseGridVenues = (lines) => {
+        console.log('inside');
+        const gridVenues = new Map();
+        lines.forEach((line) => {
+            const mapping = line.split('\t');
+            gridVenues.set(mapping[2].trim(), mapping[1]);
+        });
+        setParsedGridVenues(gridVenues);
+        console.log(gridVenues);
+=======
+>>>>>>> 39b14b4a8c2db89b201b581b355ea4dd71d66a4b
     // parsed Colour file
     const parsedColour = (lines) => {
         const colourInfo = [];
         for (let i = 0; i < lines.length -1; i++) {
             const row = lines[i].split(' ');
         }
+<<<<<<< HEAD
+=======
+>>>>>>> 4d5e73e (Added some console log to chekc out the parameters. Commited to pull.)
+>>>>>>> 39b14b4a8c2db89b201b581b355ea4dd71d66a4b
     };
 
 
@@ -187,8 +220,8 @@ const FileUploader = ({ setParsedSchedule }) => {
     // }
     const files = [...uploadedFiles.values()].map((file) => (
         <li key={file.path}>
-            {file.path} - {file.size} bytes 
-            <span class="checkmark"><MaterialIcon icon="check" color='#2dce89' size={16}/></span>
+            {file.path} - {file.size} bytes
+            <span className="checkmark"><MaterialIcon icon="check" color='#2dce89' size={16} /></span>
         </li>
     ));
 

@@ -8,7 +8,7 @@ import DateBarPicker from './CustomPickers/DateBarPicker';
 import '../../css/Sidebar.css';
 
 // External import
-import React from 'react';
+import React, { useState } from 'react';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -24,9 +24,31 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 
 
+import OutlinedInput from '@mui/material/OutlinedInput';  
+import FormHelperText from '@mui/material/FormHelperText';
+import TextField from '@mui/material/TextField';
 
 
 const Sidebar = () => {
+  const [cValue, setCValue] = useState('');
+  const [mValue, setMValue] = useState('');
+  const [yValue, setYValue] = useState('');
+  const [kValue, setKValue] = useState('');
+  const [hexValue, setHexValue] = useState(' ');
+  const [rValue, setRValue] = useState('');
+  const [gValue, setGValue] = useState('');
+  const [bValue, setBValue] = useState('');
+  const convert = require('color-convert');
+
+  const convertToHex= (e) => {
+    if(cValue != '' && mValue != '' && yValue != '' && kValue != '') {
+      setHexValue(convert.cmyk.hex(Number(cValue), Number(mValue), Number(yValue), Number(kValue)));
+      let rgbArray = convert.cmyk.rgb(Number(cValue), Number(mValue), Number(yValue), Number(kValue));
+      setRValue(rgbArray[0]);
+      setGValue(rgbArray[1]);
+      setBValue(rgbArray[2]);
+    }
+  }
     return (
         <div className='sidebar'>
             <h3>Customization Menu</h3>
@@ -42,7 +64,141 @@ const Sidebar = () => {
           <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="autorenew" color='#214480' size={18}/></span>CMYK Converter</span>
         </AccordionSummary>
         <AccordionDetails>
-
+        <div>
+        <FormControl sx={{ m: 0.1, width: '24%', paddingBottom: 3}} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            value={cValue}
+            onChange={(e) => setCValue(e.target.value)}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text" pos>C</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            value={mValue}
+            onChange={(e) => setMValue(e.target.value)}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">M</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            value={yValue}
+            onChange={(e) => setYValue(e.target.value)}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">Y</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            value={kValue}
+            onChange={(e) => setKValue(e.target.value)}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">K</FormHelperText>
+        </FormControl>
+      </div>
+      <div>
+      <TextField  sx={{width: '100%', paddingBottom:3}}
+      label="Hex"
+      value={hexValue}
+        id="outlined-basic" 
+        variant="outlined"
+        size="small"
+        InputProps={{
+          readOnly: true,
+        }} />
+      </div>
+      
+      <div>
+        <FormControl sx={{ m: 0.1, width: '27%', pr:1 }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            aria-describedby="outlined-weight-helper-text"
+            value={rValue}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'text',
+              pattern: '[0-9]*',
+              maxLength: 3,
+              readOnly: true
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text" pos>R</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '27%', pr:1 }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            aria-describedby="outlined-weight-helper-text"
+            value={gValue}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'text',
+              pattern: '[0-9]*',
+              maxLength: 3,
+              readOnly: true
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">G</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '27%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            aria-describedby="outlined-weight-helper-text"
+            value={bValue}
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'text',
+              pattern: '[0-9]*',
+              maxLength: 3,
+              readOnly: true
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">B</FormHelperText>
+        </FormControl>
+      </div>
+      <button onClick={convertToHex}>
+        Convert
+      </button>
         </AccordionDetails>
       </Accordion>
       </div>
