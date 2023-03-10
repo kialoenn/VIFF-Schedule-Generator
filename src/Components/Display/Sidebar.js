@@ -24,6 +24,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 
 
+import OutlinedInput from '@mui/material/OutlinedInput';  
+import FormHelperText from '@mui/material/FormHelperText';
+import TextField from '@mui/material/TextField';
+import { text } from '@fortawesome/fontawesome-svg-core';
+import { CenterFocusStrong } from '@mui/icons-material';
+
+
 
 
 const Sidebar = () => {
@@ -42,7 +49,127 @@ const Sidebar = () => {
           <span className='sidebarHeader'><span class="menu-icon"><MaterialIcon icon="autorenew" color='#214480' size={18}/></span>CMYK Converter</span>
         </AccordionSummary>
         <AccordionDetails>
-
+        <div>
+        <FormControl sx={{ m: 0.1, width: '24%', paddingBottom: 3}} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text" pos>C</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">M</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">Y</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            autoComplete='off'
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">K</FormHelperText>
+        </FormControl>
+      </div>
+      <div>
+      <TextField  sx={{width: '100%', paddingBottom:3}}
+      label="Hex"
+      defaultValue=" "
+        id="outlined-basic" 
+        variant="outlined"
+        size="small"
+        InputProps={{
+          readOnly: true,
+        }} />
+      </div>
+      
+      <div>
+        <FormControl sx={{ m: 0.1, width: '27%', pr:1 }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3,
+              readOnly: true
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text" pos>R</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '27%', pr:1 }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3,
+              readOnly: true
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">G</FormHelperText>
+        </FormControl>
+        <FormControl sx={{ m: 0.1, width: '27%' }} variant="outlined">
+          <OutlinedInput
+            id="outlined-adornment-weight"
+            size="small"
+            aria-describedby="outlined-weight-helper-text"
+            inputProps={{
+              'aria-label': 'weight',
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+              maxLength: 3,
+              readOnly: true
+            }}
+          />
+          <FormHelperText id="outlined-weight-helper-text">B</FormHelperText>
+        </FormControl>
+      </div>
         </AccordionDetails>
       </Accordion>
       </div>
