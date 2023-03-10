@@ -31,7 +31,7 @@ const ScheduleBox = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    startPoint = (hour + min) / 64 * 100 * 0.85;
+    startPoint = (hour + min) / 64 * 100 * 0.811;
     startPoint += "vw";
 
     // getting a width
@@ -41,7 +41,7 @@ const ScheduleBox = (prop) => {
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     let durationNum = hour + min;
-    width = oneDiv * durationNum * 100 * 0.85;
+    width = oneDiv * durationNum * 100 * 0.811;
     width = width + "vw";
     
     const ScreenBoxstyles = reactCSS({

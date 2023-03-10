@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
 });
 const createdScheduleBox = (id) => {
-    const scheduleBoxNum = 65;
+    const scheduleBoxNum = 64;
     const scheduleBoxes = [];
     // console.log("created schedule boxes!");
     for (let i = 0; i < scheduleBoxNum; i++) {
