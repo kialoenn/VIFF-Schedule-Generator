@@ -15,11 +15,12 @@ const styles = StyleSheet.create({
         'margin': '0px auto',
         'width': '100vw',
         'height': '3vh',
+        'minHeight': '3VH',
         'backgroundColor': 'black',
         'color': 'white',
     },
     venue: {
-        'width': '14%',
+        'width': '18.9vw',
         'height': '100%',
         'fontFamily': 'Roboto',
         'color': 'black',
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     // #808080
     screen: {
         'color': 'black',
-        'width': '86%',
+        'width': '81.1vw',
         'backgroundColor': '#808080',
         'flexDirection': 'row',
         'fontSize': '0.7vw',
@@ -48,28 +49,28 @@ const styles = StyleSheet.create({
         'backgroundColor': '#d1cac0',
         'width': '1.5625vw',
         'height': '100%',
-        'borderRight': '3px solid black',
+        'borderRight': '3px dotted black',
     },
 
     box2: {
         'backgroundColor': '#9e9991',
         'width': '1.5625vw',
         'height': '100%',
-        'borderRight': '3px solid black',
+        'borderRight': '3px dotted black',
     },
 
     box3: {
-        'backgroundColor': '#66625d',
+        'backgroundColor': '#d1cac0',
         'width': '1.5625vw',
         'height': '100%',
-        'borderRight': '3px solid black',
+        'borderRight': '5px dotted black',
     },
 
     box4: {
-        'backgroundColor': '#45423e',
+        'backgroundColor': '#9e9991',
         'width': '1.5625vw',
         'height': '100%',
-        'borderRight': '5px solid white',
+        'borderRight': '5px dotted black',
     },
 
     text: {
@@ -77,14 +78,23 @@ const styles = StyleSheet.create({
     },
 });
 const createdScheduleBox = (id)=> {
-    const scheduleBoxNum = 65;
+    const scheduleBoxNum = 64;
     const scheduleBoxes = [];
     // console.log("created schedule boxes!");
     for (let i =0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
-            scheduleBoxes.push(<View style={styles.box1} key={i}></View>);
+            if (i % 2 == 0) {
+                scheduleBoxes.push(<View style={styles.box1} key={i}></View>);
+            } else {
+                scheduleBoxes.push(<View style={styles.box3} key={i}></View>);
+            }
+            
         } else if (id % 2 == 1) {
-            scheduleBoxes.push(<View style={styles.box2} key={i}></View>);
+            if (i % 2 == 0) {
+                scheduleBoxes.push(<View style={styles.box2} key={i}></View>);
+            } else {
+                scheduleBoxes.push(<View style={styles.box4} key={i}></View>);
+            }
         }
         // } else if (i % 4 == 2) {
         //     scheduleBoxes.push(<View style={styles.box3} key={i}></View>);

@@ -31,7 +31,8 @@ const ScheduleBox = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    startPoint = (hour + min) / 64 * 100 * 0.85;
+    // startPoint = (hour + min - 1) / 64 * 100 * 0.85;
+    startPoint = 1/64;
     startPoint += "vw";
 
     // getting a width

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
 
     timelineDate: {
-        'flex': '1.5',
+        'flex': '1.89',
         'textAlign': 'center',
         'margin': 'auto',
         'color': '#ffa500',
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
 
     timeline: {
-        'flex': '8.5',
+        'flex': '8.11',
         'flexDirection': 'row',
         'fontSize': '1vw',
         'color': 'white',
