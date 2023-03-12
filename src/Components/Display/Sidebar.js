@@ -39,7 +39,7 @@ const Sidebar = () => {
   const [gValue, setGValue] = useState('');
   const [bValue, setBValue] = useState('');
   const convert = require('color-convert');
-
+  const regex = /^[0-9\b]+$/;
   const convertToHex= (e) => {
     if(cValue != '' && mValue != '' && yValue != '' && kValue != '') {
       setHexValue(convert.cmyk.hex(Number(cValue), Number(mValue), Number(yValue), Number(kValue)));
@@ -72,7 +72,7 @@ const Sidebar = () => {
             autoComplete='off'
             aria-describedby="outlined-weight-helper-text"
             value={cValue}
-            onChange={(e) => setCValue(e.target.value)}
+            onChange={(e) => {if (regex.test(e.target.value) || e.target.value == "") {setCValue(e.target.value)}}}
             inputProps={{
               'aria-label': 'weight',
               inputMode: 'numeric',
@@ -89,7 +89,7 @@ const Sidebar = () => {
             autoComplete='off'
             aria-describedby="outlined-weight-helper-text"
             value={mValue}
-            onChange={(e) => setMValue(e.target.value)}
+            onChange={(e) => {if (regex.test(e.target.value) || e.target.value == "") {setMValue(e.target.value)}}}
             inputProps={{
               'aria-label': 'weight',
               inputMode: 'numeric',
@@ -106,7 +106,7 @@ const Sidebar = () => {
             autoComplete='off'
             aria-describedby="outlined-weight-helper-text"
             value={yValue}
-            onChange={(e) => setYValue(e.target.value)}
+            onChange={(e) => {if (regex.test(e.target.value) || e.target.value == "") {setYValue(e.target.value)}}}
             inputProps={{
               'aria-label': 'weight',
               inputMode: 'numeric',
@@ -123,7 +123,7 @@ const Sidebar = () => {
             autoComplete='off'
             aria-describedby="outlined-weight-helper-text"
             value={kValue}
-            onChange={(e) => setKValue(e.target.value)}
+            onChange={(e) => {if (regex.test(e.target.value) || e.target.value == "") {setKValue(e.target.value)}}}
             inputProps={{
               'aria-label': 'weight',
               inputMode: 'numeric',
