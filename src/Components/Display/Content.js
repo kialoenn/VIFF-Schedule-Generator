@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { PDFViewer } from '@react-pdf/renderer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Content = (props) => {
     const pdfSettings = {
@@ -80,6 +80,10 @@ const Content = (props) => {
             if (parsedGridVenues.size > 0) {
                 mapVenueName();
             }
+            console.log("colour info: ", colourInfo);
+            if (colourInfo.size > 0) {
+                insertColour();
+            }
             setShowData(!showData);
             document.getElementById('upload1').style.display = 'none';
             document.getElementById('file-upload').style.display = 'none';
@@ -94,13 +98,35 @@ const Content = (props) => {
     const mapVenueName = () => {
         const nextParsedSchedule = parsedSchedule.map((entry) => {
             entry.venue.map((venueEntry) => {
-                venueEntry.venueName = parsedGridVenues.get(venueEntry.venueName);
+                venueEntry.venueName =
+                    parsedGridVenues.has(venueEntry.venueName) ?
+                        parsedGridVenues.get(venueEntry.venueName) :
+                        venueEntry.venueName;
                 return venueEntry;
             });
             return entry;
         });
         console.log(nextParsedSchedule);
         setParsedSchedule(nextParsedSchedule);
+    };
+
+    const insertColour = () => {
+        const colorSchedule = parsedSchedule.map((entry) => {
+            entry.venue.map((venueEntry) => {
+                venueEntry.screens.map((screenEntry)=> {
+                    screenEntry.colour = 
+                        colourInfo.has(screenEntry.movieType)?
+                            colourInfo.get(screenEntry.movieType) :
+                            "unknown";
+                    return screenEntry;
+                });
+                return venueEntry;
+            });
+            return entry;
+        });
+        console.log(colorSchedule);
+        setParsedSchedule(colorSchedule);
+        // console.log("parsed schedule after inserting colour: \n", parsedSchedule);
     };
 
     return (
@@ -112,7 +138,7 @@ const Content = (props) => {
                     {/* Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /> */}
 
                     <div id="file-upload">
-                        <FileUploader setParsedSchedule={setParsedSchedule} setParsedGridVenues={setParsedGridVenues} />
+                        <FileUploader setParsedSchedule={setParsedSchedule} setParsedGridVenues={setParsedGridVenues} setColourInfo={setColourInfo} />
                     </div>
 
                 </div>

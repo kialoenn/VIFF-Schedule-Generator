@@ -7,6 +7,7 @@ import React from 'react';
 import { View } from '@react-pdf/renderer';
 
 const Schedule = (props) => {
+    // console.log('schedule props: ', props);
     let v = props.data.venue;
     for (let i = 0; i < v.length; i++) {
         v[i].id = i;

@@ -5,10 +5,15 @@ import React from 'react';
 import reactCSS from 'reactcss'
 
 const ScheduleBox = (prop) => {
-    
+    console.log("schedule box rgb:", prop.screen.colour);
+    console.log("r:", prop.screen.colour.r);
+    const r = prop.screen.colour.r;
+    const g = prop.screen.colour.g;
+    const b = prop.screen.colour.b;
+    console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
     let startPoint;
-    let color = "5px solid #da00b9";
+    let color = `5px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
     const startTime = screen.startTime;
     const duration = screen.duration;
@@ -31,8 +36,7 @@ const ScheduleBox = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    // startPoint = (hour + min - 1) / 64 * 100 * 0.85;
-    startPoint = 1/64;
+    startPoint = (hour + min) / 64 * 100 * 0.811;
     startPoint += "vw";
 
     // getting a width
@@ -42,7 +46,7 @@ const ScheduleBox = (prop) => {
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     let durationNum = hour + min;
-    width = oneDiv * durationNum * 100 * 0.85;
+    width = oneDiv * durationNum * 100 * 0.811;
     width = width + "vw";
     
     const ScreenBoxstyles = reactCSS({

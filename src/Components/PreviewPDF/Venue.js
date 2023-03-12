@@ -14,13 +14,12 @@ const styles = StyleSheet.create({
         'flexDirection': 'row',
         'margin': '0px auto',
         'width': '100vw',
-        'height': '3vh',
-        'minHeight': '3VH',
+        'height': '2.362vw',
         'backgroundColor': 'black',
         'color': 'white',
     },
     venue: {
-        'width': '18.9vw',
+        'width': '18.9%',
         'height': '100%',
         'fontFamily': 'Roboto',
         'color': 'black',
@@ -38,7 +37,7 @@ const styles = StyleSheet.create({
     // #808080
     screen: {
         'color': 'black',
-        'width': '81.1vw',
+        'width': '81.1%',
         'backgroundColor': '#808080',
         'flexDirection': 'row',
         'fontSize': '0.7vw',
@@ -77,11 +76,11 @@ const styles = StyleSheet.create({
         'margin': 'auto 0',
     },
 });
-const createdScheduleBox = (id)=> {
+const createdScheduleBox = (id) => {
     const scheduleBoxNum = 64;
     const scheduleBoxes = [];
     // console.log("created schedule boxes!");
-    for (let i =0; i < scheduleBoxNum; i++) {
+    for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
             if (i % 2 == 0) {
                 scheduleBoxes.push(<View style={styles.box1} key={i}></View>);
@@ -101,7 +100,7 @@ const createdScheduleBox = (id)=> {
         // } else {
         //     scheduleBoxes.push(<View style={styles.box4} key={i}></View>);
         // }
-        
+
     }
     return scheduleBoxes;
 }
@@ -117,10 +116,10 @@ const Venue = (props) => {
                 {createdScheduleBox(props.venueDetail.id)}
                 {props.venueDetail.screens.map((screen, index) => {
                     return (
-                    <ScheduleBox key={index} screen={screen}></ScheduleBox>
+                        <ScheduleBox key={index} screen={screen}></ScheduleBox>
                     );
                 })}
-                
+
             </View>
         </View>
     );

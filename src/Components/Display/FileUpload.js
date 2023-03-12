@@ -1,5 +1,6 @@
 /* eslint-disable require-jsdoc */
 import Node from '../ClassLib/Node';
+import RGB from '../ClassLib/RGB';
 import Toast from './SnackBar';
 
 import React, { useCallback, useState } from 'react';
@@ -9,8 +10,9 @@ import MaterialIcon, { colorPalette } from 'material-icons-react';
 
 const uploadedFiles = new Map();
 
-const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
+const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo}) => {
     const onDrop = useCallback((acceptedFiles) => {
+        console.log("accepted files:", acceptedFiles);
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
@@ -39,12 +41,15 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
                         active: true,
                     });
                 } else if (fileColumn.length == 1) {
+                    // colour file
+                    parsedColour(lines);
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
                         active: true,
                     });
                 } else if (fileColumn.length == 2) {
+                    // section file
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -52,6 +57,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
                     });
                 } else if (fileColumn.length == 3) {
                     parseGridVenues(lines);
+                    // gridvenue file
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -120,6 +126,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
                                 startTime: screenInfo.start_time,
                                 duration: screenInfo.screen_time,
                                 pageLocation: screenInfo.page_number,
+                                movieType: screenInfo.movie_type,
                             })),
                     }),
                 ),
@@ -179,10 +186,53 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
         lines.forEach((line) => {
             const mapping = line.split('\t');
             gridVenues.set(mapping[2].trim(), mapping[1]);
-            console.log(mapping);
         });
         setParsedGridVenues(gridVenues);
         console.log(gridVenues);
+    };
+    // parsed Colour file
+    const parsedColour = (lines) => {
+        // const colours= [];
+        const colourMap = new Map();
+        for (let row of lines) {
+            row = row.split(' ');
+            const movieType = row[0];
+            let c = row[2];
+            let m = row[3];
+            let y = row[4];
+            let k = row[5];
+
+            // Take a number of % and parse it to a number type
+            c = parseInt(c.substring(0, c.indexOf('%')));
+            m = parseInt(m.substring(0, m.indexOf('%')));
+            y = parseInt(y.substring(0, y.indexOf('%')));
+            k = parseInt(k.substring(0, k.indexOf('%')));
+
+            // Converting cmyk to rgb
+            // referecne: https://www.rapidtables.com/convert/color/cmyk-to-rgb.html
+            // R = 255 * (1-C) * (1-K); round values for all
+            // G = 255 * (1-M) * (1-K)
+            // B = 255 * (1-Y) * (1-K)
+            const hundred = 100;
+            c = c / hundred;
+            m = m / hundred;
+            y = y / hundred;
+            k = k / hundred;
+            const range = 255;
+            const r = Math.round(range * (1 - c) * (1 - k));
+            const g = Math.round(range * (1 - m) * (1 - k));
+            const b = Math.round(range * (1 - y) * (1 - k));
+            // const rgbColour = new RGB(movieType, r, g, b);
+            const colourObj = {
+                r: r,
+                g: g,
+                b: b,
+            }
+            // colours.push(colourObj);
+            colourMap.set(movieType, colourObj);
+        }
+        // console.log('colour map: \n', colourMap);
+        setColourInfo(colourMap);
     };
 
 
