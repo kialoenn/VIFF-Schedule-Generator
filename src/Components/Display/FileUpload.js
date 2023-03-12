@@ -195,6 +195,9 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo}) 
         // const colours= [];
         const colourMap = new Map();
         for (let row of lines) {
+            if (row.length == 0) {
+                break;
+            }
             row = row.split(' ');
             const movieType = row[0];
             let c = row[2];

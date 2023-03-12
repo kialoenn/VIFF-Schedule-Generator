@@ -5,12 +5,12 @@ import React from 'react';
 import reactCSS from 'reactcss'
 
 const ScheduleBox = (prop) => {
-    console.log("schedule box rgb:", prop.screen.colour);
-    console.log("r:", prop.screen.colour.r);
+    // console.log("schedule box rgb:", prop.screen.colour);
+    // console.log("r:", prop.screen.colour.r);
     const r = prop.screen.colour.r;
     const g = prop.screen.colour.g;
     const b = prop.screen.colour.b;
-    console.log(`rgb values: ${r}, ${g}, ${b}`);
+    // console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
     let startPoint;
     let color = `5px solid rgb(${r}, ${g}, ${b})`;
