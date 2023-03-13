@@ -1,17 +1,16 @@
 // Customized components import
 import MyDocument from '../PreviewPDF/PDF';
-import RGB from '../ClassLib/RGB';
 import FileUploader from './FileUpload';
+import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
 
 // CSS import
 import '../../css/Header.css';
 
 // External import
 import Button from '@mui/material/Button';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { PDFViewer } from '@react-pdf/renderer';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Content = (props) => {
     const pdfSettings = {
@@ -23,12 +22,14 @@ const Content = (props) => {
     const [colourInfo, setColourInfo] = useState([]);
     const [showData, setShowData] = useState(false);
 
+    const scheduleContext = useScheduleContext();
+    const parsedScheduleContext = scheduleContext.gridScreenTimes;
     const CheckData = () => {
-        if (parsedSchedule.length > 0) {
+        if (scheduleContext.gridScreenTimes.length > 0) {
             if (parsedGridVenues.size > 0) {
                 mapVenueName();
             }
-            console.log("colour info: ", colourInfo);
+            console.log('colour info: ', colourInfo);
             if (colourInfo.size > 0) {
                 insertColour();
             }
@@ -61,11 +62,11 @@ const Content = (props) => {
     const insertColour = () => {
         const colorSchedule = parsedSchedule.map((entry) => {
             entry.venue.map((venueEntry) => {
-                venueEntry.screens.map((screenEntry)=> {
-                    screenEntry.colour = 
-                        colourInfo.has(screenEntry.movieType)?
+                venueEntry.screens.map((screenEntry) => {
+                    screenEntry.colour =
+                        colourInfo.has(screenEntry.movieType) ?
                             colourInfo.get(screenEntry.movieType) :
-                            "unknown";
+                            'unknown';
                     return screenEntry;
                 });
                 return venueEntry;
@@ -86,7 +87,9 @@ const Content = (props) => {
                     {/* Upload Files: <DragDrop setParsedSchedule={setParsedSchedule} /> */}
 
                     <div id="file-upload">
-                        <FileUploader setParsedSchedule={setParsedSchedule} setParsedGridVenues={setParsedGridVenues} setColourInfo={setColourInfo} />
+                        <FileUploader setParsedSchedule={setParsedSchedule}
+                            setParsedGridVenues={setParsedGridVenues}
+                            setColourInfo={setColourInfo} />
                     </div>
 
                 </div>
@@ -107,7 +110,7 @@ const Content = (props) => {
 
                     {showData ? (
                         <PDFViewer width={1024} height={768}>
-                            <MyDocument data={{ pdfSettings, parsedSchedule }} />
+                            <MyDocument data={{ pdfSettings, parsedScheduleContext }} />
                         </PDFViewer>
                     ) : (
                         <div id="generateMsg"></div>

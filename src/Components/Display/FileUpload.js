@@ -1,18 +1,22 @@
 /* eslint-disable require-jsdoc */
 import Node from '../ClassLib/Node';
-import RGB from '../ClassLib/RGB';
 import Toast from './SnackBar';
 
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
 import '../../css/FileUpload.css';
-import MaterialIcon, { colorPalette } from 'material-icons-react';
+
+
+import MaterialIcon from 'material-icons-react';
 
 const uploadedFiles = new Map();
 
-const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo}) => {
+const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo }) => {
+    const scheduleContext = useScheduleContext();
+
     const onDrop = useCallback((acceptedFiles) => {
-        console.log("accepted files:", acceptedFiles);
+        console.log('accepted files:', acceptedFiles);
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
@@ -34,7 +38,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo}) 
                 const lines = csvData.split('\n');
                 const fileColumn = lines[0].split('\t');
                 if (fileColumn.length == 9) {
-                    parseGridScreens(lines);
+                    scheduleContext.parseGridScreens(lines);
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -76,6 +80,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo}) 
         console.log(uploadedFiles);
     }, []);
 
+    // eslint-disable-next-line no-unused-vars
     const { acceptedFiles, getRootProps, getInputProps } = useDropzone(
         {
             onDrop: onDrop,
@@ -230,7 +235,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo}) 
                 r: r,
                 g: g,
                 b: b,
-            }
+            };
             // colours.push(colourObj);
             colourMap.set(movieType, colourObj);
         }
