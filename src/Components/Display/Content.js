@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { PDFViewer } from '@react-pdf/renderer';
 import { useState } from 'react';
+import SchedulePreview from '../EditableSchedule/SchedulePreview';
 
 const Content = (props) => {
     const pdfSettings = {
@@ -24,10 +25,11 @@ const Content = (props) => {
 
     const scheduleContext = useScheduleContext();
     const parsedScheduleContext = scheduleContext.gridScreenTimes;
+
     const CheckData = () => {
         if (scheduleContext.gridScreenTimes.length > 0) {
             if (parsedGridVenues.size > 0) {
-                mapVenueName();
+                scheduleContext.mapVenueName(parsedGridVenues);
             }
             console.log('colour info: ', colourInfo);
             if (colourInfo.size > 0) {
@@ -44,23 +46,8 @@ const Content = (props) => {
         return parsedSchedule.length > 0;
     };
 
-    const mapVenueName = () => {
-        const nextParsedSchedule = parsedSchedule.map((entry) => {
-            entry.venue.map((venueEntry) => {
-                venueEntry.venueName =
-                    parsedGridVenues.has(venueEntry.venueName) ?
-                        parsedGridVenues.get(venueEntry.venueName) :
-                        venueEntry.venueName;
-                return venueEntry;
-            });
-            return entry;
-        });
-        console.log(nextParsedSchedule);
-        setParsedSchedule(nextParsedSchedule);
-    };
-
     const insertColour = () => {
-        const colorSchedule = parsedSchedule.map((entry) => {
+        const colorSchedule = parsedScheduleContext.map((entry) => {
             entry.venue.map((venueEntry) => {
                 venueEntry.screens.map((screenEntry) => {
                     screenEntry.colour =
@@ -109,12 +96,18 @@ const Content = (props) => {
                     </div>
 
                     {showData ? (
-                        <PDFViewer width={1024} height={768}>
-                            <MyDocument data={{ pdfSettings, parsedScheduleContext }} />
-                        </PDFViewer>
+                        <div>
+                            <PDFViewer width={1024} height={768}>
+                                <MyDocument data={{ pdfSettings, parsedScheduleContext }} />
+                            </PDFViewer>
+                            <SchedulePreview></SchedulePreview>
+                        </div>
+
                     ) : (
                         <div id="generateMsg"></div>
                     )}
+
+
                 </div>
             </div>
         </>

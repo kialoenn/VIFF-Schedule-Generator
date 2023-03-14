@@ -51,8 +51,16 @@ const createMap = (movieInfo) => {
     });
     for (const item of testData) {
         parsedSchedule[parsedScheduleIndex] = item;
+        parsedSchedule[parsedScheduleIndex].id = parsedScheduleIndex;
+        parsedSchedule[parsedScheduleIndex].venue.forEach((k, i) => {
+            k.id = i;
+            k.screens.forEach((kk, ii) => {
+                kk.id = ii;
+            });
+        });
         parsedScheduleIndex++;
     }
+    console.log(parsedSchedule);
     return parsedSchedule;
 };
 
@@ -85,4 +93,18 @@ const parseGridScreensHelper = async (lines) => {
     return createMap(movieInfo);
 };
 
-export default parseGridScreensHelper;
+const mapVenueNameHelper = async (parsedSchedule, parsedGridVenues) => {
+    const nextParsedSchedule = parsedSchedule.map((entry) => {
+        entry.venue.map((venueEntry) => {
+            venueEntry.venueName =
+                parsedGridVenues.has(venueEntry.venueName) ?
+                    parsedGridVenues.get(venueEntry.venueName) :
+                    venueEntry.venueName;
+            return venueEntry;
+        });
+        return entry;
+    });
+    return nextParsedSchedule;
+};
+
+export { parseGridScreensHelper, mapVenueNameHelper };

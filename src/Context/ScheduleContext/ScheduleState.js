@@ -3,8 +3,10 @@ import ScheduleContext from './ScheduleContext';
 import ScheduleReducer from './ScheduleReducer';
 import {
     PARSE_GRIDSCREENTIMES,
+    MAP_VENUENAME,
+    SET_DATE,
 } from '../ActionType';
-import parseGridScreensHelper from '../../Helper/ParsingHelper';
+import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/ParsingHelper';
 
 const ScheduleState = (props) => {
     const initialState = {
@@ -22,11 +24,29 @@ const ScheduleState = (props) => {
         });
     };
 
+    // Map venue code to name
+    const mapVenueName = async (parsedGridVenues) => {
+        const result = await mapVenueNameHelper(state.gridScreenTimes, parsedGridVenues);
+        dispatch({
+            type: MAP_VENUENAME,
+            screenTimes: result,
+        });
+    };
+
+    const setDate = (rowId) => {
+        dispatch({
+            type: SET_DATE,
+            index: rowId,
+        });
+    };
+
     return (
         <ScheduleContext.Provider
             value={{
                 gridScreenTimes: state.gridScreenTimes,
                 parseGridScreens,
+                mapVenueName,
+                setDate,
             }}>
             {props.children}
         </ScheduleContext.Provider>

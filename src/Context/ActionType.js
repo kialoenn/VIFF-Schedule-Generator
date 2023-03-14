@@ -1,1 +1,5 @@
 export const PARSE_GRIDSCREENTIMES = 'PARSE_GRIDSCREENTIMES';
+export const MAP_VENUENAME = 'MAP_VENUENAME';
+export const SET_DATE = 'SET_DATE';
+
+
