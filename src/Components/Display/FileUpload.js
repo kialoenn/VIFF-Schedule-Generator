@@ -111,44 +111,43 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
         // const colours= [];
         const colourMap = new Map();
         for (let row of lines) {
-            if (row.length == 0) {
-                break;
+            if (row.length != 0) {
+                row = row.split(' ');
+                const movieType = row[0];
+                let c = row[2];
+                let m = row[3];
+                let y = row[4];
+                let k = row[5];
+
+                // Take a number of % and parse it to a number type
+                c = parseInt(c.substring(0, c.indexOf('%')));
+                m = parseInt(m.substring(0, m.indexOf('%')));
+                y = parseInt(y.substring(0, y.indexOf('%')));
+                k = parseInt(k.substring(0, k.indexOf('%')));
+
+                // Converting cmyk to rgb
+                // referecne: https://www.rapidtables.com/convert/color/cmyk-to-rgb.html
+                // R = 255 * (1-C) * (1-K); round values for all
+                // G = 255 * (1-M) * (1-K)
+                // B = 255 * (1-Y) * (1-K)
+                const hundred = 100;
+                c = c / hundred;
+                m = m / hundred;
+                y = y / hundred;
+                k = k / hundred;
+                const range = 255;
+                const r = Math.round(range * (1 - c) * (1 - k));
+                const g = Math.round(range * (1 - m) * (1 - k));
+                const b = Math.round(range * (1 - y) * (1 - k));
+                // const rgbColour = new RGB(movieType, r, g, b);
+                const colourObj = {
+                    r: r,
+                    g: g,
+                    b: b,
+                };
+                // colours.push(colourObj);
+                colourMap.set(movieType, colourObj);
             }
-            row = row.split(' ');
-            const movieType = row[0];
-            let c = row[2];
-            let m = row[3];
-            let y = row[4];
-            let k = row[5];
-
-            // Take a number of % and parse it to a number type
-            c = parseInt(c.substring(0, c.indexOf('%')));
-            m = parseInt(m.substring(0, m.indexOf('%')));
-            y = parseInt(y.substring(0, y.indexOf('%')));
-            k = parseInt(k.substring(0, k.indexOf('%')));
-
-            // Converting cmyk to rgb
-            // referecne: https://www.rapidtables.com/convert/color/cmyk-to-rgb.html
-            // R = 255 * (1-C) * (1-K); round values for all
-            // G = 255 * (1-M) * (1-K)
-            // B = 255 * (1-Y) * (1-K)
-            const hundred = 100;
-            c = c / hundred;
-            m = m / hundred;
-            y = y / hundred;
-            k = k / hundred;
-            const range = 255;
-            const r = Math.round(range * (1 - c) * (1 - k));
-            const g = Math.round(range * (1 - m) * (1 - k));
-            const b = Math.round(range * (1 - y) * (1 - k));
-            // const rgbColour = new RGB(movieType, r, g, b);
-            const colourObj = {
-                r: r,
-                g: g,
-                b: b,
-            };
-            // colours.push(colourObj);
-            colourMap.set(movieType, colourObj);
         }
         // console.log('colour map: \n', colourMap);
         setColourInfo(colourMap);

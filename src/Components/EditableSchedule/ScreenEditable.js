@@ -13,7 +13,7 @@ const ScreenEditable = (prop) => {
     // console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
     let startPoint;
-    const color = `5px solid rgb(${r}, ${g}, ${b})`;
+    const color = `2px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
     const startTime = screen.startTime;
     const duration = screen.duration;
@@ -36,7 +36,7 @@ const ScreenEditable = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    startPoint = (hour + min) / 64 * 100 * 0.811;
+    startPoint = (hour + min) / 64 * 100 * 0.52;
     startPoint += 'vw';
 
     // getting a width
@@ -46,27 +46,32 @@ const ScreenEditable = (prop) => {
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     const durationNum = hour + min;
-    width = oneDiv * durationNum * 100 * 0.811;
+    width = oneDiv * durationNum * 100 * 0.52;
     width = width + 'vw';
 
     const ScreenBoxstyles = reactCSS({
         'default': {
             screenBox: {
-                height: '100%',
+                height: '2%',
                 position: 'absolute',
                 width: width,
                 marginLeft: startPoint,
                 backgroundColor: 'white',
-                borderTop: '3px solid black',
-                borderLeft: '3px dotted black',
-                borderBottom: '3px solid black',
+                borderTop: '1px solid black',
+                borderLeft: '1px dotted black',
+                borderBottom: '1px solid black',
                 borderRight: color,
+            },
+            title: {
+                height: '50%',
+                fontSize: '1.5em',
+                margin: '0',
             },
         },
     });
     return (
-        <div className='screenBox'>
-            <div>{screen.screenTitle}</div>
+        <div className='screenBox' style={ScreenBoxstyles.screenBox}>
+            <div style={ScreenBoxstyles.title}>{screen.screenTitle}</div>
             <div>{screen.startTime} {screen.duration} </div>
         </div>
 

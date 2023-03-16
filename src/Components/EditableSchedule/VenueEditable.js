@@ -19,10 +19,10 @@ const styles = reactCSS({
         'color': 'white',
     },
     venue: {
-        'width': '18.9%',
+        'width': '18.9vw',
         'height': '100%',
         'fontFamily': 'Roboto',
-        'color': 'black',
+        'color': 'blue',
         'fontSize': '1vw',
         'fontWeight': '700',
         // 'margin': 'auto',
@@ -37,7 +37,7 @@ const styles = reactCSS({
     // #808080
     screen: {
         'color': 'black',
-        'width': '81.1%',
+        'width': '81.1vw',
         'backgroundColor': '#808080',
         'flexDirection': 'row',
         'fontSize': '0.7vw',
@@ -82,16 +82,17 @@ const createdScheduleBox = (id) => {
     // console.log("created schedule boxes!");
     for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
+            console.log("i= ", i);
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={styles.box1} key={i}></div>);
+                scheduleBoxes.push(<div style={styles.box1} className="box1" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={styles.box3} key={i}></div>);
+                scheduleBoxes.push(<div style={styles.box3} className="box3" key={i}></div>);
             }
-        } else if (id % 2 == 1) {
+        } else {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={styles.box2} key={i}></div>);
+                scheduleBoxes.push(<div style={styles.box2} className="box2" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={styles.box4} key={i}></div>);
+                scheduleBoxes.push(<div style={styles.box4} className="box4" key={i}></div>);
             }
         }
         // } else if (i % 4 == 2) {

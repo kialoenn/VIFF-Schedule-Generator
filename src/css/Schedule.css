@@ -42,14 +42,15 @@
     display: flex;
     margin: 0px auto;
     width: 90%;
+    height: 2.362%;
     background-color: black;
     color: white;
 }
 
 .venue {
-    width: 15%;
+    width: 18.9%;
     font-family: Roboto;
-    color: black;
+    color: blue;
     font-size: 0.8em;
     font-weight: 700;
     margin: auto;
@@ -64,7 +65,7 @@
 
 .screen {
     color: black;
-    width: 85%;
+    width: 81.1%;
     background-color: #808080;
     display: grid;
     grid-template-columns: 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625% 1.5625%;
@@ -75,6 +76,30 @@
 }
 
 .grid2 {
+    border-right: 2px dotted black;
+}
+
+.box1 {
+    background-color: #d1cac0;
+    height: 100%;
+    border-right: 1px dotted black;
+}
+
+.box2 {
+    background-color: #9e9991;
+    height: 100%;
+    border-right: 1px dotted black;
+}
+
+.box3 {
+    background-color: #d1cac0;
+    height: 100%;
+    border-right: 2px dotted black;
+}
+
+.box4 {
+    background-color: #9e9991;
+    height: 100%;
     border-right: 2px dotted black;
 }
 
