@@ -13,7 +13,10 @@ import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/Parsing
 const ScheduleState = (props) => {
     const initialState = {
         gridScreenTimes: [],
-        colorCustom: [],
+        colorSettings: {
+            venue: 'red',
+            timeline: 'black',
+        },
     };
 
     const [state, dispatch] = useReducer(ScheduleReducer, initialState);
@@ -42,8 +45,7 @@ const ScheduleState = (props) => {
             index: rowId,
         });
     };
-
-    // Color setting
+    
     const setColor = (color) => {
         console.log('color: ', color);
         let r,g,b;
@@ -54,16 +56,19 @@ const ScheduleState = (props) => {
             b = color.b;
             console.log("rgb: ", r, g, b);
         }
-        // dispatch({
-        //     type: SET_COLOR,
-        //     color: color,
-        // })
-    }
+
+        dispatch({
+            type: SET_COLOR,
+            type: id,
+            color: color,
+        });
+    };
 
     return (
         <ScheduleContext.Provider
             value={{
                 gridScreenTimes: state.gridScreenTimes,
+                colorSettings: state.colorSettings,
                 parseGridScreens,
                 mapVenueName,
                 setDate,

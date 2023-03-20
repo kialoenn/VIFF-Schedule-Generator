@@ -31,12 +31,9 @@ export default (state, action) => {
                 }),
             };
         case SET_COLOR:
-            console.log('color info:' + action.color.r);
-            console.log('state:', state);
             return {
                 ...state,
-                gridScreenTimes: [],
-                colorCustom: action.color,
+                colorSettings: state.colorSettings[action.type] = action.color,
             };
         default:
             return state;
