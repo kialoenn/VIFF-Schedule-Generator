@@ -24,7 +24,7 @@ class SketchExample extends React.Component {
 
     handleChange = (color) => {
         this.setState({ color: color.rgb });
-        this.props.parentCallBack(this.state.color, this.props.id);
+        this.props.parentCallBack(color.rgb, this.props.id);
     };
 
     render() {

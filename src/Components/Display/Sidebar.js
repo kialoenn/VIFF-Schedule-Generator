@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 // Sidebar Component imports
 import CMYKConverter from './SidebarComponents/CMYKConverter';
@@ -22,6 +22,8 @@ import MaterialIcon, { colorPalette } from 'material-icons-react';
 
 
 const Sidebar = () => {
+    const [colorComponent, setColorComponent] = useState({r: 0, g: 0, b: 0, a: 0, id: ""});
+    console.log(colorComponent);
     return (
         <div className='sidebar'>
             <h3>Customization Menu</h3>
@@ -57,7 +59,7 @@ const Sidebar = () => {
                                 </span>Color Settings</span>
                         </AccordionSummary>
                         <AccordionDetails>
-                           <ColorSettings/>
+                           <ColorSettings sendColorData={data => setColorComponent(data)}/>
                         </AccordionDetails>
                     </Accordion>
                 </div>
