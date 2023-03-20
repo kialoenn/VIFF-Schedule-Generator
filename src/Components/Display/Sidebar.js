@@ -20,14 +20,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MaterialIcon, { colorPalette } from 'material-icons-react';
 
-import ScheduleContext, { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
-
 
 const Sidebar = () => {
-    const [colorComponent, setColorComponent] = useState({});
-    console.log(colorComponent);
-    const scheduleContext = useScheduleContext();
-    scheduleContext.setColor(colorComponent);
     return (
         <div className='sidebar'>
             <h3>Customization Menu</h3>
@@ -63,7 +57,7 @@ const Sidebar = () => {
                                 </span>Color Settings</span>
                         </AccordionSummary>
                         <AccordionDetails>
-                           <ColorSettings sendColorData={data => setColorComponent(data)}/>
+                           <ColorSettings/>
                         </AccordionDetails>
                     </Accordion>
                 </div>

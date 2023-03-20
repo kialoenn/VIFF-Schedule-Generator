@@ -3,13 +3,13 @@ import React from 'react';
 import ColorPicker from './ColorPicker';
 import { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleContext';
 
-const ColorSettings = (props) => {
+const ColorSettings = () => {
     const scheduleContext = useScheduleContext();
 
     const handleCallBack = (childData, id) => {
         let colorData = { r: childData.r, g: childData.g, b: childData.b, a: childData.a, id: id };
-        props.sendColorData(colorData);
-        scheduleContext.setColor('venue', '#000000');
+        console.log(colorData);
+        scheduleContext.setColor(colorData);
     };
     return (
         <div className="accordionItems">
