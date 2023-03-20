@@ -3,14 +3,14 @@ import React from 'react';
 import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
 
-class VenueText extends React.Component {
+class SketchExample extends React.Component {
     state = {
         displayColorPicker: false,
         color: {
-            r: '0',
-            g: '0',
-            b: '0',
-            a: '0',
+            r: '241',
+            g: '112',
+            b: '19',
+            a: '1',
         },
     };
 
@@ -24,6 +24,7 @@ class VenueText extends React.Component {
 
     handleChange = (color) => {
         this.setState({ color: color.rgb });
+        this.props.parentCallBack(color.rgb, this.props.id);
     };
 
     render() {
@@ -75,4 +76,4 @@ class VenueText extends React.Component {
     }
 }
 
-export default VenueText;
+export default SketchExample;
