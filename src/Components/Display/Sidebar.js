@@ -22,7 +22,7 @@ import MaterialIcon, { colorPalette } from 'material-icons-react';
 
 
 const Sidebar = () => {
-    const [colorComponent, setColorComponent] = useState({r: 0, g: 0, b: 0, a: 0, id: ""});
+    const [colorComponent, setColorComponent] = useState({});
     console.log(colorComponent);
     return (
         <div className='sidebar'>
