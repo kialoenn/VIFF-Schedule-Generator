@@ -5,12 +5,17 @@ import {
     PARSE_GRIDSCREENTIMES,
     MAP_VENUENAME,
     SET_DATE,
+    SET_COLOR,
 } from '../ActionType';
 import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/ParsingHelper';
 
 const ScheduleState = (props) => {
     const initialState = {
         gridScreenTimes: [],
+        colorSettings: {
+            venue: 'red',
+            timeline: 'black',
+        },
     };
 
     const [state, dispatch] = useReducer(ScheduleReducer, initialState);
@@ -40,13 +45,23 @@ const ScheduleState = (props) => {
         });
     };
 
+    const setColor = (type, color) => {
+        dispatch({
+            type: SET_COLOR,
+            type: type,
+            color: color,
+        });
+    };
+
     return (
         <ScheduleContext.Provider
             value={{
                 gridScreenTimes: state.gridScreenTimes,
+                colorSettings: state.colorSettings,
                 parseGridScreens,
                 mapVenueName,
                 setDate,
+                setColor,
             }}>
             {props.children}
         </ScheduleContext.Provider>

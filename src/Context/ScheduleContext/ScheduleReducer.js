@@ -2,6 +2,7 @@ import {
     PARSE_GRIDSCREENTIMES,
     MAP_VENUENAME,
     SET_DATE,
+    SET_COLOR,
 } from '../ActionType';
 
 export default (state, action) => {
@@ -27,6 +28,11 @@ export default (state, action) => {
                         return t;
                     }
                 }),
+            };
+        case SET_COLOR:
+            return {
+                ...state,
+                colorSettings: state.colorSettings[action.type] = action.color,
             };
         default:
             return state;
