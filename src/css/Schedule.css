@@ -63,6 +63,10 @@
     border-left: 2px solid black;
 }
 
+.text {
+    height: 2.362vh;
+}
+
 .screen {
     color: black;
     width: 81.1%;

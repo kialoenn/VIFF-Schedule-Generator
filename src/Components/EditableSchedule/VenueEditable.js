@@ -14,7 +14,7 @@ const styles = reactCSS({
         'flexDirection': 'row',
         'margin': '0px auto',
         'width': '100vw',
-        'height': '2.362vw',
+        'height': '2.362vh',
         'backgroundColor': 'black',
         'color': 'white',
     },
@@ -74,6 +74,7 @@ const styles = reactCSS({
 
     text: {
         'margin': 'auto 0',
+        'height': '2.362vh',
     },
 });
 const createdScheduleBox = (id) => {
@@ -82,7 +83,6 @@ const createdScheduleBox = (id) => {
     // console.log("created schedule boxes!");
     for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
-            console.log("i= ", i);
             if (i % 2 == 0) {
                 scheduleBoxes.push(<div style={styles.box1} className="box1" key={i}></div>);
             } else {
@@ -109,7 +109,7 @@ const VenueEditable = (props) => {
     return (
         <div className='venueRow'>
             <div className='venue'>
-                <div style={styles.text}>{props.venueDetail.venueName}</div>
+                <div className='text' style={styles.text}>{props.venueDetail.venueName}</div>
             </div>
             <div className='screen'>
                 {createdScheduleBox(props.venueDetail.id)}

@@ -36,7 +36,7 @@ const ScreenEditable = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    startPoint = (hour + min) / 64 * 100 * 0.52;
+    startPoint = (hour + min) / 64 * 100 * 0.607;
     startPoint += 'vw';
 
     // getting a width
@@ -52,7 +52,7 @@ const ScreenEditable = (prop) => {
     const ScreenBoxstyles = reactCSS({
         'default': {
             screenBox: {
-                height: '2%',
+                height: '2.362vh',
                 position: 'absolute',
                 width: width,
                 marginLeft: startPoint,
