@@ -5,6 +5,7 @@ import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContex
 
 const TimelineEditable = (props) => {
     const scheduleContext = useScheduleContext();
+    console.log("timeline Editable props:", props);
     return (
         <div className='timelineRow'>
             <button onClick={() => {
