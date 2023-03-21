@@ -8,33 +8,32 @@ const ColorSettings = () => {
 
     const handleCallBack = (childData, id) => {
         let colorData = { r: childData.r, g: childData.g, b: childData.b, a: childData.a, id: id };
-        console.log(colorData);
         scheduleContext.setColor(colorData);
     };
     return (
         <div className="accordionItems">
             <p id="colorLabels">Date Text</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Date Text"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"dateText"} /></div>
             <p id="colorLabels">Date Bar</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Date Bar"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"dateBar"} /></div>
             <p id="colorLabels">Time Text</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Time Text"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"timeText"} /></div>
             <p id="colorLabels">Venue Text</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Venue Text"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"venueText"} /></div>
             <p id="colorLabels">Venue Bar</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Venue Bar"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"venueBar"} /></div>
             <p id="colorLabels">Film Title Text</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Film Title Text"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"filmTitleText"} /></div>
             <p id="colorLabels">Film Details Text</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Film Details Text"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"filmDetailsText"} /></div>
             <p id="colorLabels">Film Block</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Film Block"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"filmBlock"} /></div>
             <p id="colorLabels">Odd Row</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Odd Row"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"oddRow"} /></div>
             <p id="colorLabels">Even Row</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Even Row"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"evenRow"} /></div>
             <p id="colorLabels">Background</p>
-            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"Background"} /></div>
+            <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={"backGround"} /></div>
         </div>
     )
 }

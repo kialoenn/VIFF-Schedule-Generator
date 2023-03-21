@@ -14,8 +14,17 @@ const ScheduleState = (props) => {
     const initialState = {
         gridScreenTimes: [],
         colorSettings: {
-            venue: 'red',
-            timeline: 'black',
+            dateText: {},
+            dateBar: {},
+            timeText: {},
+            venueText: {},
+            venueBar: {},
+            filmTitleText: {},
+            filmDetailsText: {},
+            filmBlock: {},
+            oddRow: {},
+            evenRow: {},
+            backGround: {}
         },
     };
 
@@ -47,20 +56,11 @@ const ScheduleState = (props) => {
     };
     
     const setColor = (color) => {
-        console.log('color: ', color);
-        let r,g,b;
-        let id = color.id;
-        if (id == "Date Text") {
-            r = color.r;
-            g = color.g;
-            b = color.b;
-            console.log("rgb: ", r, g, b);
-        }
-
+        let colorObject = {r: color.r, g: color.g, b: color.b, a: color.a}
         dispatch({
             type: SET_COLOR,
-            type: id,
-            color: color,
+            id: color.id,
+            color: colorObject,
         });
     };
 

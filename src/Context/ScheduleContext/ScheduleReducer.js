@@ -33,7 +33,7 @@ export default (state, action) => {
         case SET_COLOR:
             return {
                 ...state,
-                colorSettings: state.colorSettings[action.type] = action.color,
+                colorSettings: {...state.colorSettings, [action.id]: action.color},
             };
         default:
             return state;
