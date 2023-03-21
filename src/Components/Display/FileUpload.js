@@ -58,15 +58,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
                         active: true,
                     });
                 } else if (fileColumn.length == 3) {
-<<<<<<< HEAD
                     // gridvenue file
-=======
-<<<<<<< HEAD
-                    parseGridVenues(lines);
-=======
-                    // gridvenue file
->>>>>>> 4d5e73e (Added some console log to chekc out the parameters. Commited to pull.)
->>>>>>> 39b14b4a8c2db89b201b581b355ea4dd71d66a4b
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
@@ -188,9 +180,6 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
         createMap(movieInfo);
     };
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     const parseGridVenues = (lines) => {
         console.log('inside');
         const gridVenues = new Map();
@@ -200,18 +189,15 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues }) => {
         });
         setParsedGridVenues(gridVenues);
         console.log(gridVenues);
-=======
->>>>>>> 39b14b4a8c2db89b201b581b355ea4dd71d66a4b
+    };
+
     // parsed Colour file
     const parsedColour = (lines) => {
         const colourInfo = [];
         for (let i = 0; i < lines.length -1; i++) {
             const row = lines[i].split(' ');
         }
-<<<<<<< HEAD
-=======
->>>>>>> 4d5e73e (Added some console log to chekc out the parameters. Commited to pull.)
->>>>>>> 39b14b4a8c2db89b201b581b355ea4dd71d66a4b
+
     };
 
 
