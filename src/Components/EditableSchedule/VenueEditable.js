@@ -12,7 +12,22 @@ import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContex
 import React from 'react';
 import reactCSS from 'reactcss';
 
+const VenueEditable = (props) => {
+    // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
+    const convert = require('color-convert');
+    const scheduleContext = useScheduleContext();
+    const colors = scheduleContext.colorSettings;
 
+    const oddRowColors = colors["oddRow"];
+    const oddRowColorHex = convert.rgb.hex(oddRowColors.r, oddRowColors.g, oddRowColors.b);
+    
+    
+const oddBoxes = {
+    'backgroundColor': '#' + oddRowColorHex, // evenRow{}
+    // 'width': '1.5625vw',
+    // 'height': '100%',
+    // 'borderRight': '3px dotted black',
+}
 const styles = reactCSS({
     venueRow: {
         'flexDirection': 'row',
@@ -89,9 +104,9 @@ const createdScheduleBox = (id) => {
     for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={styles.box1} className="box1" key={i}></div>);
+                scheduleBoxes.push(<div style={oddBoxes} className="box1" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={styles.box3} className="box3" key={i}></div>);
+                scheduleBoxes.push(<div style={oddBoxes} className="box3" key={i}></div>);
             }
         } else {
             if (i % 2 == 0) {
@@ -108,11 +123,6 @@ const createdScheduleBox = (id) => {
     }
     return scheduleBoxes;
 };
-
-const VenueEditable = (props) => {
-    const scheduleContext = useScheduleContext();
-    const colors = scheduleContext.colorSettings;
-    // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
         <div className='venueRow'>
             <div className='venue'>
