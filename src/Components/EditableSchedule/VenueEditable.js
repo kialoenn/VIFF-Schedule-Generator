@@ -12,8 +12,7 @@ import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContex
 import React from 'react';
 import reactCSS from 'reactcss';
 
-// const scheduleContext = useScheduleContext();
-// const colors = scheduleContext.colorSettings;
+
 const styles = reactCSS({
     venueRow: {
         'flexDirection': 'row',
@@ -80,6 +79,7 @@ const styles = reactCSS({
     text: {
         'margin': 'auto 0',
         'height': '2.362vh',
+        'color': 'black',
     },
 });
 const createdScheduleBox = (id) => {
@@ -110,6 +110,8 @@ const createdScheduleBox = (id) => {
 };
 
 const VenueEditable = (props) => {
+    const scheduleContext = useScheduleContext();
+    const colors = scheduleContext.colorSettings;
     // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
         <div className='venueRow'>

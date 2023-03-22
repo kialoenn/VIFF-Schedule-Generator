@@ -14,7 +14,7 @@ const ScheduleState = (props) => {
     const initialState = {
         gridScreenTimes: [],
         colorSettings: {
-            dateText: {},
+            dateText: {r: 255, g: 165, b: 0},
             dateBar: {},
             timeText: {},
             venueText: {},
