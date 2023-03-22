@@ -20,13 +20,15 @@ const VenueEditable = (props) => {
 
     const oddRowColors = colors["oddRow"];
     const oddRowColorHex = convert.rgb.hex(oddRowColors.r, oddRowColors.g, oddRowColors.b);
-    
-    
+    const evenRowColors = colors["evenRow"];
+    const evenRowColorHex = convert.rgb.hex(evenRowColors.r, evenRowColors.g, evenRowColors.b);
+
 const oddBoxes = {
-    'backgroundColor': '#' + oddRowColorHex, // evenRow{}
-    // 'width': '1.5625vw',
-    // 'height': '100%',
-    // 'borderRight': '3px dotted black',
+    'backgroundColor': '#' + oddRowColorHex, 
+}
+
+const evenBoxes = {
+    'backgroundColor': '#' + evenRowColorHex,
 }
 const styles = reactCSS({
     venueRow: {
@@ -109,9 +111,9 @@ const createdScheduleBox = (id) => {
             }
         } else {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={styles.box2} className="box2" key={i}></div>);
+                scheduleBoxes.push(<div style={evenBoxes} className="box2" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={styles.box4} className="box4" key={i}></div>);
+                scheduleBoxes.push(<div style={evenBoxes} className="box4" key={i}></div>);
             }
         }
         // } else if (i % 4 == 2) {
