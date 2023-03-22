@@ -8,7 +8,7 @@ const TimelineEditable = (props) => {
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
     console.log("timeline Editable props:", props);
-    console.log("color setting:", colors);
+    // console.log("color setting:", colors);
     const styles = reactCSS({
         'default' : {
 
