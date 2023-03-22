@@ -12,8 +12,8 @@ import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContex
 import React from 'react';
 import reactCSS from 'reactcss';
 
-const scheduleContext = useScheduleContext();
-const colors = scheduleContext.colorSettings;
+// const scheduleContext = useScheduleContext();
+// const colors = scheduleContext.colorSettings;
 const styles = reactCSS({
     venueRow: {
         'flexDirection': 'row',
