@@ -96,6 +96,7 @@ const styles = reactCSS({
     text: {
         'margin': 'auto 0',
         'height': '2.362vh',
+        'color': 'black',
     },
 });
 const createdScheduleBox = (id) => {
