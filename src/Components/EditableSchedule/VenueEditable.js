@@ -5,24 +5,29 @@ import ScreenEditable from './ScreenEditable';
 import '../../css/Dashboard.css';
 import '../../css/Schedule.css';
 
+// context import
+import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
+
 // External import
 import React from 'react';
 import reactCSS from 'reactcss';
 
+const scheduleContext = useScheduleContext();
+const colors = scheduleContext.colorSettings;
 const styles = reactCSS({
     venueRow: {
         'flexDirection': 'row',
         'margin': '0px auto',
         'width': '100vw',
         'height': '2.362vh',
-        'backgroundColor': 'black',
+        'backgroundColor': 'black', // background ?
         'color': 'white',
     },
     venue: {
         'width': '18.9vw',
         'height': '100%',
         'fontFamily': 'Roboto',
-        'color': 'blue',
+        'color': 'blue', // venueText {}
         'fontSize': '1vw',
         'fontWeight': '700',
         // 'margin': 'auto',
@@ -45,28 +50,28 @@ const styles = reactCSS({
     },
 
     box1: {
-        'backgroundColor': '#d1cac0',
+        'backgroundColor': '#d1cac0', // evenRow{}
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '3px dotted black',
     },
 
     box2: {
-        'backgroundColor': '#9e9991',
+        'backgroundColor': '#9e9991', // oddRow{}
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '3px dotted black',
     },
 
     box3: {
-        'backgroundColor': '#d1cac0',
+        'backgroundColor': '#d1cac0', // evenRow{}
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '5px dotted black',
     },
 
     box4: {
-        'backgroundColor': '#9e9991',
+        'backgroundColor': '#9e9991',// odd Row{}
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '5px dotted black',

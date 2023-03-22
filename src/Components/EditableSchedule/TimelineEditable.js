@@ -1,11 +1,14 @@
 import React from 'react';
+import reactCSS from 'reactcss';
 import '../../css/Schedule.css';
 import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
 
 
 const TimelineEditable = (props) => {
     const scheduleContext = useScheduleContext();
+    const colors = scheduleContext.colorSettings;
     console.log("timeline Editable props:", props);
+    console.log("color setting:", colors );
     return (
         <div className='timelineRow'>
             <button onClick={() => {
