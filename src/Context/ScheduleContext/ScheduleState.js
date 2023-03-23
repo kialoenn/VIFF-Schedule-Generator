@@ -14,14 +14,14 @@ const ScheduleState = (props) => {
     const initialState = {
         gridScreenTimes: [],
         colorSettings: {
-            dateText: {r: 255, g: 165, b: 0},
-            dateBar: {},
-            timeText: {},
-            venueText: {},
-            venueBar: {},
-            filmTitleText: {},
-            filmDetailsText: {},
-            filmBlock: {},
+            dateText: {r: 255, g: 165, b: 0, a: 1},
+            dateBar: {r: 0, g: 0, b: 0, a: 1},
+            timeText: {r: 255, g: 255, b: 255, a: 1},
+            venueText: {r: 0, g: 0, b: 255, a: 1},
+            venueBar: {r: 167, g: 169, b: 172, a: 1},
+            filmTitleText: {r: 0, g: 0, b: 0, a: 1},
+            filmDetailsText: {r: 0, g: 0, b: 0, a: 1},
+            filmBlock: {r: 255, g: 255, b: 255, a: 1},
             oddRow: {r: 209, g: 202, b: 192, a: 1},
             evenRow: {r: 158, g: 153, b: 145, a: 1},
             backGround: {}

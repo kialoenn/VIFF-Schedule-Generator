@@ -1,8 +1,10 @@
 import React from 'react';
 import '../../css/Schedule.css';
 import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
+import { color } from '@mui/system';
 
 const TimelineEditable = (props) => {
+    const convert = require('color-convert');
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
 
@@ -11,15 +13,28 @@ const TimelineEditable = (props) => {
     const dateStyle = {
         color: dateText,
     }
+
+    let dateBar = colors["dateBar"];
+    const dateBarColorHex = convert.rgb.hex(dateBar.r, dateBar.g, dateBar.b);
+    const dateBarColor = {
+        'backgroundColor': '#' + dateBarColorHex, 
+    }
+
+    let timeText = colors["timeText"];
+    const timeTextColorHex = convert.rgb.hex(timeText.r, timeText.g, timeText.b);
+    const timeTextColor = {
+        'color': '#' + timeTextColorHex, 
+    }
+
     return (
-        <div className='timelineRow'>
+        <div className='timelineRow' style={dateBarColor}>
             <button onClick={() => {
                 console.log('set', props.id);
                 scheduleContext.setDate(props.id);
             }}>Change</button>
             <div style={dateStyle} className='timelineDate' >{props.date}</div>
-            <div className='timeline'>
-                <div className='time'>9:00AM</div>
+            <div className='timeline'style={timeTextColor}>
+                <div className='time' >9:00AM</div>
                 <div className='time'>10:00AM</div>
                 <div className='time'>11:00AM</div>
                 <div className='time'>12:00PM</div>

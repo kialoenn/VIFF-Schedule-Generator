@@ -23,12 +23,25 @@ const VenueEditable = (props) => {
     const evenRowColors = colors["evenRow"];
     const evenRowColorHex = convert.rgb.hex(evenRowColors.r, evenRowColors.g, evenRowColors.b);
 
+    const venueTextColor = colors["venueText"];
+    const venueTextColorHex = convert.rgb.hex(venueTextColor.r, venueTextColor.g, venueTextColor.b);
+
+    const venueBarColor = colors["venueBar"];
+    const venueBarColorHex = convert.rgb.hex(venueBarColor.r, venueBarColor.g, venueBarColor.b);
+
 const oddBoxes = {
     'backgroundColor': '#' + oddRowColorHex, 
 }
 
 const evenBoxes = {
     'backgroundColor': '#' + evenRowColorHex,
+}
+
+const venueText = {
+    'color': '#' + venueTextColorHex, 
+}
+const venueBar = {
+    'backgroundColor': '#' + venueBarColorHex,
 }
 const styles = reactCSS({
     venueRow: {
@@ -127,8 +140,8 @@ const createdScheduleBox = (id) => {
 };
     return (
         <div className='venueRow'>
-            <div className='venue'>
-                <div className='text' style={styles.text}>{props.venueDetail.venueName}</div>
+            <div className='venue'style={venueBar}>
+                <div className='text' style={venueText}>{props.venueDetail.venueName}</div>
             </div>
             <div className='screen'>
                 {createdScheduleBox(props.venueDetail.id)}
