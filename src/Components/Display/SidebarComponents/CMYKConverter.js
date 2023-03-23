@@ -5,6 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
+import Button from '@mui/material/Button';
 
 const CMYKConverter = () => {
     const [cValue, setCValue] = useState('');
@@ -168,9 +169,7 @@ const CMYKConverter = () => {
                     <FormHelperText id="outlined-weight-helper-text">B</FormHelperText>
                 </FormControl>
             </div>
-            <button onClick={convertToHex}>
-                Convert
-            </button>
+            <Button onClick={convertToHex} variant="text">Convert</Button>
         </div>
     )
 };
