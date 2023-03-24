@@ -80,6 +80,9 @@ const ScreenEditable = (prop) => {
                 fontSize: '1.5em',
                 margin: '0',
                 color: '#' + filmTitleTextColorHex,
+                // whitespce: 'nowrap',
+                // overflow: 'hidden',
+                // textOverFlow: 'ellipse',
             },
             details: {
                 color: '#' + filmDetailsTextColorHex,
@@ -88,7 +91,10 @@ const ScreenEditable = (prop) => {
     });
     return (
         <div className='screenBox' style={ScreenBoxstyles.screenBox}>
-            <div style={ScreenBoxstyles.title}>{screen.screenTitle}</div>
+            {/* <div style={ScreenBoxstyles.title}>{screen.screenTitle}</div> */}
+            <div style={ScreenBoxstyles.title}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</div>
+            {/* <Text numberOfLines={1}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
+             */}
             <div style = {ScreenBoxstyles.details}>{screen.startTime} {screen.duration} </div>
         </div>
 
