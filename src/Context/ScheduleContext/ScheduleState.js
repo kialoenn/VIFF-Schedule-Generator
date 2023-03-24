@@ -23,8 +23,7 @@ const ScheduleState = (props) => {
             filmDetailsText: {r: 0, g: 0, b: 0, a: 1},
             filmBlock: {r: 255, g: 255, b: 255, a: 1},
             oddRow: {r: 209, g: 202, b: 192, a: 1},
-            evenRow: {r: 158, g: 153, b: 145, a: 1},
-            backGround: {}
+            evenRow: {r: 158, g: 153, b: 145, a: 1}
         },
     };
 
