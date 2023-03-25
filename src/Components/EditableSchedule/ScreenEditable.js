@@ -79,7 +79,7 @@ const ScreenEditable = (prop) => {
       function truncateText(text, width) {
 
         console.log("w: " + width);
-        const fontSize = 0.4; // font size in em units
+        const fontSize = 0.5; // font size in em units
         const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
         const maxWidth = width * 0.01 * window.innerWidth / emToPx;
         const textWidth = text.length * fontSize;
@@ -112,6 +112,7 @@ const ScreenEditable = (prop) => {
                 fontSize: '1.2em',
                 margin: '0',
                 color: '#' + filmTitleTextColorHex,
+                padding: '10'
             },
             details: {
                 color: '#' + filmDetailsTextColorHex,
