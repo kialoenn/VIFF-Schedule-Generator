@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         'textAlign': 'center',
         'margin': 'auto',
         'color': '#e9b724',
+        'fontFamily': 'HelveticaBold',
         'fontWeight': '500',
         'fontSize': '1.3vw',
     },
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
         'flex': '8.11',
         'flexDirection': 'row',
         'fontSize': '1vw',
+        'fontFamily': 'HelveticaBold',
         'color': 'white',
     },
 

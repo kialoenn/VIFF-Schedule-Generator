@@ -23,9 +23,9 @@ const styles = StyleSheet.create({
     venue: {
         'width': '18.9%',
         'height': '100%',
-        'fontFamily': 'NeueHaasUnicaProBold',
+        'fontFamily': 'HelveticaBold',
         'color': 'black',
-        'fontSize': '30pt',
+        'fontSize': '34pt',
         'fontWeight': '700',
         // 'margin': 'auto',
         'paddingTop': '0.3vw',
