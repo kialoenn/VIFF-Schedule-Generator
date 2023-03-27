@@ -21,7 +21,6 @@ const ScheduleState = (props) => {
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + 1);
 
-
     colorSettings.dateText = cookies.dateText !== undefined ? cookies.dateText : colorSettings.dateText;
     colorSettings.dateBar = cookies.dateBar !== undefined ? cookies.dateBar : colorSettings.dateBar;
     colorSettings.timeText = cookies.timeText !== undefined ? cookies.timeText : colorSettings.timeText;
@@ -32,15 +31,6 @@ const ScheduleState = (props) => {
     colorSettings.filmBlock = cookies.filmBlock !== undefined ? cookies.filmBlock : colorSettings.filmBlock;
     colorSettings.oddRow = cookies.oddRow !== undefined ? cookies.oddRow : colorSettings.oddRow;
     colorSettings.evenRow = cookies.evenRow !== undefined ? cookies.evenRow : colorSettings.evenRow;
-
-
-    // if ( cookies.dateBar === null ) {
-    //      colorSettings = colorSettings.dateBar;
-    //  } else {
-    //      colorSettings.dateBar = cookies.dateBar;
-    //  }
-
-    
 
     const initialState = {
         gridScreenTimes: [],
@@ -82,9 +72,6 @@ const ScheduleState = (props) => {
             color: colorObject,
         });
         setCookie(color.id, colorObject, { expires: expirationDate });
-
-        // updateColorSettings(color.id, colorObject);
-
     };
 
     return (
