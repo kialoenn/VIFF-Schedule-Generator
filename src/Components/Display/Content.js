@@ -2,6 +2,7 @@
 import MyDocument from '../PreviewPDF/PDF';
 import FileUploader from './FileUpload';
 import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
+import BasicTabs from './Tabs';
 
 // CSS import
 import '../../css/Header.css';
@@ -65,9 +66,11 @@ const Content = (props) => {
         // console.log("parsed schedule after inserting colour: \n", parsedSchedule);
     };
 
+    
+
     return (
         <>
-            <div id="content" style={{ height: 1000 }}>
+            <div id="content">
                 <h3>Dashboard</h3>
 
                 <div id="upload1">
