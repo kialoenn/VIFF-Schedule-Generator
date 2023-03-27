@@ -4,8 +4,8 @@ import { Text, View, StyleSheet } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
     timelineRow: {
         'width': '100vw',
-        'backgroundColor': '#231f20',
-        'height': '3vw',
+        'backgroundColor': '#252525',
+        'height': '2.6vw',
         'flexDirection': 'row',
     },
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         'flex': '1.89',
         'textAlign': 'center',
         'margin': 'auto',
-        'color': '#ffa500',
+        'color': '#e9b724',
         'fontWeight': '500',
         'fontSize': '1.3vw',
     },
