@@ -1,7 +1,11 @@
 import React, { useReducer } from 'react';
+import colorSettings from "../../resources/colors.json";
 import reactCSS from 'reactcss';
 import ScheduleContext from './ScheduleContext';
 import ScheduleReducer from './ScheduleReducer';
+import RNFetchBlob from 'react-native-fetch-blob';
+
+
 import {
     PARSE_GRIDSCREENTIMES,
     MAP_VENUENAME,
@@ -11,20 +15,24 @@ import {
 import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/ParsingHelper';
 
 const ScheduleState = (props) => {
+
+    console.log(colorSettings);
+
     const initialState = {
         gridScreenTimes: [],
-        colorSettings: {
-            dateText: {r: 255, g: 165, b: 0, a: 1},
-            dateBar: {r: 0, g: 0, b: 0, a: 1},
-            timeText: {r: 255, g: 255, b: 255, a: 1},
-            venueText: {r: 0, g: 0, b: 255, a: 1},
-            venueBar: {r: 167, g: 169, b: 172, a: 1},
-            filmTitleText: {r: 0, g: 0, b: 0, a: 1},
-            filmDetailsText: {r: 0, g: 0, b: 0, a: 1},
-            filmBlock: {r: 255, g: 255, b: 255, a: 1},
-            oddRow: {r: 209, g: 202, b: 192, a: 1},
-            evenRow: {r: 158, g: 153, b: 145, a: 1}
-        },
+        colorSettings,
+        // colorSettings: {
+        //     dateText: {r: 255, g: 165, b: 0, a: 1},
+        //     dateBar: {r: 0, g: 0, b: 0, a: 1},
+        //     timeText: {r: 255, g: 255, b: 255, a: 1},
+        //     venueText: {r: 0, g: 0, b: 255, a: 1},
+        //     venueBar: {r: 167, g: 169, b: 172, a: 1},
+        //     filmTitleText: {r: 0, g: 0, b: 0, a: 1},
+        //     filmDetailsText: {r: 0, g: 0, b: 0, a: 1},
+        //     filmBlock: {r: 255, g: 255, b: 255, a: 1},
+        //     oddRow: {r: 209, g: 202, b: 192, a: 1},
+        //     evenRow: {r: 158, g: 153, b: 145, a: 1}
+        // },
     };
 
     const [state, dispatch] = useReducer(ScheduleReducer, initialState);
@@ -53,14 +61,16 @@ const ScheduleState = (props) => {
             index: rowId,
         });
     };
-    
+
     const setColor = (color) => {
-        let colorObject = {r: color.r, g: color.g, b: color.b, a: color.a}
+        let colorObject = { r: color.r, g: color.g, b: color.b, a: color.a }
         dispatch({
             type: SET_COLOR,
             id: color.id,
             color: colorObject,
         });
+        // updateColorSettings(color.id, colorObject);
+
     };
 
     return (
