@@ -61,12 +61,15 @@ const ScheduleBox = (prop) => {
                 borderLeft: '3px dotted black',
                 borderBottom: '3px solid black',
                 borderRight: color,
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 10,
             },
         },
     });
     return (
         <View style={ScreenBoxstyles.screenBox}>
-            <Text>{screen.screenTitle}</Text>
+            <Text numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
             <Text>{screen.startTime} {screen.duration} </Text>
         </View>
 

@@ -7,6 +7,8 @@ import '../../css/Dashboard.css';
 // External import
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import React from 'react';
+
+
 // import reactCSS from 'reactcss'
 
 const styles = StyleSheet.create({
@@ -21,15 +23,15 @@ const styles = StyleSheet.create({
     venue: {
         'width': '18.9%',
         'height': '100%',
-        'fontFamily': 'Roboto',
+        'fontFamily': 'NeueHaasUnicaProBold',
         'color': 'black',
-        'fontSize': '1vw',
+        'fontSize': '30pt',
         'fontWeight': '700',
         // 'margin': 'auto',
         'paddingTop': '0.3vw',
         'paddingBottom': '0.3vw',
         'textAlign': 'center',
-        'backgroundColor': '#a7a9ac',
+        'backgroundColor': '#aaadb1',
         'borderRight': '2px solid black',
         'borderBottom': '2px solid black',
         'borderLeft': '2px solid black',
@@ -45,28 +47,28 @@ const styles = StyleSheet.create({
     },
 
     box1: {
-        'backgroundColor': '#d1cac0',
+        'backgroundColor': '#eaebec',
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '3px dotted black',
     },
 
     box2: {
-        'backgroundColor': '#9e9991',
+        'backgroundColor': '#c9cccf',
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '3px dotted black',
     },
 
     box3: {
-        'backgroundColor': '#d1cac0',
+        'backgroundColor': '#eaebec',
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '5px dotted black',
     },
 
     box4: {
-        'backgroundColor': '#9e9991',
+        'backgroundColor': '#c9cccf',
         'width': '1.5625vw',
         'height': '100%',
         'borderRight': '5px dotted black',

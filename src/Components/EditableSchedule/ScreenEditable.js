@@ -25,6 +25,7 @@ const ScreenEditable = (prop) => {
     const b = prop.screen.colour.b;
     // console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
+    let w;
     let startPoint;
     const color = `2px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
@@ -60,7 +61,38 @@ const ScreenEditable = (prop) => {
     min = parseFloat(min) / boxMin;
     const durationNum = hour + min;
     width = oneDiv * durationNum * 100 * 0.52;
+    w = width;
     width = width + 'vw';
+
+
+    // function truncateText(text, maxLength) {
+    //     if (text.length <= maxLength) {
+    //       return text;
+    //     } else {
+    //     //   return text.substr(0, maxLength - 3) + "...";
+    //       console.log("MaxLength: " + maxLength);
+    //       return text.substr(0, maxLength) + "...";
+    //     }
+    //   }
+
+
+      function truncateText(text, width) {
+
+        console.log("w: " + width);
+        const fontSize = 0.5; // font size in em units
+        const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
+        const maxWidth = width * 0.01 * window.innerWidth / emToPx;
+        const textWidth = text.length * fontSize;
+        if (textWidth > maxWidth) {
+          const truncatedText = text.slice(0, Math.floor(maxWidth / fontSize));
+          return truncatedText + '...';
+        }
+        return text;
+      }
+
+
+    // const truncatedText = truncateText(screen.screenTitle, width);
+    const truncatedText = truncateText("THIS IS REALLY LONG TEXT CAN WE SHOW THIS IN SMALL BOX???????", w);  
 
     const ScreenBoxstyles = reactCSS({
         'default': {
@@ -77,18 +109,25 @@ const ScreenEditable = (prop) => {
             },
             title: {
                 height: '50%',
-                fontSize: '1.5em',
+                fontSize: '1.2em',
                 margin: '0',
                 color: '#' + filmTitleTextColorHex,
+                padding: '10'
             },
             details: {
                 color: '#' + filmDetailsTextColorHex,
             }
         },
     });
+
+
+
     return (
         <div className='screenBox' style={ScreenBoxstyles.screenBox}>
-            <div style={ScreenBoxstyles.title}>{screen.screenTitle}</div>
+            {/* <div style={ScreenBoxstyles.title}>{truncatedText}</div> */}
+            <div style={ScreenBoxstyles.title}>{truncatedText}</div>
+            {/* <Text numberOfLines={1}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
+             */}
             <div style = {ScreenBoxstyles.details}>{screen.startTime} {screen.duration} </div>
         </div>
 

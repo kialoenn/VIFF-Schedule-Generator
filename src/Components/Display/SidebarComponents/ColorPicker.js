@@ -16,6 +16,13 @@ class SketchExample extends React.Component {
             a: '1',
         },
     };
+    constructor(props) {
+        super(props);
+        this.state.color.r = this.props.color.r;
+        this.state.color.g = this.props.color.g;
+        this.state.color.b = this.props.color.b;
+        this.state.color.a = this.props.color.a;
+    }
 
     handleClick = () => {
         this.setState({ displayColorPicker: !this.state.displayColorPicker });

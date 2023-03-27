@@ -1,7 +1,11 @@
 import React, { useReducer } from 'react';
+import colorSettings from "../../resources/colors.json";
 import reactCSS from 'reactcss';
 import ScheduleContext from './ScheduleContext';
 import ScheduleReducer from './ScheduleReducer';
+import { useCookies } from 'react-cookie';
+
+
 import {
     PARSE_GRIDSCREENTIMES,
     MAP_VENUENAME,
@@ -10,22 +14,27 @@ import {
 } from '../ActionType';
 import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/ParsingHelper';
 
+
 const ScheduleState = (props) => {
+    const [cookies, setCookie, removeCookie] = useCookies(['dateText','dateBar', 'timeText', 'venueText', 'venueBar', 'filmTitleText', 'filmDetailsText', 'filmBlock', 'oddRow', 'evenRow']);
+
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 1);
+
+    colorSettings.dateText = cookies.dateText !== undefined ? cookies.dateText : colorSettings.dateText;
+    colorSettings.dateBar = cookies.dateBar !== undefined ? cookies.dateBar : colorSettings.dateBar;
+    colorSettings.timeText = cookies.timeText !== undefined ? cookies.timeText : colorSettings.timeText;
+    colorSettings.venueText = cookies.venueText !== undefined ? cookies.venueText : colorSettings.venueText;
+    colorSettings.venueBar = cookies.venueBar !== undefined ? cookies.venueBar : colorSettings.venueBar;
+    colorSettings.filmTitleText = cookies.filmTitleText !== undefined ? cookies.filmTitleText : colorSettings.filmTitleText;
+    colorSettings.filmDetailsText = cookies.filmDetailsText !== undefined ? cookies.filmDetailsText : colorSettings.filmDetailsText;
+    colorSettings.filmBlock = cookies.filmBlock !== undefined ? cookies.filmBlock : colorSettings.filmBlock;
+    colorSettings.oddRow = cookies.oddRow !== undefined ? cookies.oddRow : colorSettings.oddRow;
+    colorSettings.evenRow = cookies.evenRow !== undefined ? cookies.evenRow : colorSettings.evenRow;
+
     const initialState = {
         gridScreenTimes: [],
-        colorSettings: {
-            dateText: {r: 255, g: 165, b: 0, a: 1},
-            dateBar: {r: 0, g: 0, b: 0, a: 1},
-            timeText: {r: 255, g: 255, b: 255, a: 1},
-            venueText: {r: 0, g: 0, b: 255, a: 1},
-            venueBar: {r: 167, g: 169, b: 172, a: 1},
-            filmTitleText: {r: 0, g: 0, b: 0, a: 1},
-            filmDetailsText: {r: 0, g: 0, b: 0, a: 1},
-            filmBlock: {r: 255, g: 255, b: 255, a: 1},
-            oddRow: {r: 209, g: 202, b: 192, a: 1},
-            evenRow: {r: 158, g: 153, b: 145, a: 1},
-            backGround: {}
-        },
+        colorSettings,
     };
 
     const [state, dispatch] = useReducer(ScheduleReducer, initialState);
@@ -54,14 +63,15 @@ const ScheduleState = (props) => {
             index: rowId,
         });
     };
-    
+
     const setColor = (color) => {
-        let colorObject = {r: color.r, g: color.g, b: color.b, a: color.a}
+        let colorObject = { r: color.r, g: color.g, b: color.b, a: color.a }
         dispatch({
             type: SET_COLOR,
             id: color.id,
             color: colorObject,
         });
+        setCookie(color.id, colorObject, { expires: expirationDate });
     };
 
     return (
