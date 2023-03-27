@@ -37,6 +37,10 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 const csvData = reader.result;
                 const lines = csvData.split('\n');
                 const fileColumn = lines[0].split('\t');
+                const columns = fileColumn.length;
+                
+                console.log("number of lines in file:", lines.length);
+
                 if (fileColumn.length == 9) {
                     scheduleContext.parseGridScreens(lines);
                     setTrigger({
