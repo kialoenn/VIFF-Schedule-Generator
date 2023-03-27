@@ -7,6 +7,9 @@ import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 import Button from '@mui/material/Button';
 
+// CSS import 
+import '../../../css/Converter.css';
+
 const CMYKConverter = () => {
     const [cValue, setCValue] = useState('');
     const [mValue, setMValue] = useState('');
@@ -50,7 +53,7 @@ const CMYKConverter = () => {
                         'pattern': '[0-9]*',
                         'maxLength': 3,
                     }} />
-                <FormHelperText id="outlined-weight-helper-text">C</FormHelperText>
+                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;C</FormHelperText>
             </FormControl>
             <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
                 <OutlinedInput
@@ -70,7 +73,7 @@ const CMYKConverter = () => {
                         'pattern': '[0-9]*',
                         'maxLength': 3,
                     }} />
-                <FormHelperText id="outlined-weight-helper-text">M</FormHelperText>
+                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;M</FormHelperText>
             </FormControl>
             <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
                 <OutlinedInput
@@ -90,7 +93,7 @@ const CMYKConverter = () => {
                         'pattern': '[0-9]*',
                         'maxLength': 3,
                     }} />
-                <FormHelperText id="outlined-weight-helper-text">Y</FormHelperText>
+                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;Y</FormHelperText>
             </FormControl>
             <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
                 <OutlinedInput
@@ -110,7 +113,7 @@ const CMYKConverter = () => {
                         'pattern': '[0-9]*',
                         'maxLength': 3,
                     }} />
-                <FormHelperText id="outlined-weight-helper-text">K</FormHelperText>
+                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;K</FormHelperText>
             </FormControl>
         </div><div>
                 <TextField sx={{ width: '100%', paddingBottom: 3 }}
@@ -136,7 +139,7 @@ const CMYKConverter = () => {
                             'maxLength': 3,
                             'readOnly': true,
                         }} />
-                    <FormHelperText id="outlined-weight-helper-text">R</FormHelperText>
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;&nbsp;R</FormHelperText>
                 </FormControl>
                 <FormControl sx={{ m: 0.1, width: '27%', pr: 1 }} variant="outlined">
                     <OutlinedInput
@@ -151,7 +154,7 @@ const CMYKConverter = () => {
                             'maxLength': 3,
                             'readOnly': true,
                         }} />
-                    <FormHelperText id="outlined-weight-helper-text">G</FormHelperText>
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;&nbsp;G</FormHelperText>
                 </FormControl>
                 <FormControl sx={{ m: 0.1, width: '27%' }} variant="outlined">
                     <OutlinedInput
@@ -166,10 +169,10 @@ const CMYKConverter = () => {
                             'maxLength': 3,
                             'readOnly': true,
                         }} />
-                    <FormHelperText id="outlined-weight-helper-text">B</FormHelperText>
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;&nbsp;B</FormHelperText>
                 </FormControl>
-            </div>
-            <Button onClick={convertToHex} variant="text">Convert</Button>
+            </div><div className="convert">
+            <Button onClick={convertToHex} variant="text">Convert</Button></div>
         </div>
     )
 };
