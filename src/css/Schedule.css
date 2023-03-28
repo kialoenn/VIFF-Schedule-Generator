@@ -1,11 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@font-face {
+    font-family: 'HelveticaBold';
+    src: url('../../src/resources/fonts/Helvetica/FreeSansBold.ttf');
+}
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../../src/resources/fonts/Helvetica/FreeSans.ttf');
+}
 
 .timelineRow {
     margin: 0px auto;
     width: 90%;
     background-color: #231f20;
     color: white;
-    height: 2%;
+    height: 2.6em;
     display: grid;
     grid-template-columns: 18.9% 81.1%;
 }
@@ -16,20 +23,19 @@
     width: 100%;
     margin: auto;
     color: #ffa500;
-    font-family: Roboto;
+    font-family: HelveticaBold;
     font-weight: 500;
-    font-size: 0.9em;
+    font-size: 1.3em;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
-
 }
 
 .timeline {
     grid-column: 2;
     display: grid;
     grid-template-columns: 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25% 6.25%;
-    font-family: Roboto;
-    font-size: 0.8em;
+    font-family: HelveticaBold;
+    font-size: 1em;
 }
 
 .time {
@@ -49,9 +55,9 @@
 
 .venue {
     width: 18.9%;
-    font-family: Roboto;
+    font-family: HelveticaBold;
     color: blue;
-    font-size: 0.8em;
+    font-size: 1.2em;
     font-weight: 700;
     margin: auto;
     padding-top: 0.3em;
@@ -84,7 +90,7 @@
 }
 
 .box1 {
-    background-color: #d1cac0;
+    background-color: #eaebec;
     height: 100%;
     border-right: 1px dotted black;
 }
@@ -96,7 +102,7 @@
 }
 
 .box3 {
-    background-color: #d1cac0;
+    background-color: #eaebec;
     height: 100%;
     border-right: 2px dotted black;
 }

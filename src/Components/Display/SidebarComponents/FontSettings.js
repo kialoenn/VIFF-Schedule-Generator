@@ -6,7 +6,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
+import { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleContext';
+
 const FontSettings = () => {
+    const scheduleContext = useScheduleContext();
+    const handleChange = (setting) => {
+        scheduleContext.setFont(setting.target.value);
+    }
     return (
         <div>
           {/* Font Select */}
@@ -16,27 +22,29 @@ const FontSettings = () => {
                   id="demo-simple-select-helper"
                   label="Font"
                   size="small"
-                  defaultValue={0}
+                  defaultValue={"Helvetica"}
+                  onChange={handleChange}
               >
-                  <MenuItem value={0}>Helvetica</MenuItem>
-                  <MenuItem value={1}>NeueHaas</MenuItem>
-                  <MenuItem value={2}>Calibri</MenuItem>
-                  <MenuItem value={3}>Arial</MenuItem>
-                  <MenuItem value={4}>Garamond</MenuItem>
-                  <MenuItem value={5}>Geneva</MenuItem>
-                  <MenuItem value={6}>Verdana</MenuItem>
-                  <MenuItem value={1}>AvantGarde</MenuItem>
+                  <MenuItem value={"Helvetica"}>Helvetica</MenuItem>
+                  <MenuItem value={"NeueHaas"}>NeueHaas</MenuItem>
+                  <MenuItem value={"Calibri"}>Calibri</MenuItem>
+                  <MenuItem value={"Arial"}>Arial</MenuItem>
+                  <MenuItem value={"Garamond"}>Garamond</MenuItem>
+                  <MenuItem value={"Geneva"}>Geneva</MenuItem>
+                  <MenuItem value={"Verdana"}>Verdana</MenuItem>
+                  <MenuItem value={"AvantGarde"}>AvantGarde</MenuItem>
               </Select></>
       </FormControl>
 
       {/* Font Size Select */}
-      <FormControl sx={{ width: '25%' }} size="small">
+      <FormControl sx={{ width: '30%' }} size="small">
           <><InputLabel id="demo-simple-select-helper-label">Size</InputLabel><Select
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
               label="Size"
               size="small"
               defaultValue={7}
+              onChange={handleChange}
           >
               <MenuItem value={2}>2</MenuItem>
               <MenuItem value={3}>3</MenuItem>
