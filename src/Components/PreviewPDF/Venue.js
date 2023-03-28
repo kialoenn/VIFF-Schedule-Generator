@@ -108,6 +108,7 @@ const createdScheduleBox = (id) => {
 }
 
 const Venue = (props) => {
+    //
     // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
         <View style={styles.venueRow}>
