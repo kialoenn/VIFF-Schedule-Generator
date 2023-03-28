@@ -19,6 +19,7 @@ const ScheduleBox = (prop) => {
     let startPoint;
     let color = `5px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
+    console.log(screen);
     const startTime = screen.startTime;
     const duration = screen.duration;
 
@@ -72,16 +73,29 @@ const ScheduleBox = (prop) => {
             },
         },
     });
-    const filmTitleText = {
-        'color': '#' + filmTitleTextColor,
-    }
-    const filmDetailsText = {
-        'color': '#' +  filmDetailsTextColor,
-    }
+
+
+    const movieStartTime = screen.startTime;
+    const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
+
+    const date = new Date();
+    date.setHours(shours);
+    date.setMinutes(sminutes);
+    date.setSeconds(sseconds);
+
+    const options = {hour: 'numeric', minute: 'numeric', hour12: true};
+    const formattedTime = date.toLocaleTimeString('en-US', options);
+
+
+    const timeString = screen.duration;
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const durationMinutes = hours * 60 + minutes;
+
     return (
         <View style={ScreenBoxstyles.screenBox}>
-            <Text style={filmTitleText} numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
-            <Text style={filmDetailsText}> {screen.startTime} {screen.duration} </Text>
+            {/* <Text numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text> */}
+            <Text numberOfLines={1} ellipsizeMode="tail">{screen.screenTitle}</Text>
+            <Text>{formattedTime} {durationMinutes}min p{screen.pageLocation} </Text>
         </View>
 
     );

@@ -78,7 +78,7 @@ const ScreenEditable = (prop) => {
 
       function truncateText(text, width) {
 
-        // console.log("w: " + width);
+        //console.log("w: " + width);
         const fontSize = 0.5; // font size in em units
         const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
         const maxWidth = width * 0.01 * window.innerWidth / emToPx;
@@ -91,8 +91,9 @@ const ScreenEditable = (prop) => {
       }
 
 
+    //console.log(screen);
     // const truncatedText = truncateText(screen.screenTitle, width);
-    const truncatedText = truncateText("THIS IS REALLY LONG TEXT CAN WE SHOW THIS IN SMALL BOX???????", w);  
+    const truncatedText = truncateText(screen.screenTitle, w);  
 
     const ScreenBoxstyles = reactCSS({
         'default': {
@@ -121,6 +122,21 @@ const ScreenEditable = (prop) => {
     });
 
 
+    const movieStartTime = screen.startTime;
+    const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
+
+    const date = new Date();
+    date.setHours(shours);
+    date.setMinutes(sminutes);
+    date.setSeconds(sseconds);
+
+    const options = {hour: 'numeric', minute: 'numeric', hour12: true};
+    const formattedTime = date.toLocaleTimeString('en-US', options);
+
+
+    const timeString = screen.duration;
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const durationMinutes = hours * 60 + minutes;
 
     return (
         <div className='screenBox' style={ScreenBoxstyles.screenBox}>
@@ -128,7 +144,7 @@ const ScreenEditable = (prop) => {
             <div style={ScreenBoxstyles.title}>{truncatedText}</div>
             {/* <Text numberOfLines={1}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
              */}
-            <div style = {ScreenBoxstyles.details}>{screen.startTime} {screen.duration} </div>
+            <div style = {ScreenBoxstyles.details}>{formattedTime} {durationMinutes}min p{screen.pageLocation}</div>
         </div>
 
     );
