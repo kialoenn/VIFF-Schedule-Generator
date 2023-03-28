@@ -11,6 +11,7 @@ import {
     MAP_VENUENAME,
     SET_DATE,
     SET_COLOR,
+    SET_FONT,
 } from '../ActionType';
 import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/ParsingHelper';
 
@@ -35,10 +36,13 @@ const ScheduleState = (props) => {
     const initialState = {
         gridScreenTimes: [],
         colorSettings,
+        fontSettings: {
+            size: 7,
+            font: "Helvetica",
+        },
     };
 
     const [state, dispatch] = useReducer(ScheduleReducer, initialState);
-
     // Parse screen times
     const parseGridScreens = async (lines) => {
         const result = await parseGridScreensHelper(lines);
@@ -74,15 +78,31 @@ const ScheduleState = (props) => {
         setCookie(color.id, colorObject, { expires: expirationDate });
     };
 
+    const setFont = (fontSetting) => {
+        let id;
+        if (typeof fontSetting == "string") {
+            id = "font"
+        } 
+        else if (typeof fontSetting == "number") {
+            id = "size"
+        }
+        dispatch({
+            type: SET_FONT,
+            settingVal: fontSetting,
+            settingID: id,
+        });
+    }
     return (
         <ScheduleContext.Provider
             value={{
                 gridScreenTimes: state.gridScreenTimes,
                 colorSettings: state.colorSettings,
+                fontSettings: state.fontSettings,
                 parseGridScreens,
                 mapVenueName,
                 setDate,
                 setColor,
+                setFont,
             }}>
             {props.children}
         </ScheduleContext.Provider>
