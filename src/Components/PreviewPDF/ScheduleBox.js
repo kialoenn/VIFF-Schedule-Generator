@@ -94,7 +94,7 @@ const ScheduleBox = (prop) => {
     return (
         <View style={ScreenBoxstyles.screenBox}>
             {/* <Text numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text> */}
-            <Text numberOfLines={1} ellipsizeMode="tail">{screen.screenTitle}</Text>
+            <Text numberOfLines={1} ellipsizeMode="tail">{screen.filmTitle}</Text>
             <Text>{formattedTime} {durationMinutes}min p{screen.pageLocation} </Text>
         </View>
 

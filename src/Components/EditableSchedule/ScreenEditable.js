@@ -93,7 +93,7 @@ const ScreenEditable = (prop) => {
 
     //console.log(screen);
     // const truncatedText = truncateText(screen.screenTitle, width);
-    const truncatedText = truncateText(screen.screenTitle, w);  
+    const truncatedText = truncateText(screen.filmTitle, w);  
 
     const ScreenBoxstyles = reactCSS({
         'default': {
