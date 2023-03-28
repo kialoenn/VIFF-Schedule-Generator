@@ -5,6 +5,10 @@ import React from 'react';
 import reactCSS from 'reactcss';
 
 const ScheduleBox = (prop) => {
+    const convert = require('color-convert');
+    const filmTitleTextColor = convert.rgb.hex(prop.color.filmTitleText.r, prop.color.filmTitleText.g, prop.color.filmTitleText.b);
+    const filmDetailsTextColor = convert.rgb.hex(prop.color.filmDetailsText.r, prop.color.filmDetailsText.g, prop.color.filmDetailsText.b);
+    const filmBlockColor = convert.rgb.hex(prop.color.filmBlock.r, prop.color.filmBlock.g, prop.color.filmBlock.b);
     // console.log("schedule box rgb:", prop.screen.colour);
     // console.log("r:", prop.screen.colour.r);
     const r = prop.screen.colour.r;
@@ -56,7 +60,7 @@ const ScheduleBox = (prop) => {
                 position: 'absolute',
                 width: width,
                 marginLeft: startPoint,
-                backgroundColor: 'white',
+                backgroundColor: '#' + filmBlockColor,
                 fontFamily: 'Helvetica',
                 borderTop: '3px solid black',
                 borderLeft: '3px dotted black',
@@ -68,10 +72,16 @@ const ScheduleBox = (prop) => {
             },
         },
     });
+    const filmTitleText = {
+        'color': '#' + filmTitleTextColor,
+    }
+    const filmDetailsText = {
+        'color': '#' +  filmDetailsTextColor,
+    }
     return (
         <View style={ScreenBoxstyles.screenBox}>
-            <Text numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
-            <Text>{screen.startTime} {screen.duration} </Text>
+            <Text style={filmTitleText} numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
+            <Text style={filmDetailsText}> {screen.startTime} {screen.duration} </Text>
         </View>
 
     );

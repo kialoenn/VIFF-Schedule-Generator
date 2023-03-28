@@ -1,41 +1,45 @@
 import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 
-const styles = StyleSheet.create({
-    timelineRow: {
-        'width': '100vw',
-        'backgroundColor': '#252525',
-        'height': '2.6vw',
-        'flexDirection': 'row',
-    },
-
-    timelineDate: {
-        'flex': '1.89',
-        'textAlign': 'center',
-        'margin': 'auto',
-        'color': '#e9b724',
-        'fontFamily': 'HelveticaBold',
-        'fontWeight': '500',
-        'fontSize': '1.3vw',
-    },
-
-    timeline: {
-        'flex': '8.11',
-        'flexDirection': 'row',
-        'fontSize': '1vw',
-        'fontFamily': 'HelveticaBold',
-        'color': 'white',
-    },
-
-    time: {
-        'margin': 'auto',
-        'width': '100vw',
-        'textAlign': 'center',
-    },
-
-});
 
 const Timeline = (props) => {
+    const convert = require('color-convert');
+    const dateTextColor = convert.rgb.hex(props.color.dateText.r, props.color.dateText.g, props.color.dateText.b);
+    const dateBarColor = convert.rgb.hex(props.color.dateBar.r, props.color.dateBar.g, props.color.dateBar.b);
+    const timeTextColor = convert.rgb.hex(props.color.timeText.r, props.color.timeText.g, props.color.timeText.b);
+    const styles = StyleSheet.create({
+        timelineRow: {
+            'width': '100vw',
+            'backgroundColor': '#' + dateBarColor,
+            'height': '2.6vw',
+            'flexDirection': 'row',
+        },
+    
+        timelineDate: {
+            'flex': '1.89',
+            'textAlign': 'center',
+            'margin': 'auto',
+            'color': '#' + dateTextColor,
+            'fontFamily': 'HelveticaBold',
+            'fontWeight': '500',
+            'fontSize': '1.3vw',
+        },
+    
+        timeline: {
+            'flex': '8.11',
+            'flexDirection': 'row',
+            'fontSize': '1vw',
+            'fontFamily': 'HelveticaBold',
+            'color': '#' + timeTextColor,
+        },
+    
+        time: {
+            'margin': 'auto',
+            'width': '100vw',
+            'textAlign': 'center',
+        },
+    
+    });
     return (
         <View style={styles.timelineRow}>
             <View style={styles.timelineDate}>

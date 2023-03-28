@@ -16,6 +16,8 @@ import React from 'react';
 
 const Venue = (props) => {
     const convert = require('color-convert');
+    const venueTextColor =  convert.rgb.hex(props.color.venueText.r, props.color.venueText.g, props.color.venueText.b);
+    const venueBarColor = convert.rgb.hex(props.color.venueBar.r, props.color.venueBar.g, props.color.venueBar.b);
     const oddRowColor = convert.rgb.hex(props.color.oddRow.r, props.color.oddRow.g, props.color.oddRow.b);
     const evenRowColor = convert.rgb.hex(props.color.evenRow.r, props.color.evenRow.g, props.color.evenRow.b);
     const styles = StyleSheet.create({
@@ -38,7 +40,7 @@ const Venue = (props) => {
             'paddingTop': '0.3vw',
             'paddingBottom': '0.3vw',
             'textAlign': 'center',
-            'backgroundColor': '#aaadb1',
+            'backgroundColor': '#' + venueBarColor,
             'borderRight': '2px solid black',
             'borderBottom': '2px solid black',
             'borderLeft': '2px solid black',
@@ -84,6 +86,7 @@ const Venue = (props) => {
     
         text: {
             'margin': 'auto 0',
+            'color': '#' + venueTextColor,
         },
     });
     const createdScheduleBox = (id) => {
@@ -124,7 +127,7 @@ const Venue = (props) => {
                 {createdScheduleBox(props.venueDetail.id)}
                 {props.venueDetail.screens.map((screen, index) => {
                     return (
-                        <ScheduleBox key={index} screen={screen}></ScheduleBox>
+                        <ScheduleBox key={index} screen={screen} color={props.color}></ScheduleBox>
                     );
                 })}
 
