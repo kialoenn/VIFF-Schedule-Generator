@@ -59,6 +59,7 @@ const styles = reactCSS({
         'color': 'blue', // venueText {}
         'fontSize': '1vw',
         'fontWeight': '700',
+        'fontFamily': 'Helvetica',
         // 'margin': 'auto',
         'paddingTop': '0.3vw',
         'paddingBottom': '0.3vw',
