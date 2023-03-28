@@ -1,5 +1,6 @@
 // Customized components import
 import ScheduleBox from './ScheduleBox';
+import background from '../../assets/icons/corner.png';
 
 // CSS import
 import '../../css/Dashboard.css';
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
         'borderRight': '2px solid black',
         'borderBottom': '2px solid black',
         'borderLeft': '2px solid black',
+        'backgroundImage': `url(${background})`,
     },
     // #808080
     screen: {
