@@ -17,7 +17,8 @@ const VenueEditable = (props) => {
     const convert = require('color-convert');
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
-
+    const fonts = scheduleContext.fontSettings;
+    
     const oddRowColors = colors["oddRow"];
     const oddRowColorHex = convert.rgb.hex(oddRowColors.r, oddRowColors.g, oddRowColors.b);
     const evenRowColors = colors["evenRow"];
@@ -39,80 +40,12 @@ const evenBoxes = {
 
 const venueText = {
     'color': '#' + venueTextColorHex, 
+    'fontSize': fonts["size"] +'pt',
 }
 const venueBar = {
     'backgroundColor': '#' + venueBarColorHex,
 }
-const styles = reactCSS({
-    venueRow: {
-        'flexDirection': 'row',
-        'margin': '0px auto',
-        'width': '100vw',
-        'height': '2.362vh',
-        'backgroundColor': 'black', // background ?
-        'color': 'white',
-    },
-    venue: {
-        'width': '18.9vw',
-        'height': '100%',
-        'fontFamily': 'Roboto',
-        'color': 'blue', // venueText {}
-        'fontSize': '1vw',
-        'fontWeight': '700',
-        'fontFamily': 'Helvetica',
-        // 'margin': 'auto',
-        'paddingTop': '0.3vw',
-        'paddingBottom': '0.3vw',
-        'textAlign': 'center',
-        'backgroundColor': '#a7a9ac',
-        'borderRight': '2px solid black',
-        'borderBottom': '2px solid black',
-        'borderLeft': '2px solid black',
-    },
-    // #808080
-    screen: {
-        'color': 'black',
-        'width': '81.1vw',
-        'backgroundColor': '#808080',
-        'flexDirection': 'row',
-        'fontSize': '0.7vw',
 
-    },
-
-    box1: {
-        'backgroundColor': '#d1cac0', // evenRow{}
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '3px dotted black',
-    },
-
-    box2: {
-        'backgroundColor': '#9e9991', // oddRow{}
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '3px dotted black',
-    },
-
-    box3: {
-        'backgroundColor': '#d1cac0', // evenRow{}
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '5px dotted black',
-    },
-
-    box4: {
-        'backgroundColor': '#9e9991',// odd Row{}
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '5px dotted black',
-    },
-
-    text: {
-        'margin': 'auto 0',
-        'height': '2.362vh',
-        'color': 'black',
-    },
-});
 const createdScheduleBox = (id) => {
     const scheduleBoxNum = 64;
     const scheduleBoxes = [];

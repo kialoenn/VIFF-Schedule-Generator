@@ -1,12 +1,13 @@
 import React from 'react';
 import '../../css/Schedule.css';
 import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
-import { color } from '@mui/system';
+
 
 const TimelineEditable = (props) => {
     const convert = require('color-convert');
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
+    const fonts = scheduleContext.fontSettings;
 
     let dateText = colors["dateText"];
     dateText = `rgb(${dateText.r}, ${dateText.g}, ${dateText.b})`
@@ -18,12 +19,14 @@ const TimelineEditable = (props) => {
     const dateBarColorHex = convert.rgb.hex(dateBar.r, dateBar.g, dateBar.b);
     const dateBarColor = {
         'backgroundColor': '#' + dateBarColorHex, 
+        'fontSize': fonts["size"] +'pt',
     }
 
     let timeText = colors["timeText"];
     const timeTextColorHex = convert.rgb.hex(timeText.r, timeText.g, timeText.b);
     const timeTextColor = {
         'color': '#' + timeTextColorHex, 
+        'fontSize': fonts["size"] +'pt',
     }
 
     return (
