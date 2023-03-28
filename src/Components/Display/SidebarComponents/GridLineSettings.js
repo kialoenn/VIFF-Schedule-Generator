@@ -28,7 +28,7 @@ const GridLineSettings = () => {
       </FormControl>
 
       {/* Line Width Select */}
-      <FormControl sx={{ width: '25%' }} size="small">
+      <FormControl sx={{ width: '30%' }} size="small">
           <InputLabel id="demo-simple-select-helper-label">Width</InputLabel>
           <Select
               labelId="demo-simple-select-helper-label"
