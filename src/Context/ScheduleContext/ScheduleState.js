@@ -12,6 +12,7 @@ import {
     SET_DATE,
     SET_COLOR,
     SET_FONT,
+    SET_GRIDLINE,
 } from '../ActionType';
 import { parseGridScreensHelper, mapVenueNameHelper } from '../../Helper/ParsingHelper';
 
@@ -39,6 +40,10 @@ const ScheduleState = (props) => {
         fontSettings: {
             size: 7,
             font: "Helvetica",
+        },
+        gridLineSettings: {
+            width: 3,
+            type: "Solid",
         },
     };
 
@@ -92,17 +97,34 @@ const ScheduleState = (props) => {
             settingID: id,
         });
     }
+    
+    const setGridLine = (gridLineSetting) => {
+        let type;
+        if (typeof gridLineSetting == "string") {
+            type="type"
+        }
+        else if (typeof gridLineSetting == "number") {
+            type="width"
+        }
+        dispatch({
+            type: SET_GRIDLINE,
+            settingVal: gridLineSetting,
+            settingID: type,
+        });
+    }
     return (
         <ScheduleContext.Provider
             value={{
                 gridScreenTimes: state.gridScreenTimes,
                 colorSettings: state.colorSettings,
                 fontSettings: state.fontSettings,
+                gridLineSettings: state.gridLineSettings,
                 parseGridScreens,
                 mapVenueName,
                 setDate,
                 setColor,
                 setFont,
+                setGridLine,
             }}>
             {props.children}
         </ScheduleContext.Provider>

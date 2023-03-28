@@ -4,6 +4,7 @@ import {
     SET_DATE,
     SET_COLOR,
     SET_FONT,
+    SET_GRIDLINE,
 } from '../ActionType';
 
 export default (state, action) => {
@@ -40,6 +41,11 @@ export default (state, action) => {
             return {
                 ...state,
                 fontSettings: {...state.fontSettings, [action.settingID]: action.settingVal},
+            };
+        case SET_GRIDLINE:
+            return {
+                ...state,
+                gridLineSettings: {...state.gridLineSettings, [action.settingID]: action.settingVal},
             };
         default:
             return state;

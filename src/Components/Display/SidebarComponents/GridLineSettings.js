@@ -6,7 +6,13 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 
+import { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleContext';
+
 const GridLineSettings = () => {
+    const scheduleContext = useScheduleContext();
+    const handleChange = (setting) => {
+        scheduleContext.setGridLine(setting.target.value);
+    }
     return (
         <div>
           {/* Line Type Select */}
@@ -17,13 +23,12 @@ const GridLineSettings = () => {
               id="demo-simple-select-helper"
               label="Type"
               size="small"
-              defaultValue={2}
-          //   value={age}
-          //   onChange={handleChange}
+              defaultValue={"Solid"}
+              onChange={handleChange}
           >
-              <MenuItem value={0}>Dashed</MenuItem>
-              <MenuItem value={1}>Dotted</MenuItem>
-              <MenuItem value={2}>Solid</MenuItem>
+              <MenuItem value={"Dashed"}>Dashed</MenuItem>
+              <MenuItem value={"Dotted"}>Dotted</MenuItem>
+              <MenuItem value={"Solid"}>Solid</MenuItem>
           </Select>
       </FormControl>
 
@@ -36,8 +41,7 @@ const GridLineSettings = () => {
               label="Width"
               size="small"
               defaultValue={3}
-          //   value={age}
-          //   onChange={handleChange}
+              onChange={handleChange}
           >
               <MenuItem value={1}>1</MenuItem>
               <MenuItem value={2}>2</MenuItem>
