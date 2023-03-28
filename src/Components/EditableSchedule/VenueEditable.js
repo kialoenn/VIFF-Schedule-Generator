@@ -1,28 +1,28 @@
 // Customized components import
-import ScheduleBox from './ScheduleBox';
+import ScreenEditable from './ScreenEditable';
 
 // CSS import
 import '../../css/Dashboard.css';
+import '../../css/Schedule.css';
 
 // External import
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import React from 'react';
-// import reactCSS from 'reactcss'
+import reactCSS from 'reactcss';
 
-const styles = StyleSheet.create({
+const styles = reactCSS({
     venueRow: {
         'flexDirection': 'row',
         'margin': '0px auto',
         'width': '100vw',
-        'height': '2.362vw',
+        'height': '2.362vh',
         'backgroundColor': 'black',
         'color': 'white',
     },
     venue: {
-        'width': '18.9%',
+        'width': '18.9vw',
         'height': '100%',
         'fontFamily': 'Roboto',
-        'color': 'black',
+        'color': 'blue',
         'fontSize': '1vw',
         'fontWeight': '700',
         // 'margin': 'auto',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     // #808080
     screen: {
         'color': 'black',
-        'width': '81.1%',
+        'width': '81.1vw',
         'backgroundColor': '#808080',
         'flexDirection': 'row',
         'fontSize': '0.7vw',
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
 
     text: {
         'margin': 'auto 0',
+        'height': '2.362vh',
     },
 });
 const createdScheduleBox = (id) => {
@@ -83,15 +84,15 @@ const createdScheduleBox = (id) => {
     for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<View style={styles.box1} key={i}></View>);
+                scheduleBoxes.push(<div style={styles.box1} className="box1" key={i}></div>);
             } else {
-                scheduleBoxes.push(<View style={styles.box3} key={i}></View>);
+                scheduleBoxes.push(<div style={styles.box3} className="box3" key={i}></div>);
             }
-        } else if (id % 2 == 1) {
+        } else {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<View style={styles.box2} key={i}></View>);
+                scheduleBoxes.push(<div style={styles.box2} className="box2" key={i}></div>);
             } else {
-                scheduleBoxes.push(<View style={styles.box4} key={i}></View>);
+                scheduleBoxes.push(<div style={styles.box4} className="box4" key={i}></div>);
             }
         }
         // } else if (i % 4 == 2) {
@@ -99,29 +100,28 @@ const createdScheduleBox = (id) => {
         // } else {
         //     scheduleBoxes.push(<View style={styles.box4} key={i}></View>);
         // }
-
     }
     return scheduleBoxes;
-}
+};
 
-const Venue = (props) => {
+const VenueEditable = (props) => {
     // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
-        <View style={styles.venueRow}>
-            <View style={styles.venue}>
-                <Text style={styles.text}>{props.venueDetail.venueName}</Text>
-            </View>
-            <View style={styles.screen}>
+        <div className='venueRow'>
+            <div className='venue'>
+                <div className='text' style={styles.text}>{props.venueDetail.venueName}</div>
+            </div>
+            <div className='screen'>
                 {createdScheduleBox(props.venueDetail.id)}
                 {props.venueDetail.screens.map((screen, index) => {
                     return (
-                        <ScheduleBox key={index} screen={screen}></ScheduleBox>
+                        <ScreenEditable key={index} screen={screen}></ScreenEditable>
                     );
                 })}
 
-            </View>
-        </View>
+            </div>
+        </div>
     );
 };
 
-export default Venue;
+export default VenueEditable;

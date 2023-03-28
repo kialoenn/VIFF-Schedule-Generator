@@ -16,7 +16,7 @@ Font.register({
 const MyDocument = (props) => (
     <Document>
         <Page size={2963}>
-            {props.data.parsedSchedule.map((day, index) => {
+            {props.data.parsedScheduleContext.map((day, index) => {
                 return (
                     <Schedule key={index} data={day}></Schedule>
                 );
