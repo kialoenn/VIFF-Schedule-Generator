@@ -28,10 +28,10 @@ const TimelineEditable = (props) => {
 
     return (
         <div className='timelineRow' style={dateBarColor}>
-            <button onClick={() => {
+            {/* <button onClick={() => {
                 console.log('set', props.id);
                 scheduleContext.setDate(props.id);
-            }}>Change</button>
+            }}>Change</button> */}
             <div style={dateStyle} className='timelineDate' >{props.date}</div>
             <div className='timeline'style={timeTextColor}>
                 <div className='time' >9:00AM</div>

@@ -1,5 +1,6 @@
 // Customized components import
 import ScheduleBox from './ScheduleBox';
+import background from '../../assets/icons/corner.png';
 
 // CSS import
 import '../../css/Dashboard.css';
@@ -23,9 +24,9 @@ const styles = StyleSheet.create({
     venue: {
         'width': '18.9%',
         'height': '100%',
-        'fontFamily': 'NeueHaasUnicaProBold',
+        'fontFamily': 'HelveticaBold',
         'color': 'black',
-        'fontSize': '30pt',
+        'fontSize': '34pt',
         'fontWeight': '700',
         // 'margin': 'auto',
         'paddingTop': '0.3vw',
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
         'borderRight': '2px solid black',
         'borderBottom': '2px solid black',
         'borderLeft': '2px solid black',
+        'backgroundImage': `url(${background})`,
     },
     // #808080
     screen: {
