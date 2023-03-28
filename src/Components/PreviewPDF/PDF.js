@@ -3,7 +3,11 @@ import Schedule from './Schedule';
 
 // Fonts import
 import RobotoFont from '../../resources/fonts/Roboto-Regular.ttf';
-import NeueHaasUnicaProBold from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Bold.otf';
+import NeueHaas from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Regular.otf';
+import NeueHaasMedium from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Medium.otf';
+import NeueHaasBold from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Bold.otf';
+import Helvetica from '../../resources/fonts/Helvetica/FreeSans.ttf';
+import HelveticaBold from '../../resources/fonts/Helvetica/FreeSansBold.ttf';
 
 // External import
 import React from 'react';
@@ -13,8 +17,20 @@ Font.register({
     family: 'Roboto', fonts: [
         { src: RobotoFont }, // font-style: normal, font-weight: normal
     ],
-    family: 'NeueHaasUnicaProBold', fonts: [
-        { src: NeueHaasUnicaProBold }, // font-style: normal, font-weight: normal
+    family: 'NeueHaas', fonts: [
+        { src: NeueHaas }, // font-style: normal, font-weight: normal
+    ],
+    family: 'NeueHaasMedium', fonts: [
+        { src: NeueHaasMedium }, // font-style: normal, font-weight: normal
+    ],
+    family: 'NeueHaasBold', fonts: [
+        { src: NeueHaasBold }, // font-style: normal, font-weight: normal
+    ],
+    family: 'Helvetica', fonts: [
+        { src: Helvetica }, // font-style: normal, font-weight: normal
+    ],
+    family: 'HelveticaBold', fonts: [
+        { src: HelveticaBold }, // font-style: normal, font-weight: normal
     ],
 });
 

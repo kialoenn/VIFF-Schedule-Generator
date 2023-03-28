@@ -57,6 +57,7 @@ const ScheduleBox = (prop) => {
                 width: width,
                 marginLeft: startPoint,
                 backgroundColor: 'white',
+                fontFamily: 'Helvetica',
                 borderTop: '3px solid black',
                 borderLeft: '3px dotted black',
                 borderBottom: '3px solid black',
