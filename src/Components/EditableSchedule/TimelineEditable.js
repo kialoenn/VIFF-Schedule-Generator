@@ -4,17 +4,40 @@ import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContex
 
 
 const TimelineEditable = (props) => {
+    const convert = require('color-convert');
     const scheduleContext = useScheduleContext();
-    console.log("timeline Editable props:", props);
+    const colors = scheduleContext.colorSettings;
+    const fonts = scheduleContext.fontSettings;
+
+    let dateText = colors["dateText"];
+    dateText = `rgb(${dateText.r}, ${dateText.g}, ${dateText.b})`
+    const dateStyle = {
+        color: dateText,
+    }
+
+    let dateBar = colors["dateBar"];
+    const dateBarColorHex = convert.rgb.hex(dateBar.r, dateBar.g, dateBar.b);
+    const dateBarColor = {
+        'backgroundColor': '#' + dateBarColorHex, 
+        'fontSize': fonts["size"] +'pt',
+    }
+
+    let timeText = colors["timeText"];
+    const timeTextColorHex = convert.rgb.hex(timeText.r, timeText.g, timeText.b);
+    const timeTextColor = {
+        'color': '#' + timeTextColorHex, 
+        'fontSize': fonts["size"] +'pt',
+    }
+
     return (
-        <div className='timelineRow'>
-            <button onClick={() => {
+        <div className='timelineRow' style={dateBarColor}>
+            {/* <button onClick={() => {
                 console.log('set', props.id);
                 scheduleContext.setDate(props.id);
-            }}>Change</button>
-            <div className='timelineDate'>{props.date}</div>
-            <div className='timeline'>
-                <div className='time'>9:00AM</div>
+            }}>Change</button> */}
+            <div style={dateStyle} className='timelineDate' >{props.date}</div>
+            <div className='timeline'style={timeTextColor}>
+                <div className='time' >9:00AM</div>
                 <div className='time'>10:00AM</div>
                 <div className='time'>11:00AM</div>
                 <div className='time'>12:00PM</div>

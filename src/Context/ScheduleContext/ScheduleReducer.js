@@ -3,6 +3,8 @@ import {
     MAP_VENUENAME,
     SET_DATE,
     SET_COLOR,
+    SET_FONT,
+    SET_GRIDLINE,
 } from '../ActionType';
 
 export default (state, action) => {
@@ -33,7 +35,17 @@ export default (state, action) => {
         case SET_COLOR:
             return {
                 ...state,
-                colorSettings: state.colorSettings[action.type] = action.color,
+                colorSettings: {...state.colorSettings, [action.id]: action.color},
+            };
+        case SET_FONT: 
+            return {
+                ...state,
+                fontSettings: {...state.fontSettings, [action.settingID]: action.settingVal},
+            };
+        case SET_GRIDLINE:
+            return {
+                ...state,
+                gridLineSettings: {...state.gridLineSettings, [action.settingID]: action.settingVal},
             };
         default:
             return state;

@@ -2,7 +2,7 @@ import TimelineEditable from './TimelineEditable';
 import VenueEditable from './VenueEditable';
 
 const ScheduleEditable = (props) => {
-    console.log('scheduleEditable props: ', props);
+    // console.log('scheduleEditable props: ', props);
     return (
         <div>
             <TimelineEditable date={props.data.date} id={props.data.id}></TimelineEditable>

@@ -31,6 +31,7 @@ const createMap = (movieInfo) => {
                     screens: Array.from(screens, ([screenName, screenInfo]) => (
                         {
                             screenTitle: screenName,
+                            filmTitle: screenInfo.movie_name,
                             startTime: screenInfo.start_time,
                             duration: screenInfo.screen_time,
                             pageLocation: screenInfo.page_number,

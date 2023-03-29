@@ -2,8 +2,8 @@
 
 
 .sidebar {
-    height: 100%;
     width: 250px;
+    height: 100vh;
     background-color:white;
     position: sticky;
     top: 0;

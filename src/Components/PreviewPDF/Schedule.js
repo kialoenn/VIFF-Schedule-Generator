@@ -9,10 +9,10 @@ import { View } from '@react-pdf/renderer';
 const Schedule = (props) => {
     return (
         <View>
-            <Timeline date={props.data.date}></Timeline>
+            <Timeline date={props.data.date} color={props.color}></Timeline>
             {props.data.venue.map((venues, index) => {
                 return (
-                    <Venue key={index} venueDetail={venues}></Venue>
+                    <Venue key={index} venueDetail={venues} color={props.color}></Venue>
                 );
             })}
         </View>

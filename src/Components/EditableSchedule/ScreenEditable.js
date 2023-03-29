@@ -4,7 +4,20 @@ import '../../css/Schedule.css';
 import React from 'react';
 import reactCSS from 'reactcss';
 
+// context import
+import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
+
 const ScreenEditable = (prop) => {
+    const convert = require('color-convert');
+    const scheduleContext = useScheduleContext();
+    const colors = scheduleContext.colorSettings;
+
+    const filmBlock = colors["filmBlock"];
+    const filmBlockColorHex = convert.rgb.hex(filmBlock.r, filmBlock.g, filmBlock.b);
+    const filmTitleText = colors["filmTitleText"];
+    const filmTitleTextColorHex = convert.rgb.hex(filmTitleText.r, filmTitleText.g,filmTitleText.b);
+    const filmDetailsText = colors["filmDetailsText"];
+    const filmDetailsTextColorHex = convert.rgb.hex(filmDetailsText.r, filmDetailsText.g, filmDetailsText.b);
     // console.log("schedule box rgb:", prop.screen.colour);
     // console.log("r:", prop.screen.colour.r);
     const r = prop.screen.colour.r;
@@ -12,6 +25,7 @@ const ScreenEditable = (prop) => {
     const b = prop.screen.colour.b;
     // console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
+    let w;
     let startPoint;
     const color = `2px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
@@ -47,7 +61,39 @@ const ScreenEditable = (prop) => {
     min = parseFloat(min) / boxMin;
     const durationNum = hour + min;
     width = oneDiv * durationNum * 100 * 0.52;
+    w = width;
     width = width + 'vw';
+
+
+    // function truncateText(text, maxLength) {
+    //     if (text.length <= maxLength) {
+    //       return text;
+    //     } else {
+    //     //   return text.substr(0, maxLength - 3) + "...";
+    //       console.log("MaxLength: " + maxLength);
+    //       return text.substr(0, maxLength) + "...";
+    //     }
+    //   }
+
+
+      function truncateText(text, width) {
+
+        //console.log("w: " + width);
+        const fontSize = 0.5; // font size in em units
+        const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
+        const maxWidth = width * 0.01 * window.innerWidth / emToPx;
+        const textWidth = text.length * fontSize;
+        if (textWidth > maxWidth) {
+          const truncatedText = text.slice(0, Math.floor(maxWidth / fontSize));
+          return truncatedText + '...';
+        }
+        return text;
+      }
+
+
+    //console.log(screen);
+    // const truncatedText = truncateText(screen.screenTitle, width);
+    const truncatedText = truncateText(screen.filmTitle, w);  
 
     const ScreenBoxstyles = reactCSS({
         'default': {
@@ -56,7 +102,7 @@ const ScreenEditable = (prop) => {
                 position: 'absolute',
                 width: width,
                 marginLeft: startPoint,
-                backgroundColor: 'white',
+                backgroundColor: '#' + filmBlockColorHex,
                 borderTop: '1px solid black',
                 borderLeft: '1px dotted black',
                 borderBottom: '1px solid black',
@@ -64,15 +110,41 @@ const ScreenEditable = (prop) => {
             },
             title: {
                 height: '50%',
-                fontSize: '1.5em',
+                fontSize: '1.2em',
                 margin: '0',
+                color: '#' + filmTitleTextColorHex,
+                padding: '10'
             },
+            details: {
+                color: '#' + filmDetailsTextColorHex,
+            }
         },
     });
+
+
+    const movieStartTime = screen.startTime;
+    const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
+
+    const date = new Date();
+    date.setHours(shours);
+    date.setMinutes(sminutes);
+    date.setSeconds(sseconds);
+
+    const options = {hour: 'numeric', minute: 'numeric', hour12: true};
+    const formattedTime = date.toLocaleTimeString('en-US', options);
+
+
+    const timeString = screen.duration;
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const durationMinutes = hours * 60 + minutes;
+
     return (
         <div className='screenBox' style={ScreenBoxstyles.screenBox}>
-            <div style={ScreenBoxstyles.title}>{screen.screenTitle}</div>
-            <div>{screen.startTime} {screen.duration} </div>
+            {/* <div style={ScreenBoxstyles.title}>{truncatedText}</div> */}
+            <div style={ScreenBoxstyles.title}>{truncatedText}</div>
+            {/* <Text numberOfLines={1}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
+             */}
+            <div style = {ScreenBoxstyles.details}>{formattedTime} {durationMinutes}min p{screen.pageLocation}</div>
         </div>
 
     );

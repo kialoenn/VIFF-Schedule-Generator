@@ -5,78 +5,47 @@ import ScreenEditable from './ScreenEditable';
 import '../../css/Dashboard.css';
 import '../../css/Schedule.css';
 
+// context import
+import { useScheduleContext } from '../../Context/ScheduleContext/ScheduleContext';
+
 // External import
 import React from 'react';
 import reactCSS from 'reactcss';
 
-const styles = reactCSS({
-    venueRow: {
-        'flexDirection': 'row',
-        'margin': '0px auto',
-        'width': '100vw',
-        'height': '2.362vh',
-        'backgroundColor': 'black',
-        'color': 'white',
-    },
-    venue: {
-        'width': '18.9vw',
-        'height': '100%',
-        'fontFamily': 'Roboto',
-        'color': 'blue',
-        'fontSize': '1vw',
-        'fontWeight': '700',
-        // 'margin': 'auto',
-        'paddingTop': '0.3vw',
-        'paddingBottom': '0.3vw',
-        'textAlign': 'center',
-        'backgroundColor': '#a7a9ac',
-        'borderRight': '2px solid black',
-        'borderBottom': '2px solid black',
-        'borderLeft': '2px solid black',
-    },
-    // #808080
-    screen: {
-        'color': 'black',
-        'width': '81.1vw',
-        'backgroundColor': '#808080',
-        'flexDirection': 'row',
-        'fontSize': '0.7vw',
+const VenueEditable = (props) => {
+    // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
+    const convert = require('color-convert');
+    const scheduleContext = useScheduleContext();
+    const colors = scheduleContext.colorSettings;
+    const fonts = scheduleContext.fontSettings;
+    
+    const oddRowColors = colors["oddRow"];
+    const oddRowColorHex = convert.rgb.hex(oddRowColors.r, oddRowColors.g, oddRowColors.b);
+    const evenRowColors = colors["evenRow"];
+    const evenRowColorHex = convert.rgb.hex(evenRowColors.r, evenRowColors.g, evenRowColors.b);
 
-    },
+    const venueTextColor = colors["venueText"];
+    const venueTextColorHex = convert.rgb.hex(venueTextColor.r, venueTextColor.g, venueTextColor.b);
 
-    box1: {
-        'backgroundColor': '#d1cac0',
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '3px dotted black',
-    },
+    const venueBarColor = colors["venueBar"];
+    const venueBarColorHex = convert.rgb.hex(venueBarColor.r, venueBarColor.g, venueBarColor.b);
 
-    box2: {
-        'backgroundColor': '#9e9991',
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '3px dotted black',
-    },
+const oddBoxes = {
+    'backgroundColor': '#' + oddRowColorHex, 
+}
 
-    box3: {
-        'backgroundColor': '#d1cac0',
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '5px dotted black',
-    },
+const evenBoxes = {
+    'backgroundColor': '#' + evenRowColorHex,
+}
 
-    box4: {
-        'backgroundColor': '#9e9991',
-        'width': '1.5625vw',
-        'height': '100%',
-        'borderRight': '5px dotted black',
-    },
+const venueText = {
+    'color': '#' + venueTextColorHex, 
+    'fontSize': fonts["size"] +'pt',
+}
+const venueBar = {
+    'backgroundColor': '#' + venueBarColorHex,
+}
 
-    text: {
-        'margin': 'auto 0',
-        'height': '2.362vh',
-    },
-});
 const createdScheduleBox = (id) => {
     const scheduleBoxNum = 64;
     const scheduleBoxes = [];
@@ -84,15 +53,15 @@ const createdScheduleBox = (id) => {
     for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={styles.box1} className="box1" key={i}></div>);
+                scheduleBoxes.push(<div style={oddBoxes} className="box1" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={styles.box3} className="box3" key={i}></div>);
+                scheduleBoxes.push(<div style={oddBoxes} className="box3" key={i}></div>);
             }
         } else {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={styles.box2} className="box2" key={i}></div>);
+                scheduleBoxes.push(<div style={evenBoxes} className="box2" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={styles.box4} className="box4" key={i}></div>);
+                scheduleBoxes.push(<div style={evenBoxes} className="box4" key={i}></div>);
             }
         }
         // } else if (i % 4 == 2) {
@@ -103,13 +72,10 @@ const createdScheduleBox = (id) => {
     }
     return scheduleBoxes;
 };
-
-const VenueEditable = (props) => {
-    // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
         <div className='venueRow'>
-            <div className='venue'>
-                <div className='text' style={styles.text}>{props.venueDetail.venueName}</div>
+            <div className='venue'style={venueBar}>
+                <div className='text' style={venueText}>{props.venueDetail.venueName}</div>
             </div>
             <div className='screen'>
                 {createdScheduleBox(props.venueDetail.id)}
