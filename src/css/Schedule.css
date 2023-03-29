@@ -54,6 +54,7 @@
 }
 
 .venue {
+    position:relative;
     width: 18.9%;
     font-family: HelveticaBold;
     color: blue;
@@ -71,6 +72,16 @@
 
 .text {
     height: 2.362vh;
+}
+
+.triangle {
+    position: absolute;
+	left: 0;
+    bottom: 0;
+	width: 0;
+	height: 0;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid black;
 }
 
 .screen {

@@ -76,6 +76,7 @@ const createdScheduleBox = (id) => {
         <div className='venueRow'>
             <div className='venue'style={venueBar}>
                 <div className='text' style={venueText}>{props.venueDetail.venueName}</div>
+                <div className='triangle'></div>
             </div>
             <div className='screen'>
                 {createdScheduleBox(props.venueDetail.id)}
