@@ -39,6 +39,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 const fileColumn = lines[0].split('\t');
                 const columns = fileColumn.length;
                 let fileValidation = true;
+                let fileErrorMsg = '';
                 // console.log("number of lines in file:", lines.length);
                 // console.log("columns of ", file, ": ", columns);
                 for (let i = 0; i < lines.length; i++) {
@@ -46,11 +47,11 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                         fileValidation = false;
                         // console.log("line ", i, " columns: ", lines[i].split('\t').length);
                         // console.log("line: ", lines[i].length);
-                        // console.log("line number ", i, " on ", file, " has different number of column");
+                        console.log('line number ', i, ' on ', file, ' has different number of column');
                     }
                 }
                 if (fileValidation == false) {
-                    console.log("file validation fail");
+                    console.log('file validation fail');
                 } else if (fileColumn.length == 9) {
                     scheduleContext.parseGridScreens(lines);
                     setTrigger({
