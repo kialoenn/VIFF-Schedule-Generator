@@ -30,6 +30,7 @@ const Venue = (props) => {
             'color': 'white',
         },
         venue: {
+            'position': 'relative',
             'width': '18.9%',
             'height': '100%',
             'fontFamily': 'HelveticaBold',
@@ -88,6 +89,15 @@ const Venue = (props) => {
             'margin': 'auto 0',
             'color': '#' + venueTextColor,
         },
+        triangle: {
+            'position': 'absolute',
+            'left': '0',
+            'bottom': '0',
+            'width': '0',
+            'height': '0',
+            'borderRight': '35px solid #' + venueBarColor,
+            'borderBottom': '35px solid black',
+        }
     });
     const createdScheduleBox = (id) => {
         const scheduleBoxNum = 64;
@@ -122,6 +132,7 @@ const Venue = (props) => {
         <View style={styles.venueRow}>
             <View style={styles.venue}>
                 <Text style={styles.text}>{props.venueDetail.venueName}</Text>
+                <View style={styles.triangle}></View>
             </View>
             <View style={styles.screen}>
                 {createdScheduleBox(props.venueDetail.id)}
