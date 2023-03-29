@@ -50,7 +50,7 @@ const ScreenEditable = (prop) => {
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
-    startPoint = (hour + min) / 64 * 100 * 0.565;
+    startPoint = (hour + min) / 64 * 100 * 0.607;
     startPoint += 'vw';
 
     // getting a width
@@ -60,7 +60,7 @@ const ScreenEditable = (prop) => {
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     const durationNum = hour + min;
-    width = oneDiv * durationNum * 100 * 0.565;
+    width = oneDiv * durationNum * 100 * 0.607;
     w = width;
     width = width + 'vw';
 
