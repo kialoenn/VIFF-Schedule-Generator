@@ -74,6 +74,12 @@ const ScheduleBox = (prop) => {
         },
     });
 
+    const filmTitleText = {
+        'color': '#' + filmTitleTextColor,
+    }
+    const filmDetailsText = {
+        'color': '#' +  filmDetailsTextColor,
+    }
 
     const movieStartTime = screen.startTime;
     const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
@@ -94,8 +100,8 @@ const ScheduleBox = (prop) => {
     return (
         <View style={ScreenBoxstyles.screenBox}>
             {/* <Text numberOfLines={1} ellipsizeMode="tail">THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX. THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text> */}
-            <Text numberOfLines={1} ellipsizeMode="tail">{screen.filmTitle}</Text>
-            <Text>{formattedTime} {durationMinutes}min p{screen.pageLocation} </Text>
+            <Text style={filmTitleText} numberOfLines={1} ellipsizeMode="tail">{screen.filmTitle}</Text>
+            <Text style={filmDetailsText}>{formattedTime} {durationMinutes}min p{screen.pageLocation} </Text>
         </View>
 
     );
