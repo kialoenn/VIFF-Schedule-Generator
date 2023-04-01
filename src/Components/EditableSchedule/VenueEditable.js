@@ -18,7 +18,6 @@ const VenueEditable = (props) => {
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
     const fonts = scheduleContext.fontSettings;
-    
     const oddRowColors = colors["oddRow"];
     const oddRowColorHex = convert.rgb.hex(oddRowColors.r, oddRowColors.g, oddRowColors.b);
     const evenRowColors = colors["evenRow"];
@@ -40,7 +39,7 @@ const evenBoxes = {
 
 const venueText = {
     'color': '#' + venueTextColorHex, 
-    'fontSize': fonts["size"] +'pt',
+    'fontSize': fonts["venueText"]["size"] +'pt',
 }
 const venueBar = {
     'backgroundColor': '#' + venueBarColorHex,

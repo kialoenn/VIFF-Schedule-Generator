@@ -11,7 +11,7 @@ const ScreenEditable = (prop) => {
     const convert = require('color-convert');
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
-
+    const fonts = scheduleContext.fontSettings;
     const filmBlock = colors["filmBlock"];
     const filmBlockColorHex = convert.rgb.hex(filmBlock.r, filmBlock.g, filmBlock.b);
     const filmTitleText = colors["filmTitleText"];
@@ -110,13 +110,14 @@ const ScreenEditable = (prop) => {
             },
             title: {
                 height: '50%',
-                fontSize: '1.2em',
+                fontSize: fonts["filmTitleText"]["size"] + 'pt', //was 1.2em
                 margin: '0',
                 color: '#' + filmTitleTextColorHex,
                 padding: '10'
             },
             details: {
                 color: '#' + filmDetailsTextColorHex,
+                fontSize: fonts["filmDetailsText"]["size"] + 'pt'
             }
         },
     });

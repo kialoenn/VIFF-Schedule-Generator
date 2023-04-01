@@ -40,7 +40,7 @@ export default (state, action) => {
         case SET_FONT: 
             return {
                 ...state,
-                fontSettings: {...state.fontSettings, [action.settingID]: action.settingVal},
+                fontSettings: {...state.fontSettings, [action.settingID]:  action.settingVal},
             };
         case SET_GRIDLINE:
             return {

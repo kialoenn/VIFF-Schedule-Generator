@@ -38,8 +38,26 @@ const ScheduleState = (props) => {
         gridScreenTimes: [],
         colorSettings,
         fontSettings: {
-            size: 7,
-            font: "Helvetica",
+            dateText: {
+                size: 7,
+                font: "Helvetica",
+            },
+            timeText: {
+                size: 7,
+                font: "Helvetica",
+            },
+            venueText: {
+                size: 7,
+                font: "Helvetica",
+            },
+            filmTitleText: {
+                size: 7,
+                font: "Helvetica",
+            },
+            filmDetailsText: {
+                size: 7,
+                font: "Helvetica",
+            },
         },
         gridLineSettings: {
             width: 3,
@@ -83,17 +101,17 @@ const ScheduleState = (props) => {
         setCookie(color.id, colorObject, { expires: expirationDate });
     };
 
-    const setFont = (fontSetting) => {
-        let id;
+    const setFont = (fontSetting, id) => {
+        let data;
         if (typeof fontSetting == "string") {
-            id = "font"
+            data = {size: state.fontSettings[id].size, font: fontSetting}
         } 
         else if (typeof fontSetting == "number") {
-            id = "size"
+            data = {size: fontSetting, font: state.fontSettings[id].font}
         }
         dispatch({
             type: SET_FONT,
-            settingVal: fontSetting,
+            settingVal: data,
             settingID: id,
         });
     }
