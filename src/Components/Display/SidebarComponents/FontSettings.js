@@ -24,10 +24,10 @@ const FontSettings = () => {
                   id="demo-simple-select-helper"
                   label="Font"
                   size="small"
-                  defaultValue={"Helvetica"}
+                  defaultValue={"HelveticaBold"}
                   onChange={handleChange("dateText")}
               >
-                  <MenuItem value={"Helvetica"}>Helvetica</MenuItem>
+                  <MenuItem value={"HelveticaBold"}>Helvetica</MenuItem>
                   <MenuItem value={"NeueHaas"}>NeueHaas</MenuItem>
                   <MenuItem value={"Calibri"}>Calibri</MenuItem>
                   <MenuItem value={"Arial"}>Arial</MenuItem>
@@ -161,10 +161,10 @@ const FontSettings = () => {
                   id="demo-simple-select-helper"
                   label="Font"
                   size="small"
-                  defaultValue={"Helvetica"}
+                  defaultValue={"HelveticaBold"}
                   onChange={handleChange("venueText")}
               >
-                  <MenuItem value={"Helvetica"}>Helvetica</MenuItem>
+                  <MenuItem value={"HelveticaBold"}>Helvetica</MenuItem>
                   <MenuItem value={"NeueHaas"}>NeueHaas</MenuItem>
                   <MenuItem value={"Calibri"}>Calibri</MenuItem>
                   <MenuItem value={"Arial"}>Arial</MenuItem>
