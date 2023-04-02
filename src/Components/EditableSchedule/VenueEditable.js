@@ -18,6 +18,8 @@ const VenueEditable = (props) => {
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
     const fonts = scheduleContext.fontSettings;
+    const grid = scheduleContext.gridLineSettings;
+
     const oddRowColors = colors["oddRow"];
     const oddRowColorHex = convert.rgb.hex(oddRowColors.r, oddRowColors.g, oddRowColors.b);
     const evenRowColors = colors["evenRow"];
@@ -30,16 +32,24 @@ const VenueEditable = (props) => {
     const venueBarColorHex = convert.rgb.hex(venueBarColor.r, venueBarColor.g, venueBarColor.b);
 
 const oddBoxes = {
-    'backgroundColor': '#' + oddRowColorHex, 
+    'backgroundColor': '#' + oddRowColorHex,
 }
 
 const evenBoxes = {
     'backgroundColor': '#' + evenRowColorHex,
 }
 
+const oddLine = {
+    'borderRight': grid["odd"].width + "px " + grid["odd"].type,
+}
+
+const evenLine = {
+    'borderRight': grid["even"].width + "px " + grid["even"].type,
+}
+
 const venueText = {
     'color': '#' + venueTextColorHex, 
-    'fontSize': fonts["venueText"]["size"] +'pt',
+    'fontSize': fonts["size"] +'pt',
 }
 const venueBar = {
     'backgroundColor': '#' + venueBarColorHex,
@@ -52,15 +62,15 @@ const createdScheduleBox = (id) => {
     for (let i = 0; i < scheduleBoxNum; i++) {
         if (id % 2 == 0) {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={oddBoxes} className="box1" key={i}></div>);
+                scheduleBoxes.push(<div style={{...oddBoxes, ...oddLine}} className="box1" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={oddBoxes} className="box3" key={i}></div>);
+                scheduleBoxes.push(<div style={{...oddBoxes, ...evenLine}} className="box3" key={i}></div>);
             }
         } else {
             if (i % 2 == 0) {
-                scheduleBoxes.push(<div style={evenBoxes} className="box2" key={i}></div>);
+                scheduleBoxes.push(<div style={{...evenBoxes, ...oddLine}} className="box2" key={i}></div>);
             } else {
-                scheduleBoxes.push(<div style={evenBoxes} className="box4" key={i}></div>);
+                scheduleBoxes.push(<div style={{...evenBoxes, ...evenLine}} className="box4" key={i}></div>);
             }
         }
         // } else if (i % 4 == 2) {

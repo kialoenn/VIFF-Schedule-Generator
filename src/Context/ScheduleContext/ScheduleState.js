@@ -60,8 +60,15 @@ const ScheduleState = (props) => {
             },
         },
         gridLineSettings: {
-            width: 3,
-            type: "Solid",
+            odd: {
+                width: 1,
+                type: "Dotted",
+            },
+            even: {
+                width: 2,
+                type: "Dotted",
+            }
+            
         },
     };
 
@@ -116,18 +123,21 @@ const ScheduleState = (props) => {
         });
     }
     
-    const setGridLine = (gridLineSetting) => {
-        let type;
+    const setGridLine = (gridLineSetting, id) => {
+        let data;
         if (typeof gridLineSetting == "string") {
-            type="type"
+            // type
+            data={width: state.gridLineSettings[id].width, type: gridLineSetting}
+            
         }
         else if (typeof gridLineSetting == "number") {
-            type="width"
+            // width
+            data= {width: gridLineSetting, type: state.gridLineSettings[id].type}
         }
         dispatch({
             type: SET_GRIDLINE,
-            settingVal: gridLineSetting,
-            settingID: type,
+            settingVal: data,
+            settingID: id,
         });
     }
     return (
