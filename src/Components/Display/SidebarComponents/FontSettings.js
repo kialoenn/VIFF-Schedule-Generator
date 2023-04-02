@@ -92,10 +92,10 @@ const FontSettings = () => {
                   id="demo-simple-select-helper"
                   label="Font"
                   size="small"
-                  defaultValue={"Helvetica"}
+                  defaultValue={"HelveticaBold"}
                   onChange={handleChange("timeText")}
               >
-                  <MenuItem value={"Helvetica"}>Helvetica</MenuItem>
+                  <MenuItem value={"HelveticaBold"}>Helvetica</MenuItem>
                   <MenuItem value={"NeueHaas"}>NeueHaas</MenuItem>
                   <MenuItem value={"Calibri"}>Calibri</MenuItem>
                   <MenuItem value={"Arial"}>Arial</MenuItem>
