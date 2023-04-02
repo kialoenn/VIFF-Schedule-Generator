@@ -13,13 +13,14 @@ const TimelineEditable = (props) => {
     dateText = `rgb(${dateText.r}, ${dateText.g}, ${dateText.b})`
     const dateStyle = {
         color: dateText,
+        'fontSize': fonts["dateText"]["size"] +'pt',
+        'font-family': fonts["dateText"]["font"], // Check on this
     }
 
     let dateBar = colors["dateBar"];
     const dateBarColorHex = convert.rgb.hex(dateBar.r, dateBar.g, dateBar.b);
     const dateBarColor = {
         'backgroundColor': '#' + dateBarColorHex, 
-        'fontSize': fonts["dateText"]["size"] +'pt',
     }
 
     let timeText = colors["timeText"];
@@ -27,6 +28,7 @@ const TimelineEditable = (props) => {
     const timeTextColor = {
         'color': '#' + timeTextColorHex, 
         'fontSize': fonts["timeText"]["size"] +'pt',
+        'font-family': fonts["timeText"]["font"], // Check on this
     }
 
     return (
