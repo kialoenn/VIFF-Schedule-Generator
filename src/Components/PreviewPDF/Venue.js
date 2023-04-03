@@ -20,7 +20,7 @@ const Venue = (props) => {
     const evenLine = props.grid['even'].width + 1 + "px " + props.grid['even'].type + " black";
     const oddLine = props.grid['odd'].width + 1 + "px " + props.grid['odd'].type + " black";
 
-    console.log("grid:", evenLine);
+    const venueText = props.font["venueText"];
     const styles = StyleSheet.create({
         venueRow: {
             'flexDirection': 'row',
@@ -36,7 +36,7 @@ const Venue = (props) => {
             'height': '100%',
             'fontFamily': 'HelveticaBold',
             'color': 'black',
-            'fontSize': '34pt',
+            'fontSize': (venueText["size"] * 4.8)+ 'pt', 
             'fontWeight': '700',
             // 'margin': 'auto',
             'paddingTop': '0.3vw',
@@ -143,7 +143,7 @@ const Venue = (props) => {
                 {createdScheduleBox(props.venueDetail.id)}
                 {props.venueDetail.screens.map((screen, index) => {
                     return (
-                        <ScheduleBox key={index} screen={screen} color={props.color}></ScheduleBox>
+                        <ScheduleBox key={index} screen={screen} color={props.color} font={props.font}></ScheduleBox>
                     );
                 })}
 

@@ -40,22 +40,22 @@ const ScheduleState = (props) => {
         fontSettings: {
             dateText: {
                 size: 7,
-                font: "Helvetica",
+                font: "HelveticaBold",
             },
             timeText: {
                 size: 7,
-                font: "Helvetica",
+                font: "HelveticaBold",
             },
             venueText: {
                 size: 7,
-                font: "Helvetica",
+                font: "HelveticaBold",
             },
             filmTitleText: {
-                size: 7,
+                size: 4,
                 font: "Helvetica",
             },
             filmDetailsText: {
-                size: 7,
+                size: 4,
                 font: "Helvetica",
             },
         },

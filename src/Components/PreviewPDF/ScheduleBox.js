@@ -76,9 +76,11 @@ const ScheduleBox = (prop) => {
 
     const filmTitleText = {
         'color': '#' + filmTitleTextColor,
+        'fontSize': (prop.font["filmTitleText"]["size"] * 3 + 12) + 'pt',
     }
     const filmDetailsText = {
         'color': '#' +  filmDetailsTextColor,
+        'fontSize': (prop.font["filmDetailsText"]["size"] * 5.5) + 'pt',
     }
 
     const movieStartTime = screen.startTime;

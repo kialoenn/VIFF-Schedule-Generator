@@ -22,13 +22,13 @@ const Timeline = (props) => {
             'color': '#' + dateTextColor,
             'fontFamily': 'HelveticaBold',
             'fontWeight': '500',
-            'fontSize': '1.3vw',
+            'fontSize': (props.font["dateText"]["size"] / 6.75) + 'vw',
         },
     
         timeline: {
             'flex': '8.11',
             'flexDirection': 'row',
-            'fontSize': '1vw',
+            'fontSize': (props.font["timeText"]["size"] / 7) + 'vw',
             'fontFamily': 'HelveticaBold',
             'color': '#' + timeTextColor,
         },

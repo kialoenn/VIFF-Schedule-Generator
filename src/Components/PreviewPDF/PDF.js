@@ -40,7 +40,7 @@ const MyDocument = (props) => (
         <Page size={2963}>
             {props.data.parsedScheduleContext.map((day, index) => {
                 return (
-                    <Schedule key={index} data={day} color={props.data.colorSettings} grid={props.data.gridSettings}></Schedule>
+                    <Schedule key={index} data={day} color={props.data.colorSettings} font={props.data.fontSettings} grid={props.data.gridSettings}></Schedule>
                 );
             })}
         </Page>

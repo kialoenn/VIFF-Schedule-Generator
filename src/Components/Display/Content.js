@@ -26,6 +26,7 @@ const Content = (props) => {
   const scheduleContext = useScheduleContext();
   const parsedScheduleContext = scheduleContext.gridScreenTimes;
   const colorSettings = scheduleContext.colorSettings;
+  const fontSettings = scheduleContext.fontSettings;
   const gridSettings = scheduleContext.gridLineSettings;
 
   const CheckData = () => {
@@ -131,7 +132,7 @@ const Content = (props) => {
             <div>
               <div id="pdf-viewer">
                 <PDFViewer width={1024} height={768}>
-                  <MyDocument data={{ pdfSettings, parsedScheduleContext, colorSettings, gridSettings }} />
+                  <MyDocument data={{ pdfSettings, parsedScheduleContext, colorSettings, fontSettings, gridSettings }} />
                 </PDFViewer>
               </div>
               <div id="preview-viewer">
