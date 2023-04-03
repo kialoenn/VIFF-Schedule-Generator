@@ -34,7 +34,7 @@ const Venue = (props) => {
             'position': 'relative',
             'width': '18.9%',
             'height': '100%',
-            'fontFamily': 'HelveticaBold',
+            'fontFamily': venueText["font"],
             'color': 'black',
             'fontSize': (venueText["size"] * 4.8)+ 'pt', 
             'fontWeight': '700',

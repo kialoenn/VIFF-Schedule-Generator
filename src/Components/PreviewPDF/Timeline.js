@@ -20,7 +20,7 @@ const Timeline = (props) => {
             'textAlign': 'center',
             'margin': 'auto',
             'color': '#' + dateTextColor,
-            'fontFamily': 'HelveticaBold',
+            'fontFamily': props.font["dateText"]["font"],
             'fontWeight': '500',
             'fontSize': (props.font["dateText"]["size"] / 6.75) + 'vw',
         },
@@ -29,7 +29,7 @@ const Timeline = (props) => {
             'flex': '8.11',
             'flexDirection': 'row',
             'fontSize': (props.font["timeText"]["size"] / 7) + 'vw',
-            'fontFamily': 'HelveticaBold',
+            'fontFamily': props.font["timeText"]["font"],
             'color': '#' + timeTextColor,
         },
     

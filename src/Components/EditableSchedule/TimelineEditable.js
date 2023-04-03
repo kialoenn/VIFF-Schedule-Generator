@@ -14,7 +14,7 @@ const TimelineEditable = (props) => {
     const dateStyle = {
         color: dateText,
         'fontSize': fonts["dateText"]["size"] +'pt',
-        'font-family': fonts["dateText"]["font"], 
+        'fontFamily': fonts["dateText"]["font"], 
     }
 
     let dateBar = colors["dateBar"];
@@ -28,7 +28,7 @@ const TimelineEditable = (props) => {
     const timeTextColor = {
         'color': '#' + timeTextColorHex, 
         'fontSize': fonts["timeText"]["size"] +'pt',
-        'font-family': fonts["timeText"]["font"], 
+        'fontFamily': fonts["timeText"]["font"], 
     }
 
     return (

@@ -110,7 +110,7 @@ const ScreenEditable = (prop) => {
             },
             title: {
                 height: '50%',
-                fontSize: fonts["filmTitleText"]["size"] + 'pt', //was 1.2em
+                fontSize: fonts["filmTitleText"]["size"] * 2 + 'pt', //was 1.2em
                 fontFamily: fonts["filmTitleText"]["font"],
                 margin: '0',
                 color: '#' + filmTitleTextColorHex,
@@ -118,7 +118,7 @@ const ScreenEditable = (prop) => {
             },
             details: {
                 color: '#' + filmDetailsTextColorHex,
-                fontSize: fonts["filmDetailsText"]["size"] + 'pt',
+                fontSize: fonts["filmDetailsText"]["size"] * 2 + 'pt',
                 fontFamily: fonts["filmDetailsText"]["font"],
             }
         },

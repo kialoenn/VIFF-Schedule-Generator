@@ -8,6 +8,9 @@ import NeueHaasMedium from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro
 import NeueHaasBold from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Bold.otf';
 import Helvetica from '../../resources/fonts/Helvetica/FreeSans.ttf';
 import HelveticaBold from '../../resources/fonts/Helvetica/FreeSansBold.ttf';
+import Garamond from '../../resources/fonts/EBGaramond-Regular.ttf';
+import Geneva from '../../resources/fonts/Geneva Normal.ttf';
+import AvantGarde from '../../resources/fonts/AvantGarde Normal.ttf';
 
 // External import
 import React from 'react';
@@ -33,6 +36,22 @@ Font.register({
         { src: HelveticaBold }, // font-style: normal, font-weight: normal
     ],
 });
+
+Font.register({
+    family: 'Garamond',
+    src: Garamond,
+});
+
+Font.register({
+    family: 'Geneva',
+    src: Geneva,
+});
+
+Font.register({
+    family: 'AvantGarde',
+    src: AvantGarde,
+});
+
 
 // Create Document Component
 const MyDocument = (props) => (
