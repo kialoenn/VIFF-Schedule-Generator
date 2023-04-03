@@ -14,17 +14,23 @@ const uploadedFiles = new Map();
 
 const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo }) => {
     const scheduleContext = useScheduleContext();
+    let icon = "check";
 
     const onDrop = useCallback((acceptedFiles) => {
+        icon = "check";
+        let fileValidation = true;
+        document.getElementById("fileValidation").style.display = "none";
         console.log('accepted files:', acceptedFiles);
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
             } else {
                 document.getElementById('file-list-header').innerHTML = 'Files Uploaded';
+                
                 setTrigger({
                     message: file.path + ' is updated',
                     type: 'info',
+                    validation: 'success',
                     active: true,
                 });
                 uploadedFiles.set(file.path, file);
@@ -38,25 +44,32 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 const lines = csvData.split('\n');
                 const fileColumn = lines[0].split('\t');
                 const columns = fileColumn.length;
-                let fileValidation = true;
+                
                 let fileErrorMsg = '';
-                // console.log("number of lines in file:", lines.length);
-                // console.log("columns of ", file, ": ", columns);
                 for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].split('\t').length != columns && lines[i].length != 0) {
+                    if (lines[i].split('\t').length != columns && i != lines.length-1) {
                         fileValidation = false;
-                        // console.log("line ", i, " columns: ", lines[i].split('\t').length);
-                        // console.log("line: ", lines[i].length);
-                        console.log('line number ', i, ' on ', file, ' has different number of column');
+                        let line = i +1;
+                        fileErrorMsg = 'line number '+ line + ' on '+ file.name + ' has ' + lines[i].split('\t').length + " columns"
+                            + '\nThe file should have ' + columns + ' columns';
+                        document.getElementById("fileValidation").innerHTML = fileErrorMsg;
+                        document.getElementById("fileValidation").style.display = "block";
+                        icon = "close";
                     }
                 }
                 if (fileValidation == false) {
-                    console.log('file validation fail');
+                    setTrigger({
+                        message: 'file validation fail',
+                        type: 'info',
+                        validation: 'error',
+                        active: true,
+                    });
                 } else if (fileColumn.length == 9) {
                     scheduleContext.parseGridScreens(lines);
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
+                        validation: 'success',
                         active: true,
                     });
                 } else if (fileColumn.length == 1) {
@@ -65,6 +78,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
+                        validation: 'success',
                         active: true,
                     });
                 } else if (fileColumn.length == 2) {
@@ -72,6 +86,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
+                        validation: 'success',
                         active: true,
                     });
                 } else if (fileColumn.length == 3) {
@@ -80,12 +95,14 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
+                        validation: 'success',
                         active: true,
                     });
                 } else {
                     setTrigger({
                         message: file.path + ' is uploaded',
                         type: 'info',
+                        validation: 'success',
                         active: true,
                     });
                 }
@@ -108,6 +125,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
     const [trigger, setTrigger] = useState({
         message: 'Default message',
         type: 'info',
+        validation: 'success',
         active: false,
     });
 
@@ -123,7 +141,6 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
     };
     // parsed Colour file
     const parsedColour = (lines) => {
-        // const colours= [];
         const colourMap = new Map();
         for (let row of lines) {
             if (row.length != 0) {
@@ -160,24 +177,20 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                     g: g,
                     b: b,
                 };
-                // colours.push(colourObj);
                 colourMap.set(movieType, colourObj);
             }
         }
-        // console.log('colour map: \n', colourMap);
         setColourInfo(colourMap);
     };
 
-
-    // if (uploadedFiles.length == 0) {
-    //     console.log('empty');
-    // }
     const files = [...uploadedFiles.values()].map((file) => (
         <li key={file.path}>
             {file.path} - {file.size} bytes
-            <span className="checkmark"><MaterialIcon icon="check" color='#2dce89' size={16} /></span>
+            <span className="checkmark"><MaterialIcon icon={icon} color='#2dce89' size={16} /></span>
         </li>
     ));
+
+    
 
     return (
         <div>
@@ -193,6 +206,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 <h4><span id="file-list-header">Uploaded Files</span></h4>
                 <ul className="uploaded-files">{files}</ul>
             </div>
+            <div id="fileValidation"></div>
             <Toast trigger={trigger}></Toast>
         </div>
     );

@@ -10,7 +10,6 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 const Toast = ({ trigger }) => {
     const [open, setOpen] = React.useState(false);
-
     useEffect(() => {
         if (trigger.active) {
             setOpen(true);
@@ -29,7 +28,7 @@ const Toast = ({ trigger }) => {
         <Stack spacing={2} sx={{ width: '100%' }}>
             <Snackbar open={open} autoHideDuration={3000}
                 onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                <Alert onClose={handleClose} severity={trigger.validation} sx={{ width: '100%' }}>
                     {trigger.message}
                 </Alert>
             </Snackbar>
