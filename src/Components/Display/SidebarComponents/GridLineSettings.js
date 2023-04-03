@@ -36,9 +36,9 @@ const GridLineSettings = () => {
                                     size="small"
                                     defaultValue={oddType}
                                     onChange={handleChange("odd")}>
-                                    <MenuItem value={"Dashed"}>Dashed</MenuItem>
-                                    <MenuItem value={"Dotted"}>Dotted</MenuItem>
-                                    <MenuItem value={"Solid"}>Solid</MenuItem>
+                                    <MenuItem value={"dashed"}>Dashed</MenuItem>
+                                    <MenuItem value={"dotted"}>Dotted</MenuItem>
+                                    <MenuItem value={"solid"}>Solid</MenuItem>
                                 </Select>
                 </FormControl>
 
@@ -71,9 +71,9 @@ const GridLineSettings = () => {
                         size="small"
                         defaultValue={evenType}
                         onChange={handleChange("even")}>
-                        <MenuItem value={"Dashed"}>Dashed</MenuItem>
-                        <MenuItem value={"Dotted"}>Dotted</MenuItem>
-                        <MenuItem value={"Solid"}>Solid</MenuItem>
+                        <MenuItem value={"dashed"}>Dashed</MenuItem>
+                        <MenuItem value={"dotted"}>Dotted</MenuItem>
+                        <MenuItem value={"solid"}>Solid</MenuItem>
                     </Select>
                 </FormControl>
 

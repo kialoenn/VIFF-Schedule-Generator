@@ -10,9 +10,6 @@ import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import React from 'react';
 
 
-// import reactCSS from 'reactcss'
-
-
 
 const Venue = (props) => {
     const convert = require('color-convert');
@@ -20,6 +17,10 @@ const Venue = (props) => {
     const venueBarColor = convert.rgb.hex(props.color.venueBar.r, props.color.venueBar.g, props.color.venueBar.b);
     const oddRowColor = convert.rgb.hex(props.color.oddRow.r, props.color.oddRow.g, props.color.oddRow.b);
     const evenRowColor = convert.rgb.hex(props.color.evenRow.r, props.color.evenRow.g, props.color.evenRow.b);
+    const evenLine = props.grid['even'].width + 1 + "px " + props.grid['even'].type + " black";
+    const oddLine = props.grid['odd'].width + 1 + "px " + props.grid['odd'].type + " black";
+
+    console.log("grid:", evenLine);
     const styles = StyleSheet.create({
         venueRow: {
             'flexDirection': 'row',
@@ -61,28 +62,32 @@ const Venue = (props) => {
             'backgroundColor': '#' + oddRowColor,
             'width': '1.5625vw',
             'height': '100%',
-            'borderRight': '3px dotted black',
+            // 'borderRight': '2px dotted black',
+            'borderRight': oddLine,
         },
     
         box2: {
             'backgroundColor': '#' + evenRowColor,
             'width': '1.5625vw',
             'height': '100%',
-            'borderRight': '3px dotted black',
+            // 'borderRight': '2px dotted black',
+            'borderRight': oddLine,
         },
     
         box3: {
             'backgroundColor': '#' + oddRowColor,
             'width': '1.5625vw',
             'height': '100%',
-            'borderRight': '5px dotted black',
+            // 'borderRight': '4px dotted black',
+            'borderRight': evenLine,
         },
     
         box4: {
             'backgroundColor': '#' + evenRowColor,
             'width': '1.5625vw',
             'height': '100%',
-            'borderRight': '5px dotted black',
+            // 'borderRight': '4px dotted black',
+            'borderRight': evenLine,
         },
     
         text: {

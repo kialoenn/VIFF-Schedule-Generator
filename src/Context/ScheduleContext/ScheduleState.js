@@ -62,11 +62,11 @@ const ScheduleState = (props) => {
         gridLineSettings: {
             odd: {
                 width: 1,
-                type: "Dotted",
+                type: "dotted",
             },
             even: {
                 width: 2,
-                type: "Dotted",
+                type: "dotted",
             }
             
         },
