@@ -8,9 +8,12 @@ import NeueHaasMedium from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro
 import NeueHaasBold from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Bold.otf';
 import Helvetica from '../../resources/fonts/Helvetica/FreeSans.ttf';
 import HelveticaBold from '../../resources/fonts/Helvetica/FreeSansBold.ttf';
+import Calibri from '../../resources/fonts/Calibri.ttf';
+import Arial from '../../resources/fonts/arial.ttf';
 import Garamond from '../../resources/fonts/EBGaramond-Regular.ttf';
 import Geneva from '../../resources/fonts/Geneva Normal.ttf';
-import AvantGarde from '../../resources/fonts/AvantGarde Normal.ttf';
+import Verdana from '../../resources/fonts/Verdana.ttf';
+import AvantGarde from '../../resources/fonts/AvantGarde-Normal.ttf';
 
 // External import
 import React from 'react';
@@ -36,6 +39,15 @@ Font.register({
         { src: HelveticaBold }, // font-style: normal, font-weight: normal
     ],
 });
+Font.register({
+    family: 'Calibri',
+    src: Calibri,
+});
+
+Font.register({
+    family: 'Arial',
+    src: Arial,
+});
 
 Font.register({
     family: 'Garamond',
@@ -48,10 +60,14 @@ Font.register({
 });
 
 Font.register({
+    family: 'Verdana',
+    src: Verdana,
+});
+
+Font.register({
     family: 'AvantGarde',
     src: AvantGarde,
 });
-
 
 // Create Document Component
 const MyDocument = (props) => (

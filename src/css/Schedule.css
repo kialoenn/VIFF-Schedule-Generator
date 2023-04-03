@@ -7,6 +7,10 @@
     src: url('../../src/resources/fonts/Helvetica/FreeSans.ttf');
 }
 
+@font-face {
+    font-family: 'AvantGarde';
+    src: url('../../src/resources/fonts/AvantGarde-Normal.ttf')
+}
 .timelineRow {
     margin: 0px auto;
     width: 90%;

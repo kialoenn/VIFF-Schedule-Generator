@@ -49,7 +49,7 @@ const evenLine = {
 
 const venueText = {
     'color': '#' + venueTextColorHex, 
-    'fontSize': fonts["venueText"]["size"] +'pt',
+    'fontSize': fonts["venueText"]["size"] * 1.5 +'pt',
     'fontFamily': fonts["venueText"]["font"],
 }
 const venueBar = {
