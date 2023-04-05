@@ -58,7 +58,7 @@ const ScreenEditable = (prop) => {
     // getting a width
     hour = screen.duration.substr(0, duration.indexOf(':'));
     min = screen.duration.substr(duration.indexOf(':') + 1, duration.indexOf(':') + 1);
-    //console.log(screen.filmTitle +" duration: " + duration + " ohour: " + hour + " omin: " + min);
+    // console.log(screen.filmTitle +" duration: " + duration + " ohour: " + hour + " omin: " + min);
 
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
@@ -67,96 +67,93 @@ const ScreenEditable = (prop) => {
     w = width;
     width = width + 'vw';
 
-    //console.log(screen.filmTitle + " duration: " + duration + " durationNum: " + durationNum + " hour: " + hour + " min: " + min + " width: " + width);
+    // console.log(screen.filmTitle + " duration: " + duration + " durationNum: " + durationNum + " hour: " + hour + " min: " + min + " width: " + width);
 
 
     function truncateText(text, width) {
-
-        //console.log("w: " + width);
-        function truncateText(text, width) {
-            // console.log("w: " + width);
-            const fontSize = 0.5; // font size in em units
-            const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
-            const maxWidth = width * 0.01 * window.innerWidth / emToPx;
-            const textWidth = text.length * fontSize;
-            if (textWidth > maxWidth) {
-                const truncatedText = text.slice(0, Math.floor(maxWidth / fontSize));
-                return truncatedText + '...';
-            }
-            return text;
+        // console.log("w: " + width);
+        const fontSize = 0.5; // font size in em units
+        const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
+        const maxWidth = width * 0.01 * window.innerWidth / emToPx;
+        const textWidth = text.length * fontSize;
+        if (textWidth > maxWidth) {
+            const truncatedText = text.slice(0, Math.floor(maxWidth / fontSize));
+            return truncatedText + '...';
         }
+        return text;
+    }
 
 
-        // console.log(screen);
-        // const truncatedText = truncateText(screen.screenTitle, width);
-        const truncatedText = truncateText(screen.filmTitle, w);
+    // console.log(screen);
+    // const truncatedText = truncateText(screen.screenTitle, width);
+    const truncatedText = truncateText(screen.filmTitle, w);
 
-        const ScreenBoxstyles = reactCSS({
-            'default': {
-                screenBox: {
-                    height: '3.1%',
-                    position: 'absolute',
-                    width: width,
-                    marginLeft: startPoint,
-                    backgroundColor: '#' + filmBlockColorHex,
-                    borderTop: '1px solid black',
-                    borderLeft: '1px dotted black',
-                    borderBottom: '1px solid black',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRight: color,
-                },
-                title: {
-                    height: '50%',
-                    fontSize: fonts['filmTitleText']['size'] * 1.7 + 'pt', // was 1.2em
-                    fontFamily: fonts['filmTitleText']['font'],
-                    margin: '0',
-                    color: '#' + filmTitleTextColorHex,
-                    padding: '10',
-                },
-                details: {
-                    color: '#' + filmDetailsTextColorHex,
-                    fontSize: fonts['filmDetailsText']['size'] * 1.7 + 'pt',
-                    fontFamily: fonts['filmDetailsText']['font'],
-                },
+    const ScreenBoxstyles = reactCSS({
+        'default': {
+            screenBox: {
+                height: '3.1%',
+                position: 'absolute',
+                width: width,
+                marginLeft: startPoint,
+                backgroundColor: '#' + filmBlockColorHex,
+                borderTop: '1px solid black',
+                borderLeft: '1px dotted black',
+                borderBottom: '1px solid black',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRight: color,
             },
-        });
+            title: {
+                height: '50%',
+                fontSize: fonts['filmTitleText']['size'] * 1.7 + 'pt', // was 1.2em
+                fontFamily: fonts['filmTitleText']['font'],
+                margin: '0',
+                color: '#' + filmTitleTextColorHex,
+                padding: '10',
+            },
+            details: {
+                color: '#' + filmDetailsTextColorHex,
+                fontSize: fonts['filmDetailsText']['size'] * 1.7 + 'pt',
+                fontFamily: fonts['filmDetailsText']['font'],
+            },
+        },
+    });
 
 
-        const movieStartTime = screen.startTime;
-        const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
+    const movieStartTime = screen.startTime;
+    const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
 
-        const date = new Date();
-        date.setHours(shours);
-        date.setMinutes(sminutes);
-        date.setSeconds(sseconds);
+    const date = new Date();
+    date.setHours(shours);
+    date.setMinutes(sminutes);
+    date.setSeconds(sseconds);
 
-        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
-        const formattedTime = date.toLocaleTimeString('en-US', options);
+    const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+    const formattedTime = date.toLocaleTimeString('en-US', options);
 
 
-        const timeString = screen.duration;
-        const [hours, minutes] = timeString.split(':').map(Number);
-        const durationMinutes = hours * 60 + minutes;
+    const timeString = screen.duration;
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const durationMinutes = hours * 60 + minutes;
 
-        const setCustomID = () => {
-            const id = { dateID: prop.dateID, venueID: prop.venueID, screenID: prop.screen.id };
-            scheduleContext.setCustomID(id);
-        };
-
-        return (
-            <div className='screenBox' style={ScreenBoxstyles.screenBox}>
-                {/* <div style={ScreenBoxstyles.title}>{truncatedText}</div> */}
-                <div style={{ height: '100%', cursor: 'pointer' }}
-                    onClick={() => setCustomID()}>
-                    <div style={ScreenBoxstyles.title}>{truncatedText}</div>
-                    {/* <Text numberOfLines={1}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
-             */}
-                    <div style={ScreenBoxstyles.details}>{formattedTime} {durationMinutes}min p{screen.pageLocation}</div>
-                </div>
-            </div>
-
-        );
+    const setCustomID = () => {
+        const id = { dateID: prop.dateID, venueID: prop.venueID, screenID: prop.screen.id };
+        scheduleContext.setCustomID(id);
     };
 
-    export default ScreenEditable;
+    return (
+        <div className='screenBox' style={ScreenBoxstyles.screenBox}>
+            {/* <div style={ScreenBoxstyles.title}>{truncatedText}</div> */}
+            <div style={{ height: '100%', cursor: 'pointer' }}
+                onClick={() => setCustomID()}>
+                <div style={ScreenBoxstyles.title}>{truncatedText}</div>
+                {/* <Text numberOfLines={1}>THIS IS REALLY LONG TEXT FOR SHOW IN THE BOX.</Text>
+             */}
+                <div style={ScreenBoxstyles.details}>{formattedTime} {durationMinutes}min p{screen.pageLocation}</div>
+            </div>
+        </div>
+
+    );
+};
+
+export default ScreenEditable;
