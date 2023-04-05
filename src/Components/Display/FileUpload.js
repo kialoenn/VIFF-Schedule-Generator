@@ -14,19 +14,19 @@ const uploadedFiles = new Map();
 
 const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo }) => {
     const scheduleContext = useScheduleContext();
-    let icon = "check";
+    let icon = 'check';
 
     const onDrop = useCallback((acceptedFiles) => {
-        icon = "check";
+        icon = 'check';
         let fileValidation = true;
-        document.getElementById("fileValidation").style.display = "none";
+        document.getElementById('fileValidation').style.display = 'none';
         console.log('accepted files:', acceptedFiles);
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
             } else {
                 document.getElementById('file-list-header').innerHTML = 'Files Uploaded';
-                
+
                 setTrigger({
                     message: file.path + ' is updated',
                     type: 'info',
@@ -44,17 +44,17 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 const lines = csvData.split('\n');
                 const fileColumn = lines[0].split('\t');
                 const columns = fileColumn.length;
-                
+
                 let fileErrorMsg = '';
                 for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].split('\t').length != columns && i != lines.length-1) {
+                    if (lines[i].split('\t').length != columns && i != lines.length - 1) {
                         fileValidation = false;
-                        let line = i +1;
-                        fileErrorMsg = 'line number '+ line + ' on '+ file.name + ' has ' + lines[i].split('\t').length + " columns"
-                            + '\nThe file should have ' + columns + ' columns';
-                        document.getElementById("fileValidation").innerHTML = fileErrorMsg;
-                        document.getElementById("fileValidation").style.display = "block";
-                        icon = "close";
+                        const line = i + 1;
+                        fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' + lines[i].split('\t').length + ' columns' +
+                            '\nThe file should have ' + columns + ' columns';
+                        document.getElementById('fileValidation').innerHTML = fileErrorMsg;
+                        document.getElementById('fileValidation').style.display = 'block';
+                        icon = 'close';
                     }
                 }
                 if (fileValidation == false) {
@@ -190,7 +190,6 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
         </li>
     ));
 
-    
 
     return (
         <div>

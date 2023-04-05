@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import '../../css/Dashboard.css';
 
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
@@ -17,15 +18,15 @@ const ScheduleBox = (prop) => {
     // console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
     let startPoint;
-    let color = `5px solid rgb(${r}, ${g}, ${b})`;
+    const color = `5px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
     // console.log(screen);
     const startTime = screen.startTime;
     const duration = screen.duration;
 
-    let now = new Date();
-    now.setHours(startTime.substr(0, startTime.indexOf(":")));
-    now.setMinutes(startTime.substr(startTime.indexOf(":") + 1));
+    const now = new Date();
+    now.setHours(startTime.substr(0, startTime.indexOf(':')));
+    now.setMinutes(startTime.substr(startTime.indexOf(':') + 1));
     now.setSeconds(0);
 
     const oneDiv = 1 / 64;
@@ -34,25 +35,25 @@ const ScheduleBox = (prop) => {
     const boxMin = 15;
 
     // getting a start point
-    let hour = startTime.substr(0, startTime.indexOf(":"));
-    let min = startTime.substr(startTime.indexOf(":") + 1, startTime.indexOf(":") + 1);
+    let hour = startTime.substr(0, startTime.indexOf(':'));
+    let min = startTime.substr(startTime.indexOf(':') + 1, startTime.indexOf(':') + 1);
     hour = parseInt(hour);
     hour -= hourBegin;
     hour *= boxNumInHour;
     min = parseInt(min);
     min /= boxMin;
     startPoint = (hour + min) / 64 * 100 * 0.811;
-    startPoint += "vw";
+    startPoint += 'vw';
 
     // getting a width
 
-    hour = duration.substr(0, duration.indexOf(":"));
-    min = duration.substr(duration.indexOf(":") + 1, duration.indexOf(":"));
+    hour = duration.substr(0, duration.indexOf(':'));
+    min = duration.substr(duration.indexOf(':') + 1, duration.indexOf(':'));
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
-    let durationNum = hour + min;
+    const durationNum = hour + min;
     width = oneDiv * durationNum * 100 * 0.811;
-    width = width + "vw";
+    width = width + 'vw';
 
     const ScreenBoxstyles = reactCSS({
         'default': {
@@ -67,8 +68,8 @@ const ScheduleBox = (prop) => {
                 borderLeft: '3px dotted black',
                 borderBottom: '3px solid black',
                 borderRight: color,
-                justifyContent: "center",
-                alignItems: "center",
+                justifyContent: 'center',
+                alignItems: 'center',
                 padding: 10,
             },
         },
@@ -76,14 +77,14 @@ const ScheduleBox = (prop) => {
 
     const filmTitleText = {
         'color': '#' + filmTitleTextColor,
-        'fontSize': (prop.font["filmTitleText"]["size"] * 3 + 12) + 'pt',
-        'fontFamily': prop.font["filmTitleText"]["font"],
-    }
+        'fontSize': (prop.font['filmTitleText']['size'] * 3 + 12) + 'pt',
+        'fontFamily': prop.font['filmTitleText']['font'],
+    };
     const filmDetailsText = {
-        'color': '#' +  filmDetailsTextColor,
-        'fontSize': (prop.font["filmDetailsText"]["size"] * 5.5) + 'pt',
-        'fontFamily': prop.font["filmDetailsText"]["font"],
-    }
+        'color': '#' + filmDetailsTextColor,
+        'fontSize': (prop.font['filmDetailsText']['size'] * 5.5) + 'pt',
+        'fontFamily': prop.font['filmDetailsText']['font'],
+    };
 
     const movieStartTime = screen.startTime;
     const [shours, sminutes, sseconds] = movieStartTime.split(':').map(Number);
@@ -93,7 +94,7 @@ const ScheduleBox = (prop) => {
     date.setMinutes(sminutes);
     date.setSeconds(sseconds);
 
-    const options = {hour: 'numeric', minute: 'numeric', hour12: true};
+    const options = { hour: 'numeric', minute: 'numeric', hour12: true };
     const formattedTime = date.toLocaleTimeString('en-US', options);
 
 

@@ -10,36 +10,36 @@ import { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleCon
 
 const GridLineSettings = () => {
     const scheduleContext = useScheduleContext();
-    
-    const grid = scheduleContext.gridLineSettings;
-    
-    const oddType = grid["odd"].type;
-    const oddWidth = grid["odd"].width;
 
-    const evenType = grid["even"].type;
-    const evenWidth = grid["even"].width;
-    
-    const handleChange = id => (setting) => {
+    const grid = scheduleContext.gridLineSettings;
+
+    const oddType = grid['odd'].type;
+    const oddWidth = grid['odd'].width;
+
+    const evenType = grid['even'].type;
+    const evenWidth = grid['even'].width;
+
+    const handleChange = (id) => (setting) => {
         scheduleContext.setGridLine(setting.target.value, id);
-    }
+    };
     return (
         <div>
             <div>
                 <p>Odd</p>
                 {/* Line Type Select */}
                 <FormControl sx={{ width: '65%', pr: 1 }} size="small">
-                                <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-helper-label"
-                                    id="demo-simple-select-helper"
-                                    label="Type"
-                                    size="small"
-                                    defaultValue={oddType}
-                                    onChange={handleChange("odd")}>
-                                    <MenuItem value={"dashed"}>Dashed</MenuItem>
-                                    <MenuItem value={"dotted"}>Dotted</MenuItem>
-                                    <MenuItem value={"solid"}>Solid</MenuItem>
-                                </Select>
+                    <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-helper-label"
+                        id="demo-simple-select-helper"
+                        label="Type"
+                        size="small"
+                        defaultValue={oddType}
+                        onChange={handleChange('odd')}>
+                        <MenuItem value={'dashed'}>Dashed</MenuItem>
+                        <MenuItem value={'dotted'}>Dotted</MenuItem>
+                        <MenuItem value={'solid'}>Solid</MenuItem>
+                    </Select>
                 </FormControl>
 
                 {/* Line Width Select */}
@@ -51,7 +51,7 @@ const GridLineSettings = () => {
                         label="Width"
                         size="small"
                         defaultValue={oddWidth}
-                        onChange={handleChange("odd")}
+                        onChange={handleChange('odd')}
                     >
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
@@ -70,10 +70,10 @@ const GridLineSettings = () => {
                         label="Type"
                         size="small"
                         defaultValue={evenType}
-                        onChange={handleChange("even")}>
-                        <MenuItem value={"dashed"}>Dashed</MenuItem>
-                        <MenuItem value={"dotted"}>Dotted</MenuItem>
-                        <MenuItem value={"solid"}>Solid</MenuItem>
+                        onChange={handleChange('even')}>
+                        <MenuItem value={'dashed'}>Dashed</MenuItem>
+                        <MenuItem value={'dotted'}>Dotted</MenuItem>
+                        <MenuItem value={'solid'}>Solid</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -86,7 +86,7 @@ const GridLineSettings = () => {
                         label="Width"
                         size="small"
                         defaultValue={evenWidth}
-                        onChange={handleChange("even")}
+                        onChange={handleChange('even')}
                     >
                         <MenuItem value={1}>1</MenuItem>
                         <MenuItem value={2}>2</MenuItem>
@@ -94,8 +94,8 @@ const GridLineSettings = () => {
                     </Select>
                 </FormControl>
             </div>
-      </div>
+        </div>
     );
-}
+};
 
 export default GridLineSettings;

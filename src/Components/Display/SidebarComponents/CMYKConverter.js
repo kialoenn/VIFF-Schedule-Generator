@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import FormHelperText from '@mui/material/FormHelperText';
 import Button from '@mui/material/Button';
 
-// CSS import 
+// CSS import
 import '../../../css/Converter.css';
 
 const CMYKConverter = () => {
@@ -31,91 +31,91 @@ const CMYKConverter = () => {
             setBValue(rgbArray[2]);
         }
     };
-    
+
     return (
         <div>
-         <div>
-            <FormControl sx={{ m: 0.1, width: '24%', paddingBottom: 3 }} variant="outlined">
-                <OutlinedInput
-                    id="outlined-adornment-weight"
-                    size="small"
-                    autoComplete='off'
-                    aria-describedby="outlined-weight-helper-text"
-                    value={cValue}
-                    onChange={(e) => {
-                        if (regex.test(e.target.value) || e.target.value == '') {
-                            setCValue(e.target.value);
-                        }
-                    } }
-                    inputProps={{
-                        'aria-label': 'weight',
-                        'inputMode': 'numeric',
-                        'pattern': '[0-9]*',
-                        'maxLength': 3,
-                    }} />
-                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;C</FormHelperText>
-            </FormControl>
-            <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
-                <OutlinedInput
-                    id="outlined-adornment-weight"
-                    size="small"
-                    autoComplete='off'
-                    aria-describedby="outlined-weight-helper-text"
-                    value={mValue}
-                    onChange={(e) => {
-                        if (regex.test(e.target.value) || e.target.value == '') {
-                            setMValue(e.target.value);
-                        }
-                    } }
-                    inputProps={{
-                        'aria-label': 'weight',
-                        'inputMode': 'numeric',
-                        'pattern': '[0-9]*',
-                        'maxLength': 3,
-                    }} />
-                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;M</FormHelperText>
-            </FormControl>
-            <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
-                <OutlinedInput
-                    id="outlined-adornment-weight"
-                    size="small"
-                    autoComplete='off'
-                    aria-describedby="outlined-weight-helper-text"
-                    value={yValue}
-                    onChange={(e) => {
-                        if (regex.test(e.target.value) || e.target.value == '') {
-                            setYValue(e.target.value);
-                        }
-                    } }
-                    inputProps={{
-                        'aria-label': 'weight',
-                        'inputMode': 'numeric',
-                        'pattern': '[0-9]*',
-                        'maxLength': 3,
-                    }} />
-                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;Y</FormHelperText>
-            </FormControl>
-            <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
-                <OutlinedInput
-                    id="outlined-adornment-weight"
-                    size="small"
-                    autoComplete='off'
-                    aria-describedby="outlined-weight-helper-text"
-                    value={kValue}
-                    onChange={(e) => {
-                        if (regex.test(e.target.value) || e.target.value == '') {
-                            setKValue(e.target.value);
-                        }
-                    } }
-                    inputProps={{
-                        'aria-label': 'weight',
-                        'inputMode': 'numeric',
-                        'pattern': '[0-9]*',
-                        'maxLength': 3,
-                    }} />
-                <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;K</FormHelperText>
-            </FormControl>
-        </div><div>
+            <div>
+                <FormControl sx={{ m: 0.1, width: '24%', paddingBottom: 3 }} variant="outlined">
+                    <OutlinedInput
+                        id="outlined-adornment-weight"
+                        size="small"
+                        autoComplete='off'
+                        aria-describedby="outlined-weight-helper-text"
+                        value={cValue}
+                        onChange={(e) => {
+                            if (regex.test(e.target.value) || e.target.value == '') {
+                                setCValue(e.target.value);
+                            }
+                        }}
+                        inputProps={{
+                            'aria-label': 'weight',
+                            'inputMode': 'numeric',
+                            'pattern': '[0-9]*',
+                            'maxLength': 3,
+                        }} />
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;C</FormHelperText>
+                </FormControl>
+                <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+                    <OutlinedInput
+                        id="outlined-adornment-weight"
+                        size="small"
+                        autoComplete='off'
+                        aria-describedby="outlined-weight-helper-text"
+                        value={mValue}
+                        onChange={(e) => {
+                            if (regex.test(e.target.value) || e.target.value == '') {
+                                setMValue(e.target.value);
+                            }
+                        }}
+                        inputProps={{
+                            'aria-label': 'weight',
+                            'inputMode': 'numeric',
+                            'pattern': '[0-9]*',
+                            'maxLength': 3,
+                        }} />
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;M</FormHelperText>
+                </FormControl>
+                <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+                    <OutlinedInput
+                        id="outlined-adornment-weight"
+                        size="small"
+                        autoComplete='off'
+                        aria-describedby="outlined-weight-helper-text"
+                        value={yValue}
+                        onChange={(e) => {
+                            if (regex.test(e.target.value) || e.target.value == '') {
+                                setYValue(e.target.value);
+                            }
+                        }}
+                        inputProps={{
+                            'aria-label': 'weight',
+                            'inputMode': 'numeric',
+                            'pattern': '[0-9]*',
+                            'maxLength': 3,
+                        }} />
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;Y</FormHelperText>
+                </FormControl>
+                <FormControl sx={{ m: 0.1, width: '24%' }} variant="outlined">
+                    <OutlinedInput
+                        id="outlined-adornment-weight"
+                        size="small"
+                        autoComplete='off'
+                        aria-describedby="outlined-weight-helper-text"
+                        value={kValue}
+                        onChange={(e) => {
+                            if (regex.test(e.target.value) || e.target.value == '') {
+                                setKValue(e.target.value);
+                            }
+                        }}
+                        inputProps={{
+                            'aria-label': 'weight',
+                            'inputMode': 'numeric',
+                            'pattern': '[0-9]*',
+                            'maxLength': 3,
+                        }} />
+                    <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;K</FormHelperText>
+                </FormControl>
+            </div><div>
                 <TextField sx={{ width: '100%', paddingBottom: 3 }}
                     label="Hex"
                     value={hexValue}
@@ -172,9 +172,9 @@ const CMYKConverter = () => {
                     <FormHelperText id="outlined-weight-helper-text">&nbsp;&nbsp;&nbsp;B</FormHelperText>
                 </FormControl>
             </div><div className="convert">
-            <Button onClick={convertToHex} variant="text">Convert</Button></div>
+                <Button onClick={convertToHex} variant="text">Convert</Button></div>
         </div>
-    )
+    );
 };
 
 export default CMYKConverter;

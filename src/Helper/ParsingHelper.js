@@ -56,6 +56,7 @@ const createMap = (movieInfo) => {
         parsedSchedule[parsedScheduleIndex].venue.forEach((k, i) => {
             k.id = i;
             k.screens.forEach((kk, ii) => {
+                kk.customized = false;
                 kk.id = ii;
             });
         });

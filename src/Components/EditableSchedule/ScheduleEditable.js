@@ -8,7 +8,7 @@ const ScheduleEditable = (props) => {
             <TimelineEditable date={props.data.date} id={props.data.id}></TimelineEditable>
             {props.data.venue.map((venues, index) => {
                 return (
-                    <VenueEditable key={index} venueDetail={venues}></VenueEditable>
+                    <VenueEditable key={index} venueDetail={venues} dateID={props.data.id}></VenueEditable>
                 );
             })}
         </div>

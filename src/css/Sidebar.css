@@ -4,17 +4,40 @@
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color:white;
+    background-color: white;
     position: sticky;
     top: 0;
     align-self: start;
-    border-top:    none;
-    border-right:  1px solid lightgrey;
+    border-top: none;
+    border-right: 1px solid lightgrey;
     border-bottom: none;
-    border-left:   none;
+    border-left: none;
     font-family: 'Roboto';
     padding-left: 15px;
-    box-shadow: 2px 3px 4px rgba(0,0,0,0.1); 
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rightsidebar {
+    width: 250px;
+    height: 60vh;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 3;
+    transform: translateY(-50%);
+    align-self: start;
+    border-top: none;
+    border-right: 1px solid lightgrey;
+    border-bottom: none;
+    border-left: none;
+    font-family: 'Roboto';
+    padding-left: 15px;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hide {
+    display: none;
 }
 
 .sidebarItems {
@@ -38,22 +61,22 @@
 
 .lineBreak {
     margin-top: 0.2em;
-    margin-bottom: 0.5em;        
+    margin-bottom: 0.5em;
     margin-left: -15px;
     border-bottom: 1px solid lightgrey;
 }
 
 .lineBreak2 {
-    margin-bottom: 1.7em;    
+    margin-bottom: 1.7em;
     margin-top: 2em;
     margin-left: -15px;
     border-bottom: 1px solid lightgrey;
 }
 
 #colorPicker {
-    width:auto;
-    padding:0 0 0 0;
-    display:table;
+    width: auto;
+    padding: 0 0 0 0;
+    display: table;
     margin: 0;
     position: relative;
     left: 150px;
@@ -75,6 +98,3 @@
     position: relative;
     top: 3px;
 }
-
-
-

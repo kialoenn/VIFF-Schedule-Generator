@@ -4,4 +4,6 @@ export const SET_DATE = 'SET_DATE';
 export const SET_COLOR = 'SET_COLOR';
 export const SET_FONT = 'SET_FONT';
 export const SET_GRIDLINE = 'SET_GRIDLINE';
-
+export const SET_CUSTOM_ID = 'SET_CUSTOM_ID';
+export const CLOSE_CUSTOM = 'CLOSE_CUSTOM';
+export const CHANGE_SCREEN = 'CHANGE_SCREEN';

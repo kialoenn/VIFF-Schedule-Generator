@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 // Sidebar Component imports
 import CMYKConverter from './SidebarComponents/CMYKConverter';
@@ -39,7 +39,7 @@ const Sidebar = () => {
                                 </span>CMYK Converter</span>
                         </AccordionSummary>
                         <AccordionDetails>
-                            <CMYKConverter/>
+                            <CMYKConverter />
                         </AccordionDetails>
                     </Accordion>
                 </div>
@@ -57,7 +57,7 @@ const Sidebar = () => {
                                 </span>Color Settings</span>
                         </AccordionSummary>
                         <AccordionDetails>
-                           <ColorSettings/>
+                            <ColorSettings />
                         </AccordionDetails>
                     </Accordion>
                 </div>
@@ -75,7 +75,7 @@ const Sidebar = () => {
                                 </span>Font Settings</span>
                         </AccordionSummary>
                         <AccordionDetails>
-                             <FontSettings/>
+                            <FontSettings />
                         </AccordionDetails>
                     </Accordion>
                 </div>
@@ -93,7 +93,7 @@ const Sidebar = () => {
                                 </span>Grid Line Settings</span>
                         </AccordionSummary>
                         <AccordionDetails>
-                          <GridLineSettings/>
+                            <GridLineSettings />
                         </AccordionDetails>
                     </Accordion>
                 </div>

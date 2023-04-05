@@ -9,27 +9,27 @@ const TimelineEditable = (props) => {
     const colors = scheduleContext.colorSettings;
     const fonts = scheduleContext.fontSettings;
 
-    let dateText = colors["dateText"];
-    dateText = `rgb(${dateText.r}, ${dateText.g}, ${dateText.b})`
+    let dateText = colors['dateText'];
+    dateText = `rgb(${dateText.r}, ${dateText.g}, ${dateText.b})`;
     const dateStyle = {
-        color: dateText,
-        'fontSize': fonts["dateText"]["size"] +'pt',
-        'fontFamily': fonts["dateText"]["font"], 
-    }
+        'color': dateText,
+        'fontSize': fonts['dateText']['size'] + 'pt',
+        'fontFamily': fonts['dateText']['font'],
+    };
 
-    let dateBar = colors["dateBar"];
+    const dateBar = colors['dateBar'];
     const dateBarColorHex = convert.rgb.hex(dateBar.r, dateBar.g, dateBar.b);
     const dateBarColor = {
-        'backgroundColor': '#' + dateBarColorHex, 
-    }
+        'backgroundColor': '#' + dateBarColorHex,
+    };
 
-    let timeText = colors["timeText"];
+    const timeText = colors['timeText'];
     const timeTextColorHex = convert.rgb.hex(timeText.r, timeText.g, timeText.b);
     const timeTextColor = {
-        'color': '#' + timeTextColorHex, 
-        'fontSize': fonts["timeText"]["size"] +'pt',
-        'fontFamily': fonts["timeText"]["font"], 
-    }
+        'color': '#' + timeTextColorHex,
+        'fontSize': fonts['timeText']['size'] + 'pt',
+        'fontFamily': fonts['timeText']['font'],
+    };
 
     return (
         <div className='timelineRow' style={dateBarColor}>
@@ -38,7 +38,7 @@ const TimelineEditable = (props) => {
                 scheduleContext.setDate(props.id);
             }}>Change</button> */}
             <div style={dateStyle} className='timelineDate' >{props.date}</div>
-            <div className='timeline'style={timeTextColor}>
+            <div className='timeline' style={timeTextColor}>
                 <div className='time' >9:00AM</div>
                 <div className='time'>10:00AM</div>
                 <div className='time'>11:00AM</div>
