@@ -38,7 +38,7 @@ const ScreenEditable = (prop) => {
     now.setSeconds(0);
 
     const oneDiv = 1 / 64;
-    const hourBegin = 9;
+    const hourBegin = 8.5;
     const boxNumInHour = 4;
     const boxMin = 15;
 
