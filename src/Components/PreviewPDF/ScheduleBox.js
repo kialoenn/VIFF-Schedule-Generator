@@ -47,7 +47,7 @@ const ScheduleBox = (prop) => {
     // getting a width
 
     hour = duration.substr(0, duration.indexOf(":"));
-    min = duration.substr(duration.indexOf(":") + 1, duration.indexOf(":"));
+    min = duration.substr(duration.indexOf(":") + 1, duration.indexOf(":") + 1);
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     let durationNum = hour + min;

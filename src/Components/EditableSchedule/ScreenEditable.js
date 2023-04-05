@@ -56,7 +56,7 @@ const ScreenEditable = (prop) => {
     // getting a width
     hour = screen.duration.substr(0, duration.indexOf(':'));
     min = screen.duration.substr(duration.indexOf(':') + 1, duration.indexOf(':') + 1);
-    console.log(screen.filmTitle +" duration: " + duration + " ohour: " + hour + " omin: " + min);
+    //console.log(screen.filmTitle +" duration: " + duration + " ohour: " + hour + " omin: " + min);
 
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
@@ -65,28 +65,28 @@ const ScreenEditable = (prop) => {
     w = width;
     width = width + 'vw';
 
-    console.log(screen.filmTitle + " duration: " + duration + " durationNum: " + durationNum + " hour: " + hour + " min: " + min + " width: " + width);
+    //console.log(screen.filmTitle + " duration: " + duration + " durationNum: " + durationNum + " hour: " + hour + " min: " + min + " width: " + width);
 
 
-    // function truncateText(text, width) {
+    function truncateText(text, width) {
 
-    //     //console.log("w: " + width);
-    //     const fontSize = 0.5; // font size in em units
-    //     const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
-    //     const maxWidth = width * 0.01 * window.innerWidth / emToPx;
-    //     const textWidth = text.length * fontSize;
-    //     if (textWidth > maxWidth) {
-    //       const truncatedText = text.slice(0, Math.floor(maxWidth / fontSize));
-    //       return truncatedText + '...';
-    //     }
-    //     return text;
-    //   }
+        //console.log("w: " + width);
+        const fontSize = 0.5; // font size in em units
+        const emToPx = parseFloat(getComputedStyle(document.body).fontSize);
+        const maxWidth = width * 0.01 * window.innerWidth / emToPx;
+        const textWidth = text.length * fontSize;
+        if (textWidth > maxWidth) {
+          const truncatedText = text.slice(0, Math.floor(maxWidth / fontSize));
+          return truncatedText + '...';
+        }
+        return text;
+      }
 
 
     //console.log(screen);
     // const truncatedText = truncateText(screen.screenTitle, width);
-    // const truncatedText = truncateText(screen.filmTitle, w);  
-    const truncatedText = screen.filmTitle;
+    const truncatedText = truncateText(screen.filmTitle, w);  
+    // const truncatedText = screen.filmTitle;
 
     const ScreenBoxstyles = reactCSS({
         'default': {
