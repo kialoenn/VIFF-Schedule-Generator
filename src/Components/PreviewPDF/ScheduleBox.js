@@ -18,7 +18,7 @@ const ScheduleBox = (prop) => {
     // console.log(`rgb values: ${r}, ${g}, ${b}`);
     let width;
     let startPoint;
-    const color = `5px solid rgb(${r}, ${g}, ${b})`;
+    const color = `8px solid rgb(${r}, ${g}, ${b})`;
     const screen = prop.screen;
     // console.log(screen);
     const startTime = screen.startTime;

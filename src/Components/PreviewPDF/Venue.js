@@ -99,8 +99,8 @@ const Venue = (props) => {
             'bottom': '0',
             'width': '0',
             'height': '0',
-            'borderRight': '35px solid #' + venueBarColor,
-            'borderBottom': '35px solid black',
+            'borderRight': '25px solid #' + venueBarColor,
+            'borderBottom': '25px solid black',
         },
     });
     const createdScheduleBox = (id) => {

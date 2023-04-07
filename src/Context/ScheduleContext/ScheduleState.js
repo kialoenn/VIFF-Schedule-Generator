@@ -59,7 +59,7 @@ const ScheduleState = (props) => {
                 font: 'Helvetica',
             },
             filmDetailsText: {
-                size: 4,
+                size: 3,
                 font: 'Helvetica',
             },
         },
