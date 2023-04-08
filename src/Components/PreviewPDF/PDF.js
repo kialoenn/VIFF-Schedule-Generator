@@ -3,7 +3,7 @@ import Schedule from './Schedule';
 
 // Fonts import
 import RobotoFont from '../../resources/fonts/Roboto-Regular.ttf';
-import NeueHaas from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Regular.otf';
+import NeueHaas from '../../resources/fonts/NHaasGroteskTXPro-55Rg.ttf';
 import NeueHaasMedium from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Medium.otf';
 import NeueHaasBold from '../../resources/fonts/NeueHaasUnica/NeueHaasUnicaPro-Bold.otf';
 import Helvetica from '../../resources/fonts/Helvetica/FreeSans.ttf';
@@ -23,9 +23,9 @@ Font.register({
     family: 'Roboto', fonts: [
         { src: RobotoFont }, // font-style: normal, font-weight: normal
     ],
-    family: 'NeueHaas', fonts: [
-        { src: NeueHaas }, // font-style: normal, font-weight: normal
-    ],
+    // family: 'NeueHaas', fonts: [
+    //     { src: NeueHaas }, // font-style: normal, font-weight: normal
+    // ],
     family: 'NeueHaasMedium', fonts: [
         { src: NeueHaasMedium }, // font-style: normal, font-weight: normal
     ],
@@ -39,6 +39,11 @@ Font.register({
         { src: HelveticaBold }, // font-style: normal, font-weight: normal
     ],
 });
+Font.register({
+    family: 'NeueHaas',
+    src: NeueHaas,
+});
+
 Font.register({
     family: 'Calibri',
     src: Calibri,
