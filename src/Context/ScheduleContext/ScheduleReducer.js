@@ -11,11 +11,10 @@ import {
 } from '../ActionType';
 
 export default (state, action) => {
-    console.log('state.gridscreen', state.gridScreenTimes);
     switch (action.type) {
         case MAP_VENUENAME:
         case PARSE_GRIDSCREENTIMES:
-            console.log('action: ', action);
+
             return {
                 ...state,
                 gridScreenTimes: action.screenTimes,
