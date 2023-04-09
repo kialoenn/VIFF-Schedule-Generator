@@ -48,7 +48,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 let fileErrorMsg = '';
                 for (let i = 0; i < lines.length; i++) {
                     if (lines[i].split('\t').length != columns && i != lines.length - 1 ||
-                    columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length) {
+                    columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length && i != lines.length - 1) {
                         fileValidation = false;
                         
                         const line = i + 1;
@@ -57,7 +57,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                                 '\nThe file should have ' + lines[0].split(' ').length + ' columns') :
                             (fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' + lines[i].split('\t').length + ' columns' +
                                 '\nThe file should have ' + columns + ' columns');
-                                
+
                         document.getElementById('fileValidation').innerHTML = fileErrorMsg;
                         document.getElementById('fileValidation').style.display = 'block';
                         icon = 'close';
