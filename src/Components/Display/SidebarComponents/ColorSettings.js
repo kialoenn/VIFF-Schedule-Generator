@@ -1,16 +1,43 @@
 /* eslint-disable max-len */
 import React from 'react';
-
+import defaultSettings from '../../../resources/colors_default.json';
 import ColorPicker from './ColorPicker';
 import { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleContext';
+import Button from '@mui/material/Button';
+
+// const Button = ({ label, onClick }) => {
+//     return (
+//       <button onClick={onClick}>
+//         {label}
+//       </button>
+//     );
+//   };
+
 
 const ColorSettings = () => {
+
+    const colordatafromjson = defaultSettings;
     const scheduleContext = useScheduleContext();
     const colors = scheduleContext.colorSettings;
     const handleCallBack = (childData, id) => {
         const colorData = { r: childData.r, g: childData.g, b: childData.b, a: childData.a, id: id };
         scheduleContext.setColor(colorData);
     };
+
+    const handleClick = () => {
+            console.log("hello");
+            handleCallBack(colordatafromjson.dateBar,'dateBar');
+            handleCallBack(colordatafromjson.dateText,'dateText');
+            handleCallBack(colordatafromjson.timeText,'timeText');
+            handleCallBack(colordatafromjson.venueText,'venueText');
+            handleCallBack(colordatafromjson.venueBar,'venueBar');
+            handleCallBack(colordatafromjson.filmTitleText,'filmTitleText');
+            handleCallBack(colordatafromjson.filmDetailsText,'filmDetailsText');
+            handleCallBack(colordatafromjson.filmBlock,'filmBlock');
+            handleCallBack(colordatafromjson.oddRow,'oddRow');
+            handleCallBack(colordatafromjson.evenRow,'evenRow');
+      };
+
     return (
         <div className="accordionItems">
             <p id="colorLabels">Date Text</p>
@@ -33,6 +60,9 @@ const ColorSettings = () => {
             <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={'oddRow'} color={colors['oddRow']} /></div>
             <p id="colorLabels">Even Row</p>
             <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={'evenRow'} color={colors['evenRow']} /></div>
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <Button onClick={handleClick} variant="outlined">Load default</Button>
+            </div>
         </div>
     );
 };

@@ -47,11 +47,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 let fileErrorMsg = '';
                 for (let i = 0; i < lines.length; i++) {
                     if (lines[i].split('\t').length != columns && i != lines.length - 1 ||
-<<<<<<< HEAD
-                    columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length && i != lines.length - 1) {
-=======
-                        columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length) {
->>>>>>> 57347d570a694278610f6038d2179b7b83bdc86d
+                        columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length && i != lines.length - 1) {
                         fileValidation = false;
 
                         const line = i + 1;
