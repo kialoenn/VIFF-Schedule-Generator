@@ -35,7 +35,7 @@ const Content = (props) => {
             if (parsedGridVenues.size > 0) {
                 scheduleContext.mapVenueName(parsedGridVenues);
             }
-            console.log('colour info: ', colourInfo);
+
             if (colourInfo.size > 0) {
                 insertColour();
             }
@@ -65,9 +65,7 @@ const Content = (props) => {
             });
             return entry;
         });
-        // console.log(colorSchedule);
         setParsedSchedule(colorSchedule);
-        // console.log("parsed schedule after inserting colour: \n", parsedSchedule);
     };
 
     const viewPreview = () => {

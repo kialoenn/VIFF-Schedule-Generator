@@ -3,9 +3,6 @@ import React from 'react';
 import reactCSS from 'reactcss';
 import { SketchPicker } from 'react-color';
 
-import ScheduleContext, { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleContext';
-import ScheduleEditable from '../../EditableSchedule/ScheduleEditable';
-
 class SketchExample extends React.Component {
     state = {
         displayColorPicker: false,

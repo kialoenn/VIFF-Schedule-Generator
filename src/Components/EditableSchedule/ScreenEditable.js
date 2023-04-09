@@ -67,7 +67,8 @@ const ScreenEditable = (prop) => {
     w = width;
     width = width + 'vw';
 
-    // console.log(screen.filmTitle + " duration: " + duration + " durationNum: " + durationNum + " hour: " + hour + " min: " + min + " width: " + width);
+    // console.log(screen.filmTitle + " duration: " + duration + " durationNum: " +
+    // durationNum + " hour: " + hour + " min: " + min + " width: " + width);
 
 
     function truncateText(text, width) {
@@ -105,7 +106,9 @@ const ScreenEditable = (prop) => {
             },
             title: {
                 height: '50%',
-                fontSize: fonts['filmTitleText']['size'] * 1.7 + 'pt', // was 1.2em
+                fontSize: screen.customized ?
+                    screen.filmTitleText * 1.7 + 'pt' :
+                    fonts['filmTitleText']['size'] * 1.7 + 'pt', // was 1.2em
                 fontFamily: fonts['filmTitleText']['font'],
                 margin: '0',
                 color: '#' + filmTitleTextColorHex,
@@ -113,7 +116,9 @@ const ScreenEditable = (prop) => {
             },
             details: {
                 color: '#' + filmDetailsTextColorHex,
-                fontSize: fonts['filmDetailsText']['size'] * 1.7 + 'pt',
+                fontSize: screen.customized ?
+                    screen.filmDetailsText * 1.7 + 'pt' :
+                    fonts['filmDetailsText']['size'] * 1.7 + 'pt',
                 fontFamily: fonts['filmDetailsText']['font'],
             },
         },

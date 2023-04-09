@@ -1,5 +1,4 @@
 /* eslint-disable require-jsdoc */
-import Node from '../ClassLib/Node';
 import Toast from './SnackBar';
 
 import React, { useCallback, useState } from 'react';
@@ -20,7 +19,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
         icon = 'check';
         let fileValidation = true;
         document.getElementById('fileValidation').style.display = 'none';
-        console.log('accepted files:', acceptedFiles);
+
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
@@ -50,7 +49,8 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                     if (lines[i].split('\t').length != columns && i != lines.length - 1) {
                         fileValidation = false;
                         const line = i + 1;
-                        fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' + lines[i].split('\t').length + ' columns' +
+                        fileErrorMsg = 'line number ' + line + ' on ' +
+                            file.name + ' has ' + lines[i].split('\t').length + ' columns' +
                             '\nThe file should have ' + columns + ' columns';
                         document.getElementById('fileValidation').innerHTML = fileErrorMsg;
                         document.getElementById('fileValidation').style.display = 'block';
@@ -108,8 +108,6 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 }
             };
         });
-
-        console.log(uploadedFiles);
     }, []);
 
     // eslint-disable-next-line no-unused-vars
@@ -130,14 +128,12 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
     });
 
     const parseGridVenues = (lines) => {
-        console.log('inside');
         const gridVenues = new Map();
         lines.forEach((line) => {
             const mapping = line.split('\t');
             gridVenues.set(mapping[2].trim(), mapping[1]);
         });
         setParsedGridVenues(gridVenues);
-        console.log(gridVenues);
     };
     // parsed Colour file
     const parsedColour = (lines) => {

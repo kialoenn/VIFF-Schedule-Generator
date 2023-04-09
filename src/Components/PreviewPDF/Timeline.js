@@ -14,31 +14,31 @@ const Timeline = (props) => {
             'height': '2.6vw',
             'flexDirection': 'row',
         },
-    
+
         timelineDate: {
             'flex': '1.89',
             'textAlign': 'center',
             'margin': 'auto',
             'color': '#' + dateTextColor,
-            'fontFamily': props.font["dateText"]["font"],
+            'fontFamily': props.font['dateText']['font'],
             'fontWeight': '500',
-            'fontSize': (props.font["dateText"]["size"] / 6.75) + 'vw',
+            'fontSize': (props.font['dateText']['size'] / 6.75) + 'vw',
         },
-    
+
         timeline: {
             'flex': '8.11',
             'flexDirection': 'row',
-            'fontSize': (props.font["timeText"]["size"] / 7) + 'vw',
-            'fontFamily': props.font["timeText"]["font"],
+            'fontSize': (props.font['timeText']['size'] / 7) + 'vw',
+            'fontFamily': props.font['timeText']['font'],
             'color': '#' + timeTextColor,
         },
-    
+
         time: {
             'margin': 'auto',
             'width': '100vw',
             'textAlign': 'center',
         },
-    
+
     });
     return (
         <View style={styles.timelineRow}>

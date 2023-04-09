@@ -36,6 +36,8 @@ const createMap = (movieInfo) => {
                             duration: screenInfo.screen_time,
                             pageLocation: screenInfo.page_number,
                             movieType: screenInfo.movie_type,
+                            filmDetailsText: 3,
+                            filmTitleText: 4,
                         })),
                 }),
             ),
@@ -62,7 +64,7 @@ const createMap = (movieInfo) => {
         });
         parsedScheduleIndex++;
     }
-    console.log(parsedSchedule);
+
     return parsedSchedule;
 };
 
@@ -70,7 +72,7 @@ const parseGridScreensHelper = async (lines) => {
     const movieInfo = [];
     for (let i = 0; i < lines.length - 1; i++) {
         const row = lines[i].split('\t');
-        console.log('file column number: ', row.length);
+
         for (const { } of row) {
             let date = new Date(row[0]);
             date = date.toLocaleDateString('en-CA', { weekday: 'long' }) + ', ' +
@@ -90,8 +92,8 @@ const parseGridScreensHelper = async (lines) => {
             movieInfo[i] = node;
         }
     }
-    console.log(movieInfo);
-    console.log(movieInfo.length);
+
+
     return createMap(movieInfo);
 };
 

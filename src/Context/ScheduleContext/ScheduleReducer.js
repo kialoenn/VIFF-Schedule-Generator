@@ -83,10 +83,13 @@ export default (state, action) => {
                                                 if (s.id == action.id.screenID) {
                                                     return ({
                                                         ...s,
+                                                        customized: true,
                                                         duration: action.screen.duration,
                                                         filmTitle: action.screen.filmTitle,
                                                         pageLocation: action.screen.pageLocation,
                                                         startTime: action.screen.startTime,
+                                                        filmTitleText: action.screen.filmTitleText,
+                                                        filmDetailsText: action.screen.filmDetailsText,
                                                     });
                                                 } else {
                                                     return s;
