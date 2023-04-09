@@ -1,5 +1,4 @@
 /* eslint-disable require-jsdoc */
-import Node from '../ClassLib/Node';
 import Toast from './SnackBar';
 
 import React, { useCallback, useState } from 'react';
@@ -20,7 +19,7 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
         icon = 'check';
         let fileValidation = true;
         document.getElementById('fileValidation').style.display = 'none';
-        console.log('accepted files:', acceptedFiles);
+
         acceptedFiles.forEach((file) => {
             if (!uploadedFiles.get(file.path)) {
                 uploadedFiles.set(file.path, file);
@@ -48,14 +47,20 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 let fileErrorMsg = '';
                 for (let i = 0; i < lines.length; i++) {
                     if (lines[i].split('\t').length != columns && i != lines.length - 1 ||
+<<<<<<< HEAD
                     columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length && i != lines.length - 1) {
+=======
+                        columns == 1 && lines[i].split(' ').length != lines[0].split(' ').length) {
+>>>>>>> 57347d570a694278610f6038d2179b7b83bdc86d
                         fileValidation = false;
-                        
+
                         const line = i + 1;
-                        columns == 1 ? 
-                            (fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' + lines[i].split(' ').length + ' columns' +
+                        columns == 1 ?
+                            (fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' +
+                                lines[i].split(' ').length + ' columns' +
                                 '\nThe file should have ' + lines[0].split(' ').length + ' columns') :
-                            (fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' + lines[i].split('\t').length + ' columns' +
+                            (fileErrorMsg = 'line number ' + line + ' on ' + file.name + ' has ' +
+                                lines[i].split('\t').length + ' columns' +
                                 '\nThe file should have ' + columns + ' columns');
 
                         document.getElementById('fileValidation').innerHTML = fileErrorMsg;
@@ -114,8 +119,6 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
                 }
             };
         });
-
-        console.log(uploadedFiles);
     }, []);
 
     // eslint-disable-next-line no-unused-vars
@@ -136,14 +139,12 @@ const FileUploader = ({ setParsedSchedule, setParsedGridVenues, setColourInfo })
     });
 
     const parseGridVenues = (lines) => {
-        console.log('inside');
         const gridVenues = new Map();
         lines.forEach((line) => {
             const mapping = line.split('\t');
             gridVenues.set(mapping[2].trim(), mapping[1]);
         });
         setParsedGridVenues(gridVenues);
-        console.log(gridVenues);
     };
     // parsed Colour file
     const parsedColour = (lines) => {

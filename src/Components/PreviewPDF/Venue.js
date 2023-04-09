@@ -106,7 +106,6 @@ const Venue = (props) => {
     const createdScheduleBox = (id) => {
         const scheduleBoxNum = 64;
         const scheduleBoxes = [];
-        // console.log("created schedule boxes!");
         for (let i = 0; i < scheduleBoxNum; i++) {
             if (id % 2 == 0) {
                 if (i % 2 == 0) {
@@ -129,7 +128,6 @@ const Venue = (props) => {
         }
         return scheduleBoxes;
     };
-    // console.log("venue",props.venueDetail.venueName, "id:", props.venueDetail.id);
     return (
         <View style={styles.venueRow}>
             <View style={styles.venue}>

@@ -221,7 +221,7 @@ const FontSettings = () => {
                         id="demo-simple-select-helper"
                         label="Size"
                         size="small"
-                        defaultValue={4}
+                        defaultValue={3}
                         onChange={handleChange('filmDetailsText')}
                     >
                         <MenuItem value={2}>2</MenuItem>

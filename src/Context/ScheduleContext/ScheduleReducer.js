@@ -11,11 +11,10 @@ import {
 } from '../ActionType';
 
 export default (state, action) => {
-    console.log('state.gridscreen', state.gridScreenTimes);
     switch (action.type) {
         case MAP_VENUENAME:
         case PARSE_GRIDSCREENTIMES:
-            console.log('action: ', action);
+
             return {
                 ...state,
                 gridScreenTimes: action.screenTimes,
@@ -83,10 +82,13 @@ export default (state, action) => {
                                                 if (s.id == action.id.screenID) {
                                                     return ({
                                                         ...s,
+                                                        customized: true,
                                                         duration: action.screen.duration,
                                                         filmTitle: action.screen.filmTitle,
                                                         pageLocation: action.screen.pageLocation,
                                                         startTime: action.screen.startTime,
+                                                        filmTitleText: action.screen.filmTitleText,
+                                                        filmDetailsText: action.screen.filmDetailsText,
                                                     });
                                                 } else {
                                                     return s;

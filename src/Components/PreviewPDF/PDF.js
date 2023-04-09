@@ -77,13 +77,15 @@ Font.register({
 // Create Document Component
 const MyDocument = (props) => (
     <Document>
-        <Page size={2963}>
-            {props.data.parsedScheduleContext.map((day, index) => {
-                return (
-                    <Schedule key={index} data={day} color={props.data.colorSettings} font={props.data.fontSettings} grid={props.data.gridSettings}></Schedule>
-                );
-            })}
-        </Page>
+        {props.data.parsedScheduleContext.map((day, index) => {
+            return (
+                <Page size={2963} key={index}>
+                    <Schedule key={index} data={day} color={props.data.colorSettings}
+                        font={props.data.fontSettings} grid={props.data.gridSettings}></Schedule>
+                </Page>
+
+            );
+        })}
     </Document >
 );
 

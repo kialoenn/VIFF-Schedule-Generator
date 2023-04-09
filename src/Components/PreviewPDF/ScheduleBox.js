@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import '../../css/Dashboard.css';
 
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import React from 'react';
 import reactCSS from 'reactcss';
 
@@ -45,14 +45,14 @@ const ScheduleBox = (prop) => {
     startPoint = (hour + min) / 64 * 100 * 0.811;
     startPoint += 'vw';
     startPoint = (hour + min) / 64 * 100 * 0.81;
-    startPoint += "vw";
+    startPoint += 'vw';
 
     // getting a width
 
     hour = duration.substr(0, duration.indexOf(':'));
     min = duration.substr(duration.indexOf(':') + 1, duration.indexOf(':'));
-    hour = duration.substr(0, duration.indexOf(":"));
-    min = duration.substr(duration.indexOf(":") + 1, duration.indexOf(":") + 1);
+    hour = duration.substr(0, duration.indexOf(':'));
+    min = duration.substr(duration.indexOf(':') + 1, duration.indexOf(':') + 1);
     hour = parseFloat(hour) * boxNumInHour;
     min = parseFloat(min) / boxMin;
     const durationNum = hour + min;
@@ -81,7 +81,9 @@ const ScheduleBox = (prop) => {
 
     const filmTitleText = {
         'color': '#' + filmTitleTextColor,
-        'fontSize': (prop.font['filmTitleText']['size'] * 3 + 12) + 'pt',
+        'fontSize': screen.customized ?
+            screen.filmTitleText * 3 + 12 + 'pt' :
+            (prop.font['filmTitleText']['size'] * 3 + 12) + 'pt',
         'fontFamily': prop.font['filmTitleText']['font'],
     };
     const filmDetailsText = {
