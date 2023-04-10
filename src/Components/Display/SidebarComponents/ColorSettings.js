@@ -6,14 +6,8 @@ import ColorPicker from './ColorPicker';
 import { useScheduleContext } from '../../../Context/ScheduleContext/ScheduleContext';
 import Button from '@mui/material/Button';
 
-// const Button = ({ label, onClick }) => {
-//     return (
-//       <button onClick={onClick}>
-//         {label}
-//       </button>
-//     );
-//   };
-
+// CSS import
+import '../../../css/Converter.css';
 
 const ColorSettings = () => {
     const colordatafromjson = defaultSettings;
@@ -65,8 +59,8 @@ const ColorSettings = () => {
             <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={'oddRow'} color={colors['oddRow']} /></div>
             <p id="colorLabels">Even Row</p>
             <div id='colorPicker'><ColorPicker parentCallBack={handleCallBack} id={'evenRow'} color={colors['evenRow']} /></div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Button onClick={handleClick} variant="outlined">Load default</Button>
+            <div className="reset">
+                <Button onClick={handleClick} variant="text">Reset to Default</Button>
             </div>
         </div>
     );
